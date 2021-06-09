@@ -1,11 +1,25 @@
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import React from 'react';
+import Navbar from './components/Navbar';
+import Dashboard from './components/Dashboard';
+import Home from './components/Home';
 
 function App() {
   return (
-    <div className="bg-primary-color text-center" >
-      <h1>Hello Dashboard Team!</h1>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
