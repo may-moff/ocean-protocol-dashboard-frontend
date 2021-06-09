@@ -3,7 +3,7 @@ import React from 'react';
 
 function App() {
   return (
-    <div className="App">
+    <div className="bg-primary-color text-center" >
       <h1>Hello Dashboard Team!</h1>
     </div>
   );
