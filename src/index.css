@@ -16,7 +16,7 @@
   --bgrey-lighter: #e2e2e2;
   --bgrey-dimmed: #f7f7f7;
 
-  --bgradient: linear-gradient(to right bottom, #7b1173, #ff4092);
+  --bgradient: linear-gradient(to right bottom #7b1173, #ff4092);
 
   --balert-green: #5fb359;
   --balert-red: #d80606;
@@ -44,21 +44,21 @@
   --font-family-monospace: "Fira Code", "Fira Mono", Menlo, Monaco, Consolas,
     "Courier New", monospace;
 
-  --font-size-root: 15px;
-  --font-size-base: 1rem;
-  --font-size-large: 1.2rem;
-  --font-size-small: 0.85rem;
-  --font-size-mini: 0.65rem;
-  --font-size-text: 1rem;
-  --font-size-label: 1rem;
-  --font-size-title: 1.4rem;
-  --font-size-h1: 3rem;
-  --font-size-h2: 2.5rem;
-  --font-size-h3: 1.7rem;
-  --font-size-h4: 1.3rem;
-  --font-size-h5: 1.1rem;
-  --font-weight-base: 500;
-  --font-weight-bold: 600;
+  --fsroot: 15px;
+  --fsbase: 1rem;
+  --fslarge: 1.2rem;
+  --fssmall: 0.85rem;
+  --fsmini: 0.65rem;
+  --fstext: 1rem;
+  --fslabel: 1rem;
+  --fstitle: 1.4rem;
+  --fsh1: 3rem;
+  --fsh2: 2.5rem;
+  --fsh3: 1.7rem;
+  --fsh4: 1.3rem;
+  --fsh5: 1.1rem;
+  --fwbase: 500;
+  --fwbold: 600;
   --line-height: 1.6;
 
   --spacer: 2rem;
