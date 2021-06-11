@@ -8,23 +8,18 @@
   --bpink: #ff4092;
   --bpurple: #7b1173;
   --bviolet: #e000cf;
-
-  --bgrey-darker: #201f1f;
-  --bgrey-dark: #303030;
+  --bgreydark: #303030;
   --bgrey: #41474e;
-  --bgrey-light: #8b98a9;
-  --bgrey-lighter: #e2e2e2;
-  --bgrey-dimmed: #f7f7f7;
-
+  --bgreylight: #8b98a9;
+  --bgreylighter: #e2e2e2;
+  --bgreydimmed: #f7f7f7;
   --bgradient: linear-gradient(to right bottom #7b1173, #ff4092);
-
-  --balert-green: #5fb359;
-  --balert-red: #d80606;
-  --balert-orange: #b35f36;
-  --balert-yellow: #eac146;
-
-  --color-primary: #ff4092;
-  --color-secondary: #8b98a9;
+  --balertgreen: #5fb359;
+  --balertred: #d80606;
+  --balertorange: #b35f36;
+  --balertyellow: #eac146;
+  --colorprimary: #ff4092;
+  --colorsecondary: #8b98a9;
 
   /* Only use these vars for most color referencing for easy light/dark mode */
   --font-color-text: #41474e;
@@ -62,9 +57,9 @@
   --line-height: 1.6;
 
   --spacer: 2rem;
-  --border-radius: 0.2rem;
+  --bradius: 0.2rem;
 
-  --layout-max-width: 85rem;
+  --lmaxwidth: 85rem;
   --checkbox-size: 1.6em;
 
   --break-point--small: 640px;
@@ -83,26 +78,3 @@
   --border-color: #303030;
   --box-shadow-color: rgba(0, 0, 0, 0.2);
 }
-
-/* .root,
-#root,
-#docs-root {
-  --bwhite: #fff;
-  --bblack: #141414;
-  --bpink: #ff4092;
-  --bpurple: #7b1173;
-  --bviolet: #e000cf;
-  --bgrey-dark: #303030;
-  --bgrey: #41474e;
-  --bgrey-light: #8b98a9;
-  --bgrey-lighter: #e2e2e2;
-  --bgrey-dimmed: #f7f7f7;
-  --bgradient: linear-gradient(
-    to right bottom rgb(123, 17, 115),
-    rgb(255, 64, 146)
-  );
-  --balert-green: #5fb359;
-  --balert-red: #d80606;
-  --balert-orange: #b35f36;
-  --balert-yellow: #eac146;
-} */

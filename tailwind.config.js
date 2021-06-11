@@ -19,9 +19,27 @@ module.exports = {
         fsh4: "1.3rem",
         fsh5: "1.1rem",
       },
-      FontWeight: {
+      fontWeight: {
         fwbase: "500",
         fwbold: "600",
+      },
+      breakPoint: {
+        bpsmall: "640px",
+        bpmedium: "860px",
+        bplarge: "1140px",
+        bphuge: "1400px",
+      },
+      spacer: {
+        spacer: "2rem",
+      },
+      borderRadius: {
+        bradius: "0.2rem",
+      },
+      layout: {
+        lmaxwidth: "85rem",
+      },
+      checkboxSize: {
+        chsize: "1.6rem",
       },
       colors: {
         bwhite: "#ffffff",
@@ -39,6 +57,8 @@ module.exports = {
         balertred: "#d80606",
         balertorange: "#b35f36",
         balertyellow: "#eac146",
+        colorprimary: "#ff4092",
+        colorsecondary: "#8b98a9",
       },
     },
   },
@@ -47,23 +67,3 @@ module.exports = {
   },
   plugins: [],
 };
-
-// https://tailwindcss.com/docs/font-size
-//   module.exports = {
-//     theme: {
-//       fontSize: {
-//        'xs': '.75rem',
-//        'sm': '.875rem',
-//        'tiny': '.875rem',
-//         'base': '1rem',
-//         'lg': '1.125rem',
-//         'xl': '1.25rem',
-//         '2xl': '1.5rem',
-//        '3xl': '1.875rem',
-//        '4xl': '2.25rem',
-//         '5xl': '3rem',
-//         '6xl': '4rem',
-//        '7xl': '5rem',
-//       }
-//     }
-//   }
