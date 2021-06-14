@@ -12,7 +12,12 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/">
-            <Home />
+            <>        
+              <Home />
+              <div className="bg-bpink text-center text-fslarge text-fwbase">
+                <h1>Hello Dashboard Team!</h1>
+              </div>
+            <>
           </Route>
           <Route path="/dashboard">
             <Dashboard />
