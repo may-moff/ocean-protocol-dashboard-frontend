@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function Home() {
-    return (
-        <div>
-            <h1>YOOOO</h1>
-        </div>
-    )
+  return (
+    <div className="bg-bpink text-center text-fslarge text-fwbase">
+      <h1>Hello Dashboard Team!</h1>
+    </div>
+  );
 }
 
-export default Home
+export default Home;
