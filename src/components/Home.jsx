@@ -1,10 +1,11 @@
 import React from 'react';
+import Card from '../components/Card';
 
 function Home() {
   return (
-    <div className="bg-bpink text-center text-fslarge text-fwbase">
+    <Card additionalClasses="text-center text-fslarge text-fwbase">
       <h1>Hello Dashboard Team!</h1>
-    </div>
+    </Card>
   );
 }
 
