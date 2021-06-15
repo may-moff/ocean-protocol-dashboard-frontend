@@ -1,10 +1,10 @@
 import React from "react";
 
-const ButtonPrimary = () => {
+const ButtonPrimary = (props) => {
   return (
     <div>
-      <button class="bg-primary-color text-white py-2 px-6 font-semibold rounded transform hover:scale-110 ">
-        PRIMARY
+      <button onClick={props.function} class="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300 ">
+      {props.name}
       </button>
     </div>
   );
