@@ -3,6 +3,7 @@ import Card from '../components/Card';
 
 function Home() {
   return (
+<<<<<<< HEAD
     <Card additionalClasses="">
       <div>
         <img
@@ -18,6 +19,13 @@ function Home() {
        Lorem Ipsum
       </p>
     </Card>
+=======
+    <div className="flex-row ">
+      <Card additionalClasses="text-center text-fslarge text-fwbase">
+        <h1>Hello Dashboard Team!</h1>
+      </Card>
+    </div>
+>>>>>>> 0247ced0f6dd8f886669a4b6d8cba6a36c57c471
   );
 }
 
