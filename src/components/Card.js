@@ -1,8 +1,8 @@
 const Card = ({ additionalClasses, children }) => {
   return (
     <div
-      className={`bg-background-content rounded-md shadow-lg ${
-        additionalClasses || ''
+      className={`max-w-sm m-20 p-4 bg-bwhite rounded-lg shadow-default text-center ${
+        additionalClasses || ""
       }`}
     >
       {children}
