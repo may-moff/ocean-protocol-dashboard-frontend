@@ -1,13 +1,21 @@
-import React from 'react'
+import React from "react";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
-    return (
-        <div>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/dashboard">Dashboard</NavLink>
+  return (
+    <>
+      <div class="flex items-center justify-around flex-wrap">
+        <div class="">
+          <NavLink to="/">Logo</NavLink>
         </div>
-    )
+        <div class="justify-between">
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink to="/">MetaMask</NavLink>
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default Navbar
+export default Navbar;
