@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Web3 from "web3";
+import axios from "axios";
 
 // let web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
 let web3 = new Web3(Web3.givenProvider || undefined);
@@ -8,7 +9,16 @@ let web3 = new Web3(Web3.givenProvider || undefined);
 console.log(web3);
 
 function Login() {
-  const handleClick = async () => {
+  //   const handleSignup = ({ publicAddress }) =>
+  //     fetch(`${process.env.REACT_APP_BACKEND_URL}/users`, {
+  //       body: JSON.stringify({ publicAddress }),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       method: "POST",
+  //     }).then((response) => response.json());
+
+  const handleClickMeta = async () => {
     // Check if MetaMask is installed
     if (!window.ethereum) {
       window.alert("Please install MetaMask first.");
@@ -36,17 +46,22 @@ function Login() {
 
     const publicAddress = coinbase.toLowerCase();
     // Look if user with current publicAddress is already present on backend
-    fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/users?publicAddress=${publicAddress}`
-    ).then((response) => response.json());
-    // If yes, retrieve it. If no, create it.
-    //   .then((users) => (users.length ? users[0] : handleSignup(publicAddress)));
+
+    axios
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/users?publicAddress=${publicAddress}`
+      )
+      .then((response) => response.data)
+      .then((data) => {
+        console.log(data);
+      });
+
+    //   !!!!!!!!!!!!!!!!!!!stop!! function ends after this line!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   };
 
   return (
     <div>
-      {/* <MetaMaskLoginButton /> */}
-      <button onClick={handleClick}>Login with MetaMask</button>
+      <button onClick={handleClickMeta}>Login with MetaMask</button>
     </div>
   );
 }
