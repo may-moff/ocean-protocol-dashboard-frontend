@@ -1,6 +1,5 @@
 import React from "react";
 import Web3 from "web3";
-import MetaMaskLoginButton from "react-metamask-login-button";
 
 // let web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
 let web3 = new Web3(Web3.givenProvider || undefined);
@@ -29,15 +28,20 @@ function Login() {
     }
 
     const coinbase = await web3.eth.getCoinbase();
-    console.log(coinbase);
+    console.log("my public address is", coinbase);
     console.log("hi");
     if (!coinbase) {
       window.alert("Please activate MetaMask first.");
     }
-  };
 
-  //   const publicAddress = coinbase.toLowerCase();
-  //   setLoading(true);
+    const publicAddress = coinbase.toLowerCase();
+    // Look if user with current publicAddress is already present on backend
+    fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/users?publicAddress=${publicAddress}`
+    ).then((response) => response.json());
+    // If yes, retrieve it. If no, create it.
+    //   .then((users) => (users.length ? users[0] : handleSignup(publicAddress)));
+  };
 
   return (
     <div>
