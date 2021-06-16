@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import JobDetail from "./components/JobDetail";
+import Jobboard from "./components/job-board/Jobboard";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/dashboard">
-            <Dashboard />
+            <Jobboard />
           </Route>
           <Route path="/jobs/:id">
             <JobDetail />
