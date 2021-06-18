@@ -2,7 +2,7 @@ import React from 'react';
 import MenuBox from './MenuBox';
 import JobsBox from './JobsBox';
 
-const Jobboard = () => {
+const JobBoard = () => {
   return (
     <div>
       <MenuBox name="User's name" />
@@ -11,4 +11,4 @@ const Jobboard = () => {
   );
 };
 
-export default Jobboard;
+export default JobBoard;
