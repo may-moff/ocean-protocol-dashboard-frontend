@@ -1,15 +1,15 @@
-import React from "react";
-import JobboardLogo from "./JobboardLogo";
-import MenuButton from "./MenuButton";
-import AmountFilter from "./AmountFilter";
+import React from 'react';
+import JobBoardLogo from './JobBoardLogo';
+import MenuButton from './MenuButton';
+import AmountFilter from './AmountFilter';
 
 const MenuBox = (props) => {
   const { name } = props;
 
   return (
     <div>
-      <MenuButton />
-      <JobboardLogo name={name} />
+      {/* <MenuButton /> */}
+      <JobBoardLogo name={name} />
       <AmountFilter amount="9" />
     </div>
   );
