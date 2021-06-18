@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const JobboardLogo = (props) => {
+const JobBoardLogo = (props) => {
   const { name } = props;
 
   return <div>Welcome to the Jobboard of {name}!</div>;
 };
 
-export default JobboardLogo;
+export default JobBoardLogo;

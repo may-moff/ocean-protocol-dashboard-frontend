@@ -1,5 +1,5 @@
 import React from 'react';
-import JobboardLogo from './JobboardLogo';
+import JobBoardLogo from './JobBoardLogo';
 import MenuButton from './MenuButton';
 import AmountFilter from './AmountFilter';
 
@@ -8,8 +8,8 @@ const MenuBox = (props) => {
 
   return (
     <div>
-      <MenuButton />
-      {/* <JobboardLogo name={name} /> */}
+      {/* <MenuButton /> */}
+      <JobBoardLogo name={name} />
       <AmountFilter amount="9" />
     </div>
   );
