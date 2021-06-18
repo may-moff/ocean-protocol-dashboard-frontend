@@ -16,13 +16,14 @@ const fakeData = [
 
 const JobsBox = () => {
   return (
-    <div>
-      HELLO
-      {fakeData.map((data, i) => (
-        <Card key={i}>
-          <Job title={data.title} status={data.status} />
-        </Card>
-      ))}
+    <div className="container mx-auto">
+      <div className="grid grid-cols-3 gap-6">
+        {fakeData.map((data, i) => (
+          <Card key={i} additionalClasses="flex justify-center">
+            <Job title={data.title} status={data.status} />
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };
