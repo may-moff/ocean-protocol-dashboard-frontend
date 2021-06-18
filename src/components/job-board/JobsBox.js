@@ -17,8 +17,9 @@ const fakeData = [
 const JobsBox = () => {
   return (
     <div>
-      {fakeData.map((data) => (
-        <Card>
+      HELLO
+      {fakeData.map((data, i) => (
+        <Card key={i}>
           <Job title={data.title} status={data.status} />
         </Card>
       ))}
