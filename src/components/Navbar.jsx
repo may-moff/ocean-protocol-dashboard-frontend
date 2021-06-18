@@ -8,6 +8,7 @@ function Navbar() {
       <span />
       <NavLink to="/dashboard">Dashboard</NavLink>
       <NavLink to="/jobs/1">First Job</NavLink>
+      <NavLink to="/jobboard">Jobboard</NavLink>
     </div>
   );
 }
