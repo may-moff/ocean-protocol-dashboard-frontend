@@ -4,7 +4,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import JobDetail from './components/JobDetail';
-import Jobboard from './components/job-board/Jobboard';
+import JobBoard from './components/job-board/JobBoard';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/jobboard">
-            <Jobboard />
+            <JobBoard />
           </Route>
           <Route path="/jobs/:id">
             <JobDetail />
