@@ -1,11 +1,10 @@
-import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import React from "react";
-import Navbar from "./components/Navbar";
-import Dashboard from "./components/Dashboard";
-import Home from "./components/Home";
-import JobDetail from "./components/JobDetail";
-import Jobboard from "./components/job-board/Jobboard";
+import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React from 'react';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import JobDetail from './components/JobDetail';
+import Jobboard from './components/job-board/Jobboard';
 
 function App() {
   return (
