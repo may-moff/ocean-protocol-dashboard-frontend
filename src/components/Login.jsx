@@ -34,15 +34,17 @@ function Login({ onLoggedIn }) {
   };
 
   const handleSignup = (publicAddress) => {
-    console.log(JSON.stringify({ publicAddress }));
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/users`, {
-        body: JSON.stringify({ publicAddress }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        publicAddress,
       })
-      .then((response) => response.json());
+      //   {
+      //   body: JSON.stringify({ publicAddress }),
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      // })
+      .then((response) => response.data);
   };
 
   const handleClickMeta = async () => {
@@ -87,10 +89,9 @@ function Login({ onLoggedIn }) {
         const users = response.data;
         return users.length ? users[0] : handleSignup(publicAddress);
       })
-
+      .then(handleSignMessage)
       // (users.length ? users[0] : handleSignup(publicAddress)))
       // Popup MetaMask confirmation modal to sign message
-      .then(handleSignMessage)
       // Send signature to backend on the /auth route
       // .then(handleAuthenticate)
       // Pass accessToken back to parent component (to save it in localStorage)
