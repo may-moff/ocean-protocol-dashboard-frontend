@@ -1,8 +1,8 @@
-import React from 'react';
-import JobTitle from './JobTitle';
-import JobStatus from './JobStatus';
-import JobFileDownload from './JobFileDownload';
-import ButtonDefault from '../ButtonDefault';
+import React from "react";
+import JobTitle from "./JobTitle";
+import JobStatus from "./JobStatus";
+import JobFileDownload from "./JobFileDownload";
+import ButtonDefault from "../ButtonDefault";
 
 const Job = (props) => {
   return (
