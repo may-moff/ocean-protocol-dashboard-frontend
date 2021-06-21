@@ -37,9 +37,9 @@ function Login({ onLoggedIn }) {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/users`, {
         body: JSON.stringify({ publicAddress }),
-        // headers: {
-        //   "Content-Type": "application/json",
-        // },
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
       .then((response) => response.json());
 
@@ -72,13 +72,16 @@ function Login({ onLoggedIn }) {
     // const publicAddress = coinbase.toLowerCase();
     const publicAddress = coinbase.toLowerCase();
     setLoading(true);
-    console.log(publicAddress);
+    console.log("before call", publicAddress);
     // Look if user with current publicAddress is already present on backend
+
     axios
       .get(
-        `${process.env.REACT_APP_BACKEND_URL}/users?publicAddress=0x0e6a88973321a43899d9c97412995e491ef4aac2`
+        `${process.env.REACT_APP_BACKEND_URL}/users?publicAddress=${publicAddress}`
       )
-      .then((response) => console.log(response.data))
+      .then((response) => response.data.publicAddress)
+      // .then((data) => data.publicAddress)
+
       .then((users) => (users.length ? users[0] : handleSignup(publicAddress)))
       // Popup MetaMask confirmation modal to sign message
       .then(handleSignMessage)
@@ -95,7 +98,7 @@ function Login({ onLoggedIn }) {
 
   return (
     <div>
-      <button className="Login-button Login-mm" onClick={handleClickMeta}>
+      <button onClick={handleClickMeta}>
         {loading ? "Loading..." : "Login with MetaMask"}
       </button>{" "}
     </div>
