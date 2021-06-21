@@ -20,6 +20,7 @@ function Login({ onLoggedIn }) {
   //   }).then((response) => response.json());
 
   const handleSignMessage = async ({ publicAddress, nonce }) => {
+    console.log(publicAddress, nonce);
     try {
       const signature = await web3.eth.personal.sign(
         `I am signing my one-time nonce: ${nonce}`,
@@ -33,18 +34,30 @@ function Login({ onLoggedIn }) {
     }
   };
 
-  const handleSignup = (publicAddress) => {
-    axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/users`, {
-        publicAddress,
-      })
-      //   {
-      //   body: JSON.stringify({ publicAddress }),
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      // })
-      .then((response) => response.data);
+  const handleSignup = async (publicAddress) => {
+    try {
+      const user = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/users`,
+        {
+          publicAddress,
+        }
+      );
+      return user.data;
+    } catch (err) {
+      console.log(err);
+    }
+    //   .then((response) => {
+    //     console.log(response);
+    //     return response.data;
+    //   });
+    // axios
+    //   .post(`${process.env.REACT_APP_BACKEND_URL}/users`, {
+    //     publicAddress,
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //     return response.data;
+    //   });
   };
 
   const handleClickMeta = async () => {
