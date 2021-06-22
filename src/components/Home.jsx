@@ -12,13 +12,6 @@ function Home() {
       <img className="w-full" src={wave} alt="wave" />
     </div>
       <div>
-        <img
-          className="inline mb-3 max-w-12 max-h-12"
-          src={jellyfish} 
-          alt="logo"
-        />
-      </div>
-      <div>
    
       <p className="font-fsbase"></p>
       </div>
