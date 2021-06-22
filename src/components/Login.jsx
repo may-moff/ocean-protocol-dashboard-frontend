@@ -9,16 +9,6 @@ console.log(web3);
 export const Login = ({ onLoggedIn }) => {
   const [loading, setLoading] = useState(false);
 
-  // const handleAuthenticate = ({ publicAddress, signature }) =>
-  //   console.log(signature, "HELLLLLLLLOOOOOOOOOOOO");
-  // fetch(`${process.env.REACT_APP_BACKEND_URL}/auth`, {
-  //   body: JSON.stringify({ publicAddress, signature }),
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   method: "POST",
-  // }).then((response) => response.json());
-
   const handleAuthenticate = async ({ publicAddress, signature }) => {
     console.log(publicAddress, "YOOOOOOOOOOOO", signature);
     try {
@@ -105,7 +95,6 @@ export const Login = ({ onLoggedIn }) => {
         return users.length ? users[0] : handleSignup(publicAddress);
       })
       .then(handleSignMessage)
-      // (users.length ? users[0] : handleSignup(publicAddress)))
       // Popup MetaMask confirmation modal to sign message
       // Send signature to backend on the /auth route
       .then(handleAuthenticate)

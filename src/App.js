@@ -15,7 +15,7 @@ const LS_KEY = "login-with-metamask:auth";
 // }
 
 export const App = () => {
-  // const [state, setState] = useState({});
+  const [state, setState] = useState({});
 
   // useEffect(() => {
   //   // Access token is stored in localstorage
@@ -24,27 +24,28 @@ export const App = () => {
   //   setState({ auth });
   // }, []);
 
-  // const handleLoggedIn = (auth) => {
-  //   localStorage.setItem(LS_KEY, JSON.stringify(auth));
-  //   setState({ auth });
-  // };
+  const handleLoggedIn = (auth) => {
+    localStorage.setItem(LS_KEY, JSON.stringify(auth));
+    setState({ auth });
+  };
 
   // const handleLoggedOut = () => {
   //   localStorage.removeItem(LS_KEY);
   //   setState({ auth: undefined });
   // };
 
-  // const { auth } = state;
+  const { auth } = state;
 
   return (
     <>
-      {/* <div className="App-intro"> */}
-      {/* {auth ? (
+      {/* <div className="App-intro">
+        {auth ? (
           <Profile auth={auth} onLoggedOut={handleLoggedOut} />
         ) : (
           <Login onLoggedIn={handleLoggedIn} />
         )}
       </div> */}
+
       <Router>
         <Navbar />
         <Switch>
@@ -52,6 +53,7 @@ export const App = () => {
             <Home />
           </Route>
           <Route path="/dashboard">
+            <Login onLoggedIn={handleLoggedIn} />
             <Dashboard />
           </Route>
         </Switch>
