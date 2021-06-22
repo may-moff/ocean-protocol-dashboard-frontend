@@ -1,22 +1,21 @@
 import React from 'react';
-import Card from '../components/Card';
+import jellyfish from "./../Assets/jellyfish-full.svg"
+import wave from "./wave/Waves.gif"
 
 function Home() {
   return (
-    <Card additionalClasses="">
-      <div>
-        <img
-          className="inline mb-3 h-20 w-20"
-          src="https://oceanpearl.io/_nuxt/img/pearl-logo.e8cfc25.svg"
-          alt="logo"
-        />
-      </div>
-      <h1 className="text-align-center text-bpink text-fslarge font-fwbold mb-8">
-        Hello Dashboard Team!
+    <>
+    <div className="">
+      <h1 className="text-center text-bblack text-fsh1 font-fwbase mt-6">
+        Ocean Dashboard
       </h1>
-      <p className="font-fsbase">Lorem Ipsum</p>
-    </Card>
-  );
-}
+      <img className="w-full" src={wave} alt="wave" />
+    </div>
+      <div>
+   
+      <p className="font-fsbase"></p>
+      </div>
+      </>
+  )};
 
 export default Home;

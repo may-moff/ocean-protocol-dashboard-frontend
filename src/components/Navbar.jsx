@@ -18,7 +18,7 @@ function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
             </div>
             <div className="flex items-center space-x-4 text-bgrey transform ">
               <div className="transform hover:-translate-y-0.5 duration-300">
-                <NavLink to="/jobboard">Job Board</NavLink>
+                <NavLink to="/jobboard">Dashboard</NavLink>
               </div>
 
               <div className="transform hover:-translate-y-0.5 duration-300">
