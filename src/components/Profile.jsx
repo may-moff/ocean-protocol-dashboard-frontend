@@ -26,7 +26,7 @@ export const Profile = ({ auth, onLoggedOut }) => {
       .catch(window.alert);
   }, []);
 
-  setState({ ...state, loading: true });
+  //   setState({ ...state, loading: true });
 
   const { accessToken } = auth;
 
