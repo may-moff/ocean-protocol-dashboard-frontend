@@ -4,6 +4,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      boxShadow: {
+        default: "4px 4px 20px rgb(0 0 0 / 10%)",
+      },
       fontSize: {
         fsroot: "15px",
         fsbase: "1rem",
