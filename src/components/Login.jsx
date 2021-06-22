@@ -9,8 +9,18 @@ console.log(web3);
 export const Login = ({ onLoggedIn }) => {
   const [loading, setLoading] = useState(false);
 
-  const handleAuthenticate = async (publicAddress, signature) => {
-    console.log(publicAddress, "YOOOOOOOOOOOO");
+  // const handleAuthenticate = ({ publicAddress, signature }) =>
+  //   console.log(signature, "HELLLLLLLLOOOOOOOOOOOO");
+  // fetch(`${process.env.REACT_APP_BACKEND_URL}/auth`, {
+  //   body: JSON.stringify({ publicAddress, signature }),
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   method: "POST",
+  // }).then((response) => response.json());
+
+  const handleAuthenticate = async ({ publicAddress, signature }) => {
+    console.log(publicAddress, "YOOOOOOOOOOOO", signature);
     try {
       const userAuth = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/auth`,
