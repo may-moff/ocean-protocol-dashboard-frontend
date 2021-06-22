@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Web3 from "web3";
 import axios from "axios";
-import ButtonPrimary from "./ButtonPrimary";
 
 let web3 = new Web3(Web3.givenProvider || undefined);
 
 console.log(web3);
 
-function Login({ onLoggedIn }) {
+export const Login = ({ onLoggedIn }) => {
   const [loading, setLoading] = useState(false);
-
-  // const handleAuthenticate = ({ publicAddress, signature }) =>
-  //   fetch(`${process.env.REACT_APP_BACKEND_URL}/auth`, {
-  //     body: JSON.stringify({ publicAddress, signature }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     method: "POST",
-  //   }).then((response) => response.json());
 
   const handleAuthenticate = async (publicAddress, signature) => {
     console.log(publicAddress, "YOOOOOOOOOOOO");
@@ -90,12 +80,10 @@ function Login({ onLoggedIn }) {
       return window.alert("Please activate MetaMask first.");
     }
 
-    // const publicAddress = coinbase.toLowerCase();
     const publicAddress = coinbase.toLowerCase();
     setLoading(true);
     console.log("before call", publicAddress);
     // Look if user with current publicAddress is already present on backend
-
     axios
       .get(
         `${process.env.REACT_APP_BACKEND_URL}/users?publicAddress=${publicAddress}`
@@ -127,6 +115,6 @@ function Login({ onLoggedIn }) {
       </button>{" "}
     </div>
   );
-}
+};
 
 export default Login;
