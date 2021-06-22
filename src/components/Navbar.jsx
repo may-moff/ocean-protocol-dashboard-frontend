@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../Assets/logo.svg';
+import { Login } from './Login';
+import { Profile } from './Profile';
+import ButtonDefault from './ButtonDefault';
 
-function Navbar() {
+function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
   return (
     <nav className="bg-bgreylighter">
       <div className="max-w-6xl mx-auto">
@@ -24,18 +27,26 @@ function Navbar() {
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <a
+            {auth ? (
+              <>
+                <Profile auth={auth} setAuthorization={setAuthorization} />
+                <ButtonDefault function={onLoggedOut} name="Logout" />
+              </>
+            ) : (
+              <Login onLoggedIn={onLoggedIn} />
+            )}
+            {/*  <a
               href="#"
               className="py-1 px-3 text-bwhite bg-bpink rounded shadow hover:bg-bpurple duration-500"
             >
               Connect Your Wallet
-            </a>
-            <a
+            </a> */}
+            {/* <a
               href="#"
               className="py-5 px-3 text-bgrey transform hover:-translate-y-0.5 duration-300"
             >
               Settings
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

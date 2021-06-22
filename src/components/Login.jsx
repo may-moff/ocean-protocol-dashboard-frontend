@@ -1,16 +1,13 @@
-import React, { useState } from "react";
-import Web3 from "web3";
-import axios from "axios";
+import React, { useState } from 'react';
+import Web3 from 'web3';
+import axios from 'axios';
 
 let web3 = new Web3(Web3.givenProvider || undefined);
-
-console.log(web3);
 
 export const Login = ({ onLoggedIn }) => {
   const [loading, setLoading] = useState(false);
 
   const handleAuthenticate = async ({ publicAddress, signature }) => {
-    console.log(publicAddress, "YOOOOOOOOOOOO", signature);
     try {
       const userAuth = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/auth`,
@@ -26,17 +23,16 @@ export const Login = ({ onLoggedIn }) => {
   };
 
   const handleSignMessage = async ({ publicAddress, nonce }) => {
-    console.log(publicAddress, nonce);
     try {
       const signature = await web3.eth.personal.sign(
         `I am signing my one-time nonce: ${nonce}`,
         publicAddress,
-        ""
+        ''
       );
 
       return { publicAddress, signature };
     } catch (err) {
-      throw new Error("You need to sign the message to be able to log in.");
+      throw new Error('You need to sign the message to be able to log in.');
     }
   };
 
@@ -57,7 +53,7 @@ export const Login = ({ onLoggedIn }) => {
   const handleClickMeta = async () => {
     // Check if MetaMask is installed
     if (!window.ethereum) {
-      return window.alert("Please install MetaMask first.");
+      return window.alert('Please install MetaMask first.');
     }
 
     if (!web3) {
@@ -69,27 +65,22 @@ export const Login = ({ onLoggedIn }) => {
         // with the injected provider given by MetaMask
         web3 = new Web3(window.ethereum);
       } catch (error) {
-        return window.alert("You need to allow MetaMask.");
+        return window.alert('You need to allow MetaMask.');
       }
     }
 
     const coinbase = await web3.eth.getCoinbase();
-    console.log("my public address is", coinbase);
-    console.log("hi");
     if (!coinbase) {
-      return window.alert("Please activate MetaMask first.");
+      return window.alert('Please activate MetaMask first.');
     }
 
     const publicAddress = coinbase.toLowerCase();
     setLoading(true);
-    console.log("before call", publicAddress);
     // Look if user with current publicAddress is already present on backend
     axios
       .get(
         `${process.env.REACT_APP_BACKEND_URL}/users?publicAddress=${publicAddress}`
       )
-      // .then((response) => console.log(response))
-      // .then((data) => data.publicAddress)
       .then((response) => {
         const users = response.data;
         return users.length ? users[0] : handleSignup(publicAddress);
@@ -108,10 +99,10 @@ export const Login = ({ onLoggedIn }) => {
   };
 
   return (
-    <div>
+    <div className="py-1 px-3 text-bwhite bg-bpink rounded shadow hover:bg-bpurple duration-500">
       <button onClick={handleClickMeta}>
-        {loading ? "Loading..." : "Login with MetaMask"}
-      </button>{" "}
+        {loading ? 'Loading...' : 'Login with MetaMask'}
+      </button>{' '}
     </div>
   );
 };

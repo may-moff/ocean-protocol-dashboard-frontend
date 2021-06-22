@@ -1,25 +1,28 @@
-import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import Navbar from "./components/Navbar";
-import Dashboard from "./components/Dashboard";
-import Home from "./components/Home";
-import JobDetail from "./components/JobDetail";
-import JobBoard from "./components/job-board/JobBoard";
-import { Login } from "./components/Login";
-import { Profile } from "./components/Profile";
+import './App.css';
+import { Switch, Route, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
+import Dashboard from './components/Dashboard';
+import Home from './components/Home';
+import JobDetail from './components/JobDetail';
+import JobBoard from './components/job-board/JobBoard';
+import { Login } from './components/Login';
+import { Profile } from './components/Profile';
 
-const LS_KEY = "login-with-metamask:auth";
+const LS_KEY = 'login-with-metamask:auth';
 
 export const App = () => {
   const [state, setState] = useState({});
+  const [authorization, setAuthorization] = useState(false);
 
-   useEffect(() => {
-     // Access token is stored in localstorage
-     const ls = window.localStorage.getItem(LS_KEY);
-     const auth = ls && JSON.parse(ls);
-     setState({ auth });
-   }, []);
+  let history = useHistory();
+
+  useEffect(() => {
+    // Access token is stored in localstorage
+    const ls = window.localStorage.getItem(LS_KEY);
+    const auth = ls && JSON.parse(ls);
+    setState({ auth });
+  }, []);
 
   const handleLoggedIn = (auth) => {
     console.log(auth);
@@ -30,34 +33,31 @@ export const App = () => {
   const handleLoggedOut = () => {
     localStorage.removeItem(LS_KEY);
     setState({ auth: undefined });
+    history.push('/');
+    setAuthorization(false);
   };
 
   const { auth } = state;
 
-function App() {
   return (
     <>
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-            <div className="App-intro">
-              {auth ? (
-            <Profile auth={auth} onLoggedOut={handleLoggedOut} />
-            ) : (
-            <Login onLoggedIn={handleLoggedIn} />
-          )}
-        </div>
-          </Route>
-          <Route path="/jobboard">
-            <JobBoard />
-          </Route>
-          <Route path="/jobs/:id">
-            <JobDetail />
-          </Route>
-        </Switch>
-      </Router>
+      <Navbar
+        onLoggedIn={handleLoggedIn}
+        auth={auth}
+        onLoggedOut={handleLoggedOut}
+        setAuthorization={setAuthorization}
+      />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/jobboard">
+          {authorization ? <JobBoard /> : <h1>NOT TODAY, BITCH!</h1>}
+        </Route>
+        <Route path="/jobs/:id">
+          <JobDetail />
+        </Route>
+      </Switch>
     </>
   );
 };
