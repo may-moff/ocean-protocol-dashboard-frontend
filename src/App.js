@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import { Login } from "./components/Login";
-// import { Profile } from "./components/Profile";
+import { Profile } from "./components/Profile";
 
 // ???????????????????
 const LS_KEY = "login-with-metamask:auth";
@@ -25,14 +25,15 @@ export const App = () => {
   // }, []);
 
   const handleLoggedIn = (auth) => {
+    console.log(auth);
     localStorage.setItem(LS_KEY, JSON.stringify(auth));
     setState({ auth });
   };
 
-  // const handleLoggedOut = () => {
-  //   localStorage.removeItem(LS_KEY);
-  //   setState({ auth: undefined });
-  // };
+  const handleLoggedOut = () => {
+    localStorage.removeItem(LS_KEY);
+    setState({ auth: undefined });
+  };
 
   const { auth } = state;
 
@@ -45,19 +46,18 @@ export const App = () => {
           <Login onLoggedIn={handleLoggedIn} />
         )}
       </div> */}
-
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/dashboard">
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Welcome to Login with MetaMask Demo</h1>
+        </header>
+        <div className="App-intro">
+          {auth ? (
+            <Profile auth={auth} onLoggedOut={handleLoggedOut} />
+          ) : (
             <Login onLoggedIn={handleLoggedIn} />
-            <Dashboard />
-          </Route>
-        </Switch>
-      </Router>
+          )}
+        </div>
+      </div>
     </>
   );
 };
