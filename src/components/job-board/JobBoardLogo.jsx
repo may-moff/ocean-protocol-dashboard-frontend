@@ -5,7 +5,7 @@ const JobBoardLogo = (props) => {
 
   return (
     <div className="text-xl text-center font-bold p-6 ">
-      Welcome To The Dashboard of {name}!
+      Welcome to your personal dashboard!
     </div>
   );
 };
