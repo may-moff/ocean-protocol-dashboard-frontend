@@ -1,15 +1,15 @@
-import './App.css';
-import { Switch, Route, useHistory } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Dashboard from './components/Dashboard';
-import Home from './components/Home';
-import JobDetail from './components/JobDetail';
-import JobBoard from './components/job-board/JobBoard';
-import { Login } from './components/Login';
-import { Profile } from './components/Profile';
+import "./App.css";
+import { Switch, Route, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import Navbar from "./components/Navbar";
 
-const LS_KEY = 'login-with-metamask:auth';
+import Home from "./components/Home";
+import JobDetail from "./components/JobDetail";
+import Dashboard from "./components/job-board/Dashboard";
+import { Login } from "./components/Login";
+import { Profile } from "./components/Profile";
+
+const LS_KEY = "login-with-metamask:auth";
 
 export const App = () => {
   const [state, setState] = useState({});
@@ -33,7 +33,7 @@ export const App = () => {
   const handleLoggedOut = () => {
     localStorage.removeItem(LS_KEY);
     setState({ auth: undefined });
-    history.push('/');
+    history.push("/");
     setAuthorization(false);
   };
 
@@ -51,8 +51,8 @@ export const App = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/jobboard">
-          {authorization ? <JobBoard /> : <h1>NOT TODAY, BITCH!</h1>}
+        <Route path="/dashboard">
+          {authorization ? <Dashboard /> : <h1>NOT TODAY, BITCH!</h1>}
         </Route>
         <Route path="/jobs/:id">
           <JobDetail />

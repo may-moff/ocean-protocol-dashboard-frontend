@@ -1,9 +1,9 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import logo from '../Assets/logo.svg';
-import { Login } from './Login';
-import { Profile } from './Profile';
-import ButtonDefault from './ButtonDefault';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import logo from "../Assets/logo.svg";
+import { Login } from "./Login";
+import { Profile } from "./Profile";
+import ButtonDefault from "./ButtonDefault";
 
 function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
   return (
@@ -18,12 +18,15 @@ function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
             </div>
             <div className="flex items-center space-x-4 text-bgrey transform ">
               <div className="transform hover:-translate-y-0.5 duration-300">
-                <NavLink to="/jobboard">Dashboard</NavLink>
+                <NavLink to="/">Home</NavLink>
+              </div>
+              <div className="transform hover:-translate-y-0.5 duration-300">
+                <NavLink to="/dashboard">Dashboard</NavLink>
               </div>
 
-              <div className="transform hover:-translate-y-0.5 duration-300">
+              {/* <div className="transform hover:-translate-y-0.5 duration-300">
                 <NavLink to="/jobs/1">First Job</NavLink>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="flex items-center space-x-4">
