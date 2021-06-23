@@ -52,7 +52,11 @@ export const App = () => {
           <Home />
         </Route>
         <Route path="/dashboard">
-          {authorization ? <Dashboard /> : <h1>NOT TODAY, BITCH!</h1>}
+          {authorization ? (
+            <Dashboard />
+          ) : (
+            <h1>Please login to access your personal dashboard</h1>
+          )}
         </Route>
         <Route path="/jobs/:id">
           <JobDetail />
