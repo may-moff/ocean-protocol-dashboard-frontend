@@ -29,12 +29,14 @@ function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
               </div> */}
             </div>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-6 ">
             {auth ? (
-              <>
+              <div className="flex">
+                <div className="mx-10">
                 <Profile auth={auth} setAuthorization={setAuthorization} />
+                </div>
                 <ButtonDefault function={onLoggedOut} name="Logout" />
-              </>
+              </div>
             ) : (
               <Login onLoggedIn={onLoggedIn} />
             )}
