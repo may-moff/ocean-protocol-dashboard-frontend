@@ -16,8 +16,8 @@ const fakeData = [
 
 const JobsBox = () => {
   return (
-    <div className="container mx-auto p-6">
-      <div className="grid grid-cols-3 gap-6">
+    <div className="container mx-auto flex justify-around">
+      <div className="grid grid-cols-3 gap-8">
         {fakeData.map((data, i) => (
           <Card key={i} additionalClasses="flex justify-center">
             <Job title={data.title} status={data.status} />

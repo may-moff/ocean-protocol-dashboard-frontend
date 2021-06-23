@@ -4,7 +4,7 @@ import ButtonDefault from "../ButtonDefault";
 const JobTitle = (props) => {
   return (
     <div>
-      <ButtonDefault name={props.title} />
+      <h2>{props.title}</h2>
     </div>
   );
 };

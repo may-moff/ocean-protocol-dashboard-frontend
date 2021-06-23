@@ -5,7 +5,7 @@ import JobsBox from "./JobsBox";
 const JobBoard = () => {
   return (
     <div className="text-center p-6 ">
-      <MenuBox name="User's name" />
+      <MenuBox name="XXXX" />
       <JobsBox />
     </div>
   );
