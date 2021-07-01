@@ -2,6 +2,9 @@
   "name": "ocean-protocol-dashboard-frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14.17.0"
+  },
   "dependencies": {
     "@craco/craco": "^6.1.2",
     "@testing-library/jest-dom": "^5.11.4",
