@@ -10,7 +10,7 @@ import { Login } from "./components/Login";
 import { Profile } from "./components/Profile";
 
 const LS_KEY = "login-with-metamask:auth";
-
+// ödöfjöfj
 export const App = () => {
   const [state, setState] = useState({});
   const [authorization, setAuthorization] = useState(false);
