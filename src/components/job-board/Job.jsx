@@ -16,10 +16,7 @@ const Job = (props) => {
         </div>
       </div>
       <div className="justify-center m-4 overflow-hidden">
-        Ocean Protocol unlocks the value of data. Data owners and consumers use
-        Ocean Market app to publish, discover, and consume data assets in a
-        secure, privacy-preserving fashion. OCEAN holders stake liquidity to
-        data pools.
+        <p>Date of Purchase </p>
       </div>
       <div className="mb-4">
         <ButtonDefault name="See Details" />
