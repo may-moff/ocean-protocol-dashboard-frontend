@@ -3,6 +3,7 @@ import JobTitle from "./JobTitle";
 import JobStatus from "./JobStatus";
 import JobFileDownload from "./JobFileDownload";
 import ButtonDefault from "../ButtonDefault";
+import { NavLink } from "react-router-dom";
 
 const Job = (props) => {
   return (
@@ -19,7 +20,9 @@ const Job = (props) => {
         <p>Date of Purchase </p>
       </div>
       <div className="mb-4">
-        <ButtonDefault name="See Details" />
+        <NavLink to="/jobs/1">
+          <ButtonDefault name="See Details" />
+        </NavLink>
       </div>
     </div>
   );
