@@ -1,12 +1,13 @@
 import React from "react";
-import MenuBox from "./MenuBox";
-import JobsBox from "./JobsBox";
+import MenuBoxNotTagged from "./MenuBoxNotTagged";
+import JobsBoxNotTagged from "./JobsBoxNotTagged";
+import JobsBoxHistory from "./JobsBoxHistory";
 
 const Dashboard = () => {
   return (
     <div className="text-center p-6 ">
-      <MenuBox name="XXXX" />
-      <JobsBox />
+      <JobsBoxNotTagged />
+      <JobsBoxHistory />
     </div>
   );
 };
