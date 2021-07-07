@@ -6,7 +6,7 @@ const JobDetail = () => {
   const { id } = useParams();
   return (
     <div className="">
-      <div className="flex justify-center justify-items-center">
+      <div className="flex justify-center justify-items-center m-6">
         Job number {id}
       </div>
       <div className="flex justify-center justify-items-center">
