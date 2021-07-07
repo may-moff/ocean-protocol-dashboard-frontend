@@ -91,6 +91,7 @@ const ChartTime = () => {
   );
 
   return (
+    // <ResponsiveContainer width="100%" aspect={4}>
     <PieChart width={430} height={430}>
       <Pie
         activeIndex={activeIndex}
@@ -105,6 +106,7 @@ const ChartTime = () => {
         onMouseEnter={onPieEnter}
       />
     </PieChart>
+    // </ResponsiveContainer>
   );
 };
 
