@@ -54,6 +54,7 @@ const Waves = () => {
       });
     });
   }, []);
+
   return (
     <svg
       ref={ref}
@@ -62,11 +63,6 @@ const Waves = () => {
         width: '100%',
         marginRight: '0px',
         marginLeft: '0px',
-        position: 'inline',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
         maxWidth: '100%',
         transform: 'scale(1.2) rotate(-8deg)',
       }}
