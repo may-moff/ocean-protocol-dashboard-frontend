@@ -1,8 +1,8 @@
-import React from "react";
-import MenuBoxNotTagged from "./MenuBoxNotTagged";
-import JobsBoxNotTagged from "./JobsBoxNotTagged";
-import JobsBoxHistory from "./JobsBoxHistory";
-import ChartTotalJobs from "../ChartTotalJobs";
+import React from 'react';
+import MenuBoxNotTagged from './MenuBoxNotTagged';
+import JobsBoxNotTagged from './JobsBoxNotTagged';
+import JobsBoxHistory from './JobsBoxHistory';
+import ChartTotalJobs from '../ChartTotalJobs';
 
 const Dashboard = () => {
   return (

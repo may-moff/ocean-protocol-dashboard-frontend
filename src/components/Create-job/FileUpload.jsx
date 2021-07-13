@@ -3,12 +3,9 @@ import { useDropzone } from 'react-dropzone';
 import ButtonPrimary from '../ButtonPrimary';
 import axios from 'axios';
 
-function FileUpload() {
-  const [content, setContent] = useState({});
+function FileUpload({ content, setContent }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [displayUrl, setDisplayUrl] = useState(null);
-
-  useEffect(() => console.log(content, displayUrl), [content, displayUrl]);
 
   function getFormattedTime() {
     const today = new Date();

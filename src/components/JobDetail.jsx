@@ -1,9 +1,9 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import ChartTime from "./ChartTime";
-import FormParse from "./FormParse";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import ChartTime from './ChartTime';
+import FormParse from './FormParse';
 
-const JobDetail = (props) => {
+const JobDetail = ({ content, setContent }) => {
   const { id } = useParams();
   return (
     <div className="text-center p-6 ">
@@ -12,7 +12,7 @@ const JobDetail = (props) => {
       </div>
       <div className=" flex justify-between justify-items-center h-screen">
         <div className="p-4 m-4 ">
-          <FormParse />
+          <FormParse content={content} setContent={setContent} />
         </div>
         {/* <div className="flex flex-col justify-center justify-items-center ">
           <div className="flex justify-center justify-items-center"></div>

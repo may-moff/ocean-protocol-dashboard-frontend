@@ -1,20 +1,21 @@
-import "./App.css";
-import { Switch, Route, useHistory } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import Navbar from "./components/Navbar";
+import './App.css';
+import { Switch, Route, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
 
-import Home from "./components/Home";
-import JobDetail from "./components/JobDetail";
-import Dashboard from "./components/job-board/Dashboard";
-import NewJob from "./components/Create-job/NewJob";
-import { Login } from "./components/Login";
-import { Profile } from "./components/Profile";
+import Home from './components/Home';
+import JobDetail from './components/JobDetail';
+import Dashboard from './components/job-board/Dashboard';
+import NewJob from './components/Create-job/NewJob';
+import { Login } from './components/Login';
+import { Profile } from './components/Profile';
 
-const LS_KEY = "login-with-metamask:auth";
+const LS_KEY = 'login-with-metamask:auth';
 
 export const App = () => {
   const [state, setState] = useState({});
   const [authorization, setAuthorization] = useState(false);
+  const [content, setContent] = useState({});
 
   let history = useHistory();
 
@@ -25,6 +26,8 @@ export const App = () => {
     setState({ auth });
   }, []);
 
+  useEffect(() => console.log(content), [content]);
+
   const handleLoggedIn = (auth) => {
     console.log(auth);
     localStorage.setItem(LS_KEY, JSON.stringify(auth));
@@ -34,7 +37,7 @@ export const App = () => {
   const handleLoggedOut = () => {
     localStorage.removeItem(LS_KEY);
     setState({ auth: undefined });
-    history.push("/");
+    history.push('/');
     setAuthorization(false);
   };
 
@@ -60,11 +63,11 @@ export const App = () => {
           )}
         </Route>
         <Route path="/jobs/:id">
-          <JobDetail />
+          <JobDetail content={content} setContent={setContent} />
         </Route>
         <Route path="/NewJob">
           {authorization ? (
-            <NewJob />
+            <NewJob content={content} setContent={setContent} />
           ) : (
             <h1>Please login to create a new job</h1>
           )}
