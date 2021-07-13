@@ -1,7 +1,6 @@
-import React from "react";
-import jellyfish from "./../Assets/jellyfish-full.svg";
-import wave from "./wave/Waves.gif";
-import FormParse from "./FormParse";
+import React from 'react';
+import wave from './wave/Waves.gif';
+import Waves from './Waves';
 
 function Home() {
   return (
@@ -10,7 +9,7 @@ function Home() {
         <h1 className="text-center text-bblack text-fsh1 font-fwbase mt-6">
           Ocean Dashboard
         </h1>
-        <img className="w-full" src={wave} alt="wave" />
+        <Waves />
       </div>
       <div>
         <p className="font-fsbase"></p>
