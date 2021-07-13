@@ -13,7 +13,6 @@ function Home() {
         <img className="w-full" src={wave} alt="wave" />
       </div>
       <div>
-        <FormParse />
         <p className="font-fsbase"></p>
       </div>
     </>

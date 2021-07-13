@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import JobDetail from "./components/JobDetail";
 import Dashboard from "./components/job-board/Dashboard";
+import NewJob from "./components/Create-job/NewJob";
 import { Login } from "./components/Login";
 import { Profile } from "./components/Profile";
 
@@ -60,6 +61,13 @@ export const App = () => {
         </Route>
         <Route path="/jobs/:id">
           <JobDetail />
+        </Route>
+        <Route path="/NewJob">
+          {authorization ? (
+            <NewJob />
+          ) : (
+            <h1>Please login to create a new job</h1>
+          )}
         </Route>
       </Switch>
     </>
