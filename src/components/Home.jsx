@@ -1,5 +1,4 @@
 import React from 'react';
-import jellyfish from './../Assets/jellyfish-full.svg';
 import wave from './wave/Waves.gif';
 import Waves from './Waves';
 import DisplayText from './DisplayText';
@@ -12,9 +11,10 @@ function Home() {
           Ocean Dashboard
         </h1>
         {/* <img className="w-full" src={wave} alt="wave" /> */}
+        {/* <Waves /> */}
+        <DisplayText />
+        <img className="w-full" src={wave} alt="wave" />
       </div>
-      {/* <Waves /> */}
-      <DisplayText />
       <div>
         <p className="font-fsbase"></p>
       </div>
