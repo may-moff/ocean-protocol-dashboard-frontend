@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useDropzone } from "react-dropzone";
-import ButtonPrimary from "../ButtonPrimary";
-import axios from "axios";
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
+import ButtonPrimary from '../ButtonPrimary';
+import axios from 'axios';
 
-function FileUpload({ content, setContent }) {
+function FileUpload({ setContent }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [displayUrl, setDisplayUrl] = useState(null);
 
@@ -16,23 +16,23 @@ function FileUpload({ content, setContent }) {
     const h = today.getHours();
     const mi = today.getMinutes();
     const s = today.getSeconds();
-    return y + "-" + m + "-" + d + "-" + h + "-" + mi + "-" + s;
+    return y + '-' + m + '-' + d + '-' + h + '-' + mi + '-' + s;
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(selectedFile);
     const fileName = `${getFormattedTime()}`;
-    const fileExtension = selectedFile.name.split(".").pop();
+    const fileExtension = selectedFile.name.split('.').pop();
     let formdata = new FormData();
-    formdata.append("logBlob", selectedFile, `${fileName}.${fileExtension}`);
+    formdata.append('logBlob', selectedFile, `${fileName}.${fileExtension}`);
 
     const httpRequestOptions = {
       url: `http://localhost:8000/api/test/upload`,
-      method: "POST",
+      method: 'POST',
       data: formdata,
       headers: new Headers({
-        enctype: "multipart/form-data",
+        enctype: 'multipart/form-data',
       }),
     };
 
@@ -98,7 +98,7 @@ function FileUpload({ content, setContent }) {
             />
           </label>
         </div>
-        <div {...getRootProps({ className: "p-6 m-6 border-2" })}>
+        <div {...getRootProps({ className: 'p-6 m-6 border-2' })}>
           <input {...getInputProps()} onChange={handleSelect} />
           <p>Drag 'n' drop log file here or</p>
           <button
@@ -120,8 +120,8 @@ function FileUpload({ content, setContent }) {
       )}
       {displayUrl && (
         <div className="m-6">
-          {" "}
-          <ButtonPrimary function={handleSubmit} name="Submit" />{" "}
+          {' '}
+          <ButtonPrimary function={handleSubmit} name="Submit" />{' '}
         </div>
       )}
     </div>

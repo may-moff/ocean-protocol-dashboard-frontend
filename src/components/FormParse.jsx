@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 function FormParse({ content, setContent }) {
-  // const [inputList, setInputList] = useState([
-  //   { key: '', dataType: '', Value: '' },
-  // ]);
-
-  // const displayContent = content.parseKeys.map((e) => ({
-  //   ...e,
-  //   value: content.results[e.key],
-  // }));
-
   useEffect(() => {
     const displayContent = content.parseKeys.map((e) => ({
       ...e,
       value: content.results[e.key],
     }));
-    setContent({ ...content.parseKeys, parseKeys: displayContent });
     setContent({ ...content, parseKeys: displayContent });
   }, []);
 
