@@ -4,6 +4,7 @@ import logo from "../Assets/logo.svg";
 import { Login } from "./Login";
 import { Profile } from "./Profile";
 import ButtonDefault from "./ButtonDefault";
+import NewJob from "./Create-job/NewJob";
 
 function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
   return (
@@ -23,6 +24,9 @@ function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
               <div className="transform hover:-translate-y-0.5 duration-300">
                 <NavLink to="/dashboard">Dashboard</NavLink>
               </div>
+              <div className="transform hover:-translate-y-0.5 duration-300">
+                <NavLink to="/NewJob">New Job</NavLink>
+              </div>
 
               {/* <div className="transform hover:-translate-y-0.5 duration-300">
                 <NavLink to="/jobs/1">First Job</NavLink>
@@ -33,7 +37,7 @@ function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
             {auth ? (
               <div className="flex">
                 <div className="mx-10">
-                <Profile auth={auth} setAuthorization={setAuthorization} />
+                  <Profile auth={auth} setAuthorization={setAuthorization} />
                 </div>
                 <ButtonDefault function={onLoggedOut} name="Logout" />
               </div>
