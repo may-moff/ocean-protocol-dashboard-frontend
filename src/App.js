@@ -56,7 +56,11 @@ export const App = () => {
           {authorization ? (
             <Dashboard />
           ) : (
-            <h1>Please login to access your personal dashboard</h1>
+            <div className="flex justify-center justify-items-center mt-12 bg-balertred">
+              <h1 className="text-white">
+                Please login to access your personal dashboard
+              </h1>
+            </div>
           )}
         </Route>
         <Route path="/jobs/:id">
@@ -66,7 +70,9 @@ export const App = () => {
           {authorization ? (
             <NewJob />
           ) : (
-            <h1>Please login to create a new job</h1>
+            <div className="flex justify-center justify-items-center mt-12 bg-balertred">
+              <h1 className="text-white">Please login to create a new job</h1>
+            </div>
           )}
         </Route>
       </Switch>
