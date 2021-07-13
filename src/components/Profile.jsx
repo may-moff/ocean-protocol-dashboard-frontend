@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Blockies from 'react-blockies';
 import jwt_decode from 'jwt-decode';
 
-export const Profile = ({ auth, setAuthorization }) => {
+export const Profile = ({ auth, setAuthorization, setPublicAddress }) => {
   const { accessToken } = auth;
 
   const {
@@ -14,13 +14,14 @@ export const Profile = ({ auth, setAuthorization }) => {
       setAuthorization(false);
     } else {
       setAuthorization(true);
+      setPublicAddress(publicAddress);
     }
   }, [publicAddress]);
 
   return (
     <div className="flex justify-between">
       <div className="mx-3">
-      <Blockies seed={publicAddress} />
+        <Blockies seed={publicAddress} />
       </div>
 
       <div className=" text-lg">{publicAddress}</div>

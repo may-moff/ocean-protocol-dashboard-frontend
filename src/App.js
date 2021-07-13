@@ -16,6 +16,7 @@ export const App = () => {
   const [state, setState] = useState({});
   const [authorization, setAuthorization] = useState(false);
   const [content, setContent] = useState({});
+  const [publicAddress, setPublicAddress] = useState('');
 
   let history = useHistory();
 
@@ -50,6 +51,7 @@ export const App = () => {
         auth={auth}
         onLoggedOut={handleLoggedOut}
         setAuthorization={setAuthorization}
+        setPublicAddress={setPublicAddress}
       />
       <Switch>
         <Route exact path="/">
@@ -71,7 +73,11 @@ export const App = () => {
         </Route>
         <Route path="/NewJob">
           {authorization ? (
-            <NewJob content={content} setContent={setContent} />
+            <NewJob
+              content={content}
+              setContent={setContent}
+              pubblicAddress={publicAddress}
+            />
           ) : (
             <div className="flex justify-center justify-items-center mt-12 bg-balertred">
               <h1 className="text-white">Please login to create a new job</h1>

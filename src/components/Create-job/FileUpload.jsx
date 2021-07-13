@@ -3,9 +3,11 @@ import { useDropzone } from 'react-dropzone';
 import ButtonPrimary from '../ButtonPrimary';
 import axios from 'axios';
 
-function FileUpload({ setContent }) {
+function FileUpload({ setContent, pubblicAddress }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [displayUrl, setDisplayUrl] = useState(null);
+  const [algoName, setAlgoName] = useState('');
+  const [dataName, setDataName] = useState('');
 
   function getFormattedTime() {
     const today = new Date();
@@ -21,14 +23,23 @@ function FileUpload({ setContent }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(selectedFile);
+
+    const newAlgo = await axios.post(
+      `http://localhost:8000/api/users/${pubblicAddress}/algo`,
+      {
+        name: algoName,
+      }
+    );
+
     const fileName = `${getFormattedTime()}`;
     const fileExtension = selectedFile.name.split('.').pop();
     let formdata = new FormData();
     formdata.append('logBlob', selectedFile, `${fileName}.${fileExtension}`);
+    formdata.append('algorithmId', newAlgo.data._id);
+    formdata.append('dataName', dataName);
 
     const httpRequestOptions = {
-      url: `http://localhost:8000/api/test/upload`,
+      url: `http://localhost:8000/api/users/${newAlgo.data.userId}/jobs`,
       method: 'POST',
       data: formdata,
       headers: new Headers({
@@ -81,12 +92,14 @@ function FileUpload({ setContent }) {
               name="Job name"
             />
           </label>
-          Description:
+          Data name:
           <label>
-            <textarea
-              className="border-4 m-4 w-9/12 h-1/5"
+            <input
+              className="border-4 m-4 w-9/12"
               type="text"
-              name="Description"
+              name="Data name"
+              onChange={(e) => setDataName(e.target.value)}
+              value={dataName}
             />
           </label>
           Algorithm name:
@@ -95,6 +108,8 @@ function FileUpload({ setContent }) {
               className="border-4 m-4 w-9/12"
               type="text"
               name="Algorithm name"
+              onChange={(e) => setAlgoName(e.target.value)}
+              value={algoName}
             />
           </label>
         </div>
