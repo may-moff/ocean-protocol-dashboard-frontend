@@ -1,12 +1,18 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import logo from "../Assets/logo.svg";
-import { Login } from "./Login";
-import { Profile } from "./Profile";
-import ButtonDefault from "./ButtonDefault";
-import NewJob from "./Create-job/NewJob";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import logo from '../Assets/logo.svg';
+import { Login } from './Login';
+import { Profile } from './Profile';
+import ButtonDefault from './ButtonDefault';
+import NewJob from './Create-job/NewJob';
 
-function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
+function Navbar({
+  onLoggedIn,
+  auth,
+  onLoggedOut,
+  setAuthorization,
+  setPublicAddress,
+}) {
   return (
     <nav className="bg-bgreylighter">
       <div className="max-w-6xl mx-auto">
@@ -37,7 +43,11 @@ function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
             {auth ? (
               <div className="flex">
                 <div className="mx-10">
-                  <Profile auth={auth} setAuthorization={setAuthorization} />
+                  <Profile
+                    auth={auth}
+                    setAuthorization={setAuthorization}
+                    setPublicAddress={setPublicAddress}
+                  />
                 </div>
                 <ButtonDefault function={onLoggedOut} name="Logout" />
               </div>

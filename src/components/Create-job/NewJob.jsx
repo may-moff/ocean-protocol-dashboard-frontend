@@ -4,11 +4,12 @@ import FormParse from "../FormParse";
 import { useParams } from "react-router-dom";
 import ButtonPrimary from "../ButtonPrimary";
 
+
 const handleSubmit = () => {
   console.log("Submit All");
 };
 
-const NewJob = ({ content, setContent }) => {
+const NewJob = ({ content, setContent, pubblicAddress }) => {
   const [logReady, setLogReady] = useState(false);
   const { id } = useParams();
   return (
@@ -22,6 +23,8 @@ const NewJob = ({ content, setContent }) => {
           </div>
         )}
       </div>
+
+// form parse
       <div className="flex">
         <div className="flex justify-center justify-items-center w-2/5">
           <FileUpload
@@ -37,6 +40,10 @@ const NewJob = ({ content, setContent }) => {
             setContent={setContent}
           />
         </div>
+// dev
+      <div className="flex flex-col justify-center justify-items-center"></div>
+      <div className="flex justify-center justify-items-center">
+        <FileUpload setContent={setContent} pubblicAddress={pubblicAddress} />
       </div>
     </div>
   );

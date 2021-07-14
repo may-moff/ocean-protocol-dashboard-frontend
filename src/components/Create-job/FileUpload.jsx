@@ -5,9 +5,11 @@ import ButtonPrimary from "../ButtonPrimary";
 import axios from "axios";
 import LogViewer from "./LogViewer";
 
-function FileUpload({ setContent, logReady, setLogReady }) {
+function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [displayUrl, setDisplayUrl] = useState(null);
+  const [algoName, setAlgoName] = useState('');
+  const [dataName, setDataName] = useState('');
 
   function getFormattedTime() {
     const today = new Date();
@@ -23,15 +25,23 @@ function FileUpload({ setContent, logReady, setLogReady }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(selectedFile);
+
+    const newAlgo = await axios.post(
+      `http://localhost:8000/api/users/${pubblicAddress}/algo`,
+      {
+        name: algoName,
+      }
+    );
+
     const fileName = `${getFormattedTime()}`;
     const fileExtension = selectedFile.name.split(".").pop();
     let formdata = new FormData();
-    formdata.append("logBlob", selectedFile, `${fileName}.${fileExtension}`);
-
+    formdata.append('logBlob', selectedFile, `${fileName}.${fileExtension}`);
+    formdata.append('algorithmId', newAlgo.data._id);
+    formdata.append('dataName', dataName);
     const httpRequestOptions = {
-      url: `http://localhost:8000/api/test/upload`,
-      method: "POST",
+      url: `http://localhost:8000/api/users/${newAlgo.data.userId}/jobs`,
+      method: 'POST',
       data: formdata,
       headers: new Headers({
         enctype: "multipart/form-data",
