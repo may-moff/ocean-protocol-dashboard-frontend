@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import NewjobForm from './NewjobForm';
 import { useDropzone } from 'react-dropzone';
 import ButtonPrimary from '../ButtonPrimary';
@@ -50,7 +50,11 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
 
     await axios(httpRequestOptions)
       .then((response) => {
-        setContent(response.data);
+        const displayContent = response.data.parseKeys.map((e) => ({
+          ...e,
+          value: response.data.result[e.key],
+        }));
+        setContent({ ...response.data, parseKeys: displayContent });
         setLogReady(true);
       })
       .catch((error) => console.error(error));
