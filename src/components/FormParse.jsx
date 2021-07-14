@@ -4,7 +4,7 @@ function FormParse({ content, setContent }) {
   useEffect(() => {
     const displayContent = content.parseKeys.map((e) => ({
       ...e,
-      value: content.results[e.key],
+      value: content.result[e.key],
     }));
     setContent({ ...content, parseKeys: displayContent });
   }, []);
@@ -31,54 +31,65 @@ function FormParse({ content, setContent }) {
   };
 
   return (
-    <div className="">
+    <div className="max-h-screen">
       {content &&
         content.parseKeys.map((x, i) => {
           return (
-            <div className="p-2">
-              <div className="flex border rounded">
-                <input
-                  className="border-4 p-2 m-2 w-1/5"
-                  name="key"
-                  placeholder="Key"
-                  value={x.key}
-                  onChange={(e) => handleInputChange(e, i)}
-                />
-                <input
-                  className="border-4 p-2 m-2 w-1/5"
-                  name="type"
-                  placeholder="Type"
-                  value={x.dataType}
-                  onChange={(e) => handleInputChange(e, i)}
-                />
-                <input
-                  className="border-4 p-2 m-2 w-1/5"
-                  name="value"
-                  placeholder="Value"
-                  value={x.value}
-                  onChange={(e) => handleInputChange(e, i)}
-                />
-                <div className="flex justify-items-center mb-4 w-1/5">
-                  <div>
-                    {content.parseKeys.length !== 1 && (
-                      <button
-                        type="checkbox"
-                        className="bg-bgreylight text-white py-2 px-2 m-2 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
-                        onClick={() => handleRemoveClick(i)}
-                      >
-                        Remove
-                      </button>
-                    )}
+            <div key={i} className="m-1">
+              <div className="hover:bg-bgreylighter">
+                <div className="flex border rounded m-1">
+                  <div className="flex place-items-center font-bold p-1">
+                    Key:
                   </div>
-                  <div>
-                    {content.parseKeys.length - 1 === i && (
-                      <button
-                        className="bg-bpink text-white py-2 px-6 m-2 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
-                        onClick={handleAddClick}
-                      >
-                        Add
-                      </button>
-                    )}
+                  <input
+                    className="border-1 p-1 w-1/12"
+                    name="key"
+                    placeholder="Key"
+                    value={x.key || ''}
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+                  <div className="flex place-items-center font-bold p-1">
+                    Type:
+                  </div>
+                  <input
+                    className="border-1 p-1 w-1/12"
+                    name="type"
+                    placeholder="Type"
+                    value={x.dataType || ''}
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+                  <div className="flex place-items-center font-bold p-1">
+                    Value:
+                  </div>
+                  <input
+                    className="border-1 p-2 w-3/6"
+                    name="value"
+                    placeholder="Value"
+                    readOnly
+                    value={x.value || ''}
+                  />
+                  <div className="flex object-center w-1/12 ">
+                    <div>
+                      {content.parseKeys.length !== 1 && (
+                        <button
+                          type="checkbox"
+                          className="bg-bgreylight text-white py-2 px-2 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
+                          onClick={() => handleRemoveClick(i)}
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </div>
+                    <div>
+                      {content.parseKeys.length - 1 === i && (
+                        <button
+                          className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
+                          onClick={handleAddClick}
+                        >
+                          Add
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

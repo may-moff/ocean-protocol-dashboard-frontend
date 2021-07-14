@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import NewjobForm from './NewjobForm';
 import { useDropzone } from 'react-dropzone';
 import ButtonPrimary from '../ButtonPrimary';
 import axios from 'axios';
+import LogViewer from './LogViewer';
 
-function FileUpload({ setContent, pubblicAddress }) {
+function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [displayUrl, setDisplayUrl] = useState(null);
   const [algoName, setAlgoName] = useState('');
@@ -25,7 +27,7 @@ function FileUpload({ setContent, pubblicAddress }) {
     e.preventDefault();
 
     const newAlgo = await axios.post(
-      `http://localhost:8000/api/users/${pubblicAddress}/algo`,
+      `${process.env.REACT_APP_BACKEND_URL}/users/${pubblicAddress}/algo`,
       {
         name: algoName,
       }
@@ -37,9 +39,8 @@ function FileUpload({ setContent, pubblicAddress }) {
     formdata.append('logBlob', selectedFile, `${fileName}.${fileExtension}`);
     formdata.append('algorithmId', newAlgo.data._id);
     formdata.append('dataName', dataName);
-
     const httpRequestOptions = {
-      url: `http://localhost:8000/api/users/${newAlgo.data.userId}/jobs`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/users/${newAlgo.data.userId}/jobs`,
       method: 'POST',
       data: formdata,
       headers: new Headers({
@@ -50,18 +51,21 @@ function FileUpload({ setContent, pubblicAddress }) {
     await axios(httpRequestOptions)
       .then((response) => {
         setContent(response.data);
+        setLogReady(true);
       })
       .catch((error) => console.error(error));
   };
 
-  const handleSelect = (e) => {
-    setSelectedFile(e.target.files[0]);
-    setDisplayUrl({
-      file: URL.createObjectURL(e.target.files[0]),
-    });
-  };
+  // const handleSelect = (e) => {
+  //   setSelectedFile(e.target.files[0]);
+  //   setDisplayUrl({
+  //     file: URL.createObjectURL(e.target.files[0]),
+  //   });
+  // };
 
   const onDrop = useCallback((acceptedFiles) => {
+    setSelectedFile(acceptedFiles[0]);
+
     setDisplayUrl({
       file: URL.createObjectURL(acceptedFiles[0]),
     });
@@ -81,59 +85,22 @@ function FileUpload({ setContent, pubblicAddress }) {
   ));
 
   return (
-    <div className="text-xl border-md shadow-xl text-center border rounded-sm p-6 m-6 w-2/5 min-w-min">
-      <form>
-        <div className="flex flex-col table-fixed">
-          Job name:
-          <label>
-            <input
-              className="border-4 m-4 w-9/12"
-              type="text"
-              name="Job name"
-            />
-          </label>
-          Data name:
-          <label>
-            <input
-              className="border-4 m-4 w-9/12"
-              type="text"
-              name="Data name"
-              onChange={(e) => setDataName(e.target.value)}
-              value={dataName}
-            />
-          </label>
-          Algorithm name:
-          <label>
-            <input
-              className="border-4 m-4 w-9/12"
-              type="text"
-              name="Algorithm name"
-              onChange={(e) => setAlgoName(e.target.value)}
-              value={algoName}
-            />
-          </label>
-        </div>
-        <div {...getRootProps({ className: 'p-6 m-6 border-2' })}>
-          <input {...getInputProps()} onChange={handleSelect} />
-          <p>Drag 'n' drop log file here or</p>
-          <button
-            type="button"
-            className="bg-bgreylight m-6 text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300 "
-            onClick={open}
-          >
-            Open File Dialog
-          </button>
-        </div>
-      </form>
-      {displayUrl && (
-        <iframe
-          src={displayUrl.file}
-          title="file preview"
-          className="w-full"
-          height="600px"
-        />
-      )}
-      {displayUrl && (
+    <div className="w-full">
+      <div className="text-xl border-md shadow-xl text-center border rounded-sm p-2 m-2 w-full min-w-min">
+        {!logReady && (
+          <NewjobForm
+            getRootProps={getRootProps}
+            getInputProps={getInputProps}
+            open={open}
+            algoName={algoName}
+            setAlgoName={setAlgoName}
+            dataName={dataName}
+            setDataName={setDataName}
+          />
+        )}
+      </div>
+      {displayUrl && <LogViewer file={displayUrl.file} />}
+      {displayUrl && !logReady && (
         <div className="m-6">
           {' '}
           <ButtonPrimary function={handleSubmit} name="Submit" />{' '}

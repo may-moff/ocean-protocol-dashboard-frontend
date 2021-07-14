@@ -15,8 +15,11 @@ const LS_KEY = 'login-with-metamask:auth';
 export const App = () => {
   const [state, setState] = useState({});
   const [authorization, setAuthorization] = useState(false);
-  const [content, setContent] = useState({});
   const [publicAddress, setPublicAddress] = useState('');
+  const [content, setContent] = useState({
+    parseKeys: [{ key: '', dataType: '', value: '' }],
+    result: {},
+  });
 
   let history = useHistory();
 
