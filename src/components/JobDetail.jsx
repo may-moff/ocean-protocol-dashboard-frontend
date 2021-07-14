@@ -1,7 +1,7 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import ChartTime from './ChartTime';
-import FormParse from './FormParse';
+import React from "react";
+import { useParams } from "react-router-dom";
+import ChartTime from "./ChartTime";
+import FormParse from "./FormParse";
 
 const JobDetail = ({ content, setContent }) => {
   const { id } = useParams();
