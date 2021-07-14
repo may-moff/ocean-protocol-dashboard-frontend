@@ -4,7 +4,7 @@ function FormParse({ content, setContent }) {
   useEffect(() => {
     const displayContent = content.parseKeys.map((e) => ({
       ...e,
-      value: content.results[e.key],
+      value: content.result[e.key],
     }));
     setContent({ ...content, parseKeys: displayContent });
   }, []);
@@ -35,27 +35,27 @@ function FormParse({ content, setContent }) {
       {content &&
         content.parseKeys.map((x, i) => {
           return (
-            <div className="p-2">
+            <div key={i} className="p-2">
               <div className="flex border rounded">
                 <input
                   className="border-4 p-2 m-2 w-1/5"
                   name="key"
                   placeholder="Key"
-                  value={x.key}
+                  value={x.key || ''}
                   onChange={(e) => handleInputChange(e, i)}
                 />
                 <input
                   className="border-4 p-2 m-2 w-1/5"
                   name="type"
                   placeholder="Type"
-                  value={x.dataType}
+                  value={x.dataType || ''}
                   onChange={(e) => handleInputChange(e, i)}
                 />
                 <input
                   className="border-4 p-2 m-2 w-1/5"
                   name="value"
                   placeholder="Value"
-                  value={x.value}
+                  value={x.value || ''}
                   onChange={(e) => handleInputChange(e, i)}
                 />
                 <div className="flex justify-items-center mb-4 w-1/5">

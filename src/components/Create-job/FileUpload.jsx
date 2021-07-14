@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import ButtonPrimary from '../ButtonPrimary';
 import axios from 'axios';
@@ -25,7 +25,7 @@ function FileUpload({ setContent, pubblicAddress }) {
     e.preventDefault();
 
     const newAlgo = await axios.post(
-      `http://localhost:8000/api/users/${pubblicAddress}/algo`,
+      `${process.env.REACT_APP_BACKEND_URL}/users/${pubblicAddress}/algo`,
       {
         name: algoName,
       }
@@ -39,7 +39,7 @@ function FileUpload({ setContent, pubblicAddress }) {
     formdata.append('dataName', dataName);
 
     const httpRequestOptions = {
-      url: `http://localhost:8000/api/users/${newAlgo.data.userId}/jobs`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/users/${newAlgo.data.userId}/jobs`,
       method: 'POST',
       data: formdata,
       headers: new Headers({
@@ -54,14 +54,16 @@ function FileUpload({ setContent, pubblicAddress }) {
       .catch((error) => console.error(error));
   };
 
-  const handleSelect = (e) => {
-    setSelectedFile(e.target.files[0]);
-    setDisplayUrl({
-      file: URL.createObjectURL(e.target.files[0]),
-    });
-  };
+  // const handleSelect = (e) => {
+  //   setSelectedFile(e.target.files[0]);
+  //   setDisplayUrl({
+  //     file: URL.createObjectURL(e.target.files[0]),
+  //   });
+  // };
 
   const onDrop = useCallback((acceptedFiles) => {
+    setSelectedFile(acceptedFiles[0]);
+
     setDisplayUrl({
       file: URL.createObjectURL(acceptedFiles[0]),
     });
@@ -114,7 +116,7 @@ function FileUpload({ setContent, pubblicAddress }) {
           </label>
         </div>
         <div {...getRootProps({ className: 'p-6 m-6 border-2' })}>
-          <input {...getInputProps()} onChange={handleSelect} />
+          <input {...getInputProps()} />
           <p>Drag 'n' drop log file here or</p>
           <button
             type="button"
