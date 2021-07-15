@@ -1,6 +1,5 @@
 import React from 'react';
-import wave from './wave/Waves.gif';
-import Waves from './Waves';
+import Waves from './Waves.jsx';
 
 function Home() {
   return (

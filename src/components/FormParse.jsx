@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function FormParse({ content, setContent }) {
+  const [removedItemsHysotry, setRemovedItemsHistory] = useState([]);
+
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...content.parseKeys];
@@ -10,12 +12,14 @@ function FormParse({ content, setContent }) {
 
   const handleRemoveClick = (index) => {
     const list = [...content.parseKeys];
-    list.splice(index, 1);
+    setRemovedItemsHistory([...removedItemsHysotry, list[index].key]);
+    // removedItemsHysotry.push(list[index]);
+    // list.splice(index, 1);
+    list[index].visualize = false;
     setContent({ ...content, parseKeys: list });
   };
 
   const handleAddClick = () => {
-    // setContent([...content.parseKeys, { key: '', dataType: '', value: '' }]);
     setContent({
       ...content,
       parseKeys: [
@@ -25,8 +29,31 @@ function FormParse({ content, setContent }) {
     });
   };
 
+  const handleUndoClick = () => {
+    const index = content.parseKeys.findIndex(
+      (e) => e.key === removedItemsHysotry[removedItemsHysotry.length - 1]
+    );
+    const list = [...content.parseKeys];
+    list[index].visualize = true;
+    const updatedRemovedItemsHistory = [...removedItemsHysotry];
+    updatedRemovedItemsHistory.pop();
+    setRemovedItemsHistory(updatedRemovedItemsHistory);
+    console.log(removedItemsHysotry);
+    setContent({ ...content, parseKeys: list });
+  };
+
+  const rules = content.parseKeys.map((e) => e.key);
+
   return (
     <div className="max-h-screen">
+      {removedItemsHysotry.length > 0 && (
+        <button
+          className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
+          onClick={handleUndoClick}
+        >
+          Undo
+        </button>
+      )}
       {content &&
         content.parseKeys.map(
           (x, i) =>
