@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function FormParse({ content, setContent }) {
-  const [removedItemsHysotry, setRemovedItemsHistory] = useState([]);
-
+function FormParse({
+  content,
+  setContent,
+  removedItemsHysotry,
+  setRemovedItemsHistory,
+}) {
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...content.parseKeys];
@@ -41,8 +44,6 @@ function FormParse({ content, setContent }) {
     console.log(removedItemsHysotry);
     setContent({ ...content, parseKeys: list });
   };
-
-  const rules = content.parseKeys.map((e) => e.key);
 
   return (
     <div className="max-h-screen">

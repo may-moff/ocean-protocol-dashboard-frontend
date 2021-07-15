@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import FileUpload from '../Create-job/FileUpload';
 import FormParse from '../FormParse';
-import { useParams } from 'react-router-dom';
 import ButtonPrimary from '../ButtonPrimary';
-
-const handleSubmit = () => {
-  console.log('Submit All');
-};
+import axios from 'axios';
 
 const NewJob = ({ content, setContent, pubblicAddress }) => {
   const [logReady, setLogReady] = useState(false);
-  const { id } = useParams();
+  const [removedItemsHysotry, setRemovedItemsHistory] = useState([]);
+
+  const handleSubmit = async () => {
+    setRemovedItemsHistory([]);
+
+    const secondParse = await axios.put(
+      `${process.env.REACT_APP_BACKEND_URL}/users/${content.userId}/algo/${content.algorithmId}`,
+      content
+    );
+    setContent(secondParse.data);
+  };
+
   return (
     <div className="text-center p-6">
       <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-6 m-2 ">
@@ -37,6 +44,8 @@ const NewJob = ({ content, setContent, pubblicAddress }) => {
             logReady={logReady}
             content={content}
             setContent={setContent}
+            removedItemsHysotry={removedItemsHysotry}
+            setRemovedItemsHistory={setRemovedItemsHistory}
           />
         </div>
       </div>

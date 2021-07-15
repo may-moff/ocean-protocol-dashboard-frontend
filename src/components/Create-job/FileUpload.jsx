@@ -54,7 +54,12 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
           ...e,
           value: response.data.result[e.key],
         }));
-        setContent({ ...response.data, parseKeys: displayContent });
+        const defaultKeys = response.data.parseKeys.map((e) => e.key);
+        setContent({
+          ...response.data,
+          parseKeys: displayContent,
+          defaultKeys,
+        });
         setLogReady(true);
       })
       .catch((error) => console.error(error));
