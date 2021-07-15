@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const NewjobForm = ({
   getRootProps,
@@ -11,15 +11,15 @@ const NewjobForm = ({
 }) => {
   return (
     <form>
-      <div className="flex flex-col table-fixed w-full">
+      <div className="flex flex-col w-full">
         Job name:
         <label>
-          <input className="border-4 m-4 w-9/12" type="text" name="Job name" />
+          <input className="border-4 m-2 w-7/12" type="text" name="Job name" />
         </label>
         Data name:
         <label>
           <input
-            className="border-4 m-4 w-9/12 h-1/5"
+            className="border-4 m-2 w-7/12"
             type="text"
             name="dataName"
             value={dataName}
@@ -29,7 +29,7 @@ const NewjobForm = ({
         Algorithm name:
         <label>
           <input
-            className="border-4 m-4 w-9/12"
+            className="border-4 m-2 w-7/12"
             type="text"
             name="Algorithm name"
             value={algoName}
@@ -37,7 +37,7 @@ const NewjobForm = ({
           />
         </label>
       </div>
-      <div {...getRootProps({ className: 'p-6 m-6 border-2' })}>
+      <div {...getRootProps({ className: "p-6 m-6 border-2" })}>
         <input {...getInputProps()} />
         <p>Drag 'n' drop log file here or</p>
         <button
