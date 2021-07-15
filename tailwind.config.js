@@ -35,6 +35,14 @@ module.exports = {
       spacer: {
         spacer: "2rem",
       },
+      spacing: {
+        108: "27rem",
+        118: "29.5rem",
+        128: "32rem",
+        138: "34.5rem",
+        148: "48rem",
+        155: "55rem",
+      },
       borderRadius: {
         bradius: "0.2rem",
       },

@@ -50,16 +50,12 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
 
     await axios(httpRequestOptions)
       .then((response) => {
-        const displayContent = response.data.parseKeys.map((e) => ({
-          ...e,
-          value: response.data.result[e.key],
-        }));
-        const defaultKeys = response.data.parseKeys.map((e) => e.key);
-        setContent({
-          ...response.data,
-          parseKeys: displayContent,
-          defaultKeys,
-        });
+        // const displayContent = response.data.parseKeys.map((e) => ({
+        //   ...e,
+        //   value: response.data.result[e.key],
+        // }));
+        // const defaultKeys = response.data.parseKeys.map((e) => e.key);
+        setContent({ ...response.data });
         setLogReady(true);
       })
       .catch((error) => console.error(error));
@@ -94,8 +90,8 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
   ));
 
   return (
-    <div className="w-full">
-      <div className="text-xl border-md shadow-xl text-center border rounded-sm p-2 m-2 w-full min-w-min">
+    <div className="w-10/12 min-w-min">
+      <div className="text-base border-md shadow-xl text-center border rounded-sm p-2 m-2 min-w-min">
         {!logReady && (
           <NewjobForm
             getRootProps={getRootProps}
@@ -108,6 +104,7 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
           />
         )}
       </div>
+
       {displayUrl && <LogViewer file={displayUrl.file} />}
       {displayUrl && !logReady && (
         <div className="m-6">

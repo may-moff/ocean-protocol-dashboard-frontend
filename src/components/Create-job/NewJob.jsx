@@ -20,18 +20,17 @@ const NewJob = ({ content, setContent, pubblicAddress }) => {
 
   return (
     <div className="text-center p-6">
-      <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-6 m-2 ">
+      <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-1 m-1 ">
         Create New Job
         {logReady && (
           <div className="m-2">
-            {' '}
-            <ButtonPrimary function={handleSubmit} name="Submit All" />{' '}
+            <ButtonPrimary function={handleSubmit} name="Submit All" />
           </div>
         )}
       </div>
 
       <div className="flex">
-        <div className="flex justify-center justify-items-center w-2/5">
+        <div className="flex justify-center justify-items-center w-2/5 mr-2">
           <FileUpload
             logReady={logReady}
             setLogReady={setLogReady}
