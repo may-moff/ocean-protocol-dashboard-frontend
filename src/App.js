@@ -7,8 +7,6 @@ import Home from './components/Home';
 import JobDetail from './components/JobDetail';
 import Dashboard from './components/job-board/Dashboard';
 import NewJob from './components/Create-job/NewJob';
-import { Login } from './components/Login';
-import { Profile } from './components/Profile';
 
 const LS_KEY = 'login-with-metamask:auth';
 
@@ -17,7 +15,7 @@ export const App = () => {
   const [authorization, setAuthorization] = useState(false);
   const [publicAddress, setPublicAddress] = useState('');
   const [content, setContent] = useState({
-    parseKeys: [{ key: '', dataType: '', value: '' }],
+    parseKeys: [{ key: '', dataType: '', value: '', visualize: false }],
     result: {},
   });
 

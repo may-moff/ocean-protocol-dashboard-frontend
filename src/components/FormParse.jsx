@@ -1,14 +1,6 @@
 import React, { useEffect } from "react";
 
 function FormParse({ content, setContent }) {
-  useEffect(() => {
-    const displayContent = content.parseKeys.map((e) => ({
-      ...e,
-      value: content.result[e.key],
-    }));
-    setContent({ ...content, parseKeys: displayContent });
-  }, []);
-
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...content.parseKeys];
@@ -23,10 +15,12 @@ function FormParse({ content, setContent }) {
   };
 
   const handleAddClick = () => {
-    setContent([...content.parseKeys, { key: "", dataType: "", value: "" }]);
     setContent({
       ...content,
-      parseKeys: [...content.parseKeys, { key: "", dataType: "", value: "" }],
+      parseKeys: [
+        ...content.parseKeys,
+        { key: '', dataType: '', value: '', visualize: true },
+      ],
     });
   };
 
@@ -38,8 +32,9 @@ function FormParse({ content, setContent }) {
         <div className="border-1 p-2 w-7/12">Value:</div>
       </div>
       {content &&
-        content.parseKeys.map((x, i) => {
-          return (
+        content.parseKeys.map(
+          (x, i) =>
+            x.visualize && (
             <div key={i} className="m-1 text-base">
               <div className="hover:bg-bgreylighter">
                 <div className="flex border rounded m-1">
