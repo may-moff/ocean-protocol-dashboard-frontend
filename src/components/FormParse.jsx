@@ -46,7 +46,7 @@ function FormParse({
 
   return (
     <div className="max-h-155 overflow-y-scroll ">
-      {content.result.length > 0 && (
+      {content.parseKeys[0].key !== '' && (
         <div className="flex border rounded m-1 font-bold p-1">
           <div className="border-1 p-1 w-2/12">Key:</div>
           <div className="border-1 p-1 w-2/12">Type:</div>
