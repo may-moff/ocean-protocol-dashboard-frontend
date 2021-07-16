@@ -67,13 +67,17 @@ export const Login = ({ onLoggedIn }) => {
         // with the injected provider given by MetaMask
         web3 = new Web3(window.ethereum)
       } catch (error) {
-        return window.alert('🦊 Please allow MetaMask.')
+        return window.alert(
+          '🦊 Please sign into your MetaMask account. If you are already signed into your wallet but not connected to this site, please go to your MetaMask account settings and manually connect to this website (connected sites --> Manually connect to current site)'
+        )
       }
     }
 
     const coinbase = await web3.eth.getCoinbase()
     if (!coinbase) {
-      return window.alert('🦊 Please sign into MetaMask first')
+      return window.alert(
+        '🦊 Please sign into your MetaMask account. If you are already signed into your wallet but not connected to this site, please go to your MetaMask account settings and manually connect to this website (connected sites --> Manually connect to current site) 🦊'
+      )
     }
 
     const publicAddress = coinbase.toLowerCase()
