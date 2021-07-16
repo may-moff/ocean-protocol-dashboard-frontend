@@ -1,48 +1,48 @@
-import React from 'react';
+import React from 'react'
 
 function FormParse({
   content,
   setContent,
   removedItemsHysotry,
-  setRemovedItemsHistory,
+  setRemovedItemsHistory
 }) {
   const handleInputChange = (e, index) => {
-    const { name, value } = e.target;
-    const list = [...content.parseKeys];
-    list[index][name] = value;
-    setContent({ ...content, parseKeys: list });
-  };
+    const { name, value } = e.target
+    const list = [...content.parseKeys]
+    list[index][name] = value
+    setContent({ ...content, parseKeys: list })
+  }
 
   const handleRemoveClick = (index) => {
-    const list = [...content.parseKeys];
-    setRemovedItemsHistory([...removedItemsHysotry, list[index].key]);
+    const list = [...content.parseKeys]
+    setRemovedItemsHistory([...removedItemsHysotry, list[index].key])
     // removedItemsHysotry.push(list[index]);
     // list.splice(index, 1);
-    list[index].visualize = false;
-    setContent({ ...content, parseKeys: list });
-  };
+    list[index].visualize = false
+    setContent({ ...content, parseKeys: list })
+  }
 
   const handleAddClick = () => {
     setContent({
       ...content,
       parseKeys: [
         ...content.parseKeys,
-        { key: '', dataType: '', value: '', visualize: true },
-      ],
-    });
-  };
+        { key: '', dataType: '', value: '', visualize: true }
+      ]
+    })
+  }
 
   const handleUndoClick = () => {
     const index = content.parseKeys.findIndex(
       (e) => e.key === removedItemsHysotry[removedItemsHysotry.length - 1]
-    );
-    const list = [...content.parseKeys];
-    list[index].visualize = true;
-    const updatedRemovedItemsHistory = [...removedItemsHysotry];
-    updatedRemovedItemsHistory.pop();
-    setRemovedItemsHistory(updatedRemovedItemsHistory);
-    setContent({ ...content, parseKeys: list });
-  };
+    )
+    const list = [...content.parseKeys]
+    list[index].visualize = true
+    const updatedRemovedItemsHistory = [...removedItemsHysotry]
+    updatedRemovedItemsHistory.pop()
+    setRemovedItemsHistory(updatedRemovedItemsHistory)
+    setContent({ ...content, parseKeys: list })
+  }
 
   return (
     <div className="max-h-155 overflow-y-scroll ">
@@ -120,7 +120,7 @@ function FormParse({
         </button>
       )}
     </div>
-  );
+  )
 }
 
-export default FormParse;
+export default FormParse

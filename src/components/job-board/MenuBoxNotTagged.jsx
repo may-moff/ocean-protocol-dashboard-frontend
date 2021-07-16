@@ -1,10 +1,7 @@
-import React from "react";
-import MenuButton from "./MenuButton";
-import AmountFilter from "./AmountFilter";
+import React from 'react'
+import AmountFilter from './AmountFilter'
 
-const MenuBoxNotTagged = (props) => {
-  const { name } = props;
-
+const MenuBoxNotTagged = () => {
   return (
     <div>
       <div className="text-xl text-center border rounded-sm font-bold p-6 ">
@@ -12,7 +9,7 @@ const MenuBoxNotTagged = (props) => {
       </div>
       <AmountFilter amount="3" />
     </div>
-  );
-};
+  )
+}
 
-export default MenuBoxNotTagged;
+export default MenuBoxNotTagged

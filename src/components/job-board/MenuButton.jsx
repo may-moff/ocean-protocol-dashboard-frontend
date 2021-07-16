@@ -1,7 +1,5 @@
-import React from "react";
-
 const MenuButton = () => {
-  return;
-};
+  return
+}
 
-export default MenuButton;
+export default MenuButton

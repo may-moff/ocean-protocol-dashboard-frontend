@@ -1,8 +1,7 @@
-import React from 'react';
-import MenuBoxNotTagged from './MenuBoxNotTagged';
-import JobsBoxNotTagged from './JobsBoxNotTagged';
-import JobsBoxHistory from './JobsBoxHistory';
-import ChartTotalJobs from '../ChartTotalJobs';
+import React from 'react'
+import JobsBoxNotTagged from './JobsBoxNotTagged'
+import JobsBoxHistory from './JobsBoxHistory'
+import ChartTotalJobs from '../ChartTotalJobs'
 
 const Dashboard = () => {
   return (
@@ -14,7 +13,7 @@ const Dashboard = () => {
       <JobsBoxNotTagged />
       <JobsBoxHistory />
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

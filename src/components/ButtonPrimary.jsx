@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const ButtonPrimary = (props) => {
   return (
@@ -10,7 +10,7 @@ const ButtonPrimary = (props) => {
         {props.name}
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default ButtonPrimary;
+export default ButtonPrimary

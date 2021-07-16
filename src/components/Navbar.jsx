@@ -1,17 +1,16 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import logo from '../Assets/logo.svg';
-import { Login } from './Login';
-import { Profile } from './Profile';
-import ButtonDefault from './ButtonDefault';
-import NewJob from './Create-job/NewJob';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import logo from '../Assets/logo.svg'
+import { Login } from './Login'
+import { Profile } from './Profile'
+import ButtonDefault from './ButtonDefault'
 
 function Navbar({
   onLoggedIn,
   auth,
   onLoggedOut,
   setAuthorization,
-  setPublicAddress,
+  setPublicAddress
 }) {
   return (
     <nav className="bg-bgreylighter">
@@ -70,7 +69,7 @@ function Navbar({
         </div>
       </div>
     </nav>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar

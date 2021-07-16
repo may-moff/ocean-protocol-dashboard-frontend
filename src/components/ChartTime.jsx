@@ -1,15 +1,15 @@
-import React, { useCallback, useState } from "react";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import React, { useCallback, useState } from 'react'
+import { PieChart, Pie, Sector } from 'recharts'
 
 const data = [
-  { name: "Setup", value: 40 },
-  { name: "Computing", value: 30 },
-  { name: "Labeling", value: 30 },
-  { name: "Visualization", value: 20 },
-];
+  { name: 'Setup', value: 40 },
+  { name: 'Computing', value: 30 },
+  { name: 'Labeling', value: 30 },
+  { name: 'Visualization', value: 20 }
+]
 
 const renderActiveShape = (props) => {
-  const RADIAN = Math.PI / 180;
+  const RADIAN = Math.PI / 180
   const {
     cx,
     cy,
@@ -21,17 +21,17 @@ const renderActiveShape = (props) => {
     fill,
     payload,
     percent,
-    value,
-  } = props;
-  const sin = Math.sin(-RADIAN * midAngle);
-  const cos = Math.cos(-RADIAN * midAngle);
-  const sx = cx + (outerRadius + 10) * cos;
-  const sy = cy + (outerRadius + 10) * sin;
-  const mx = cx + (outerRadius + 30) * cos;
-  const my = cy + (outerRadius + 30) * sin;
-  const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-  const ey = my;
-  const textAnchor = cos >= 0 ? "start" : "end";
+    value
+  } = props
+  const sin = Math.sin(-RADIAN * midAngle)
+  const cos = Math.cos(-RADIAN * midAngle)
+  const sx = cx + (outerRadius + 10) * cos
+  const sy = cy + (outerRadius + 10) * sin
+  const mx = cx + (outerRadius + 30) * cos
+  const my = cy + (outerRadius + 30) * sin
+  const ex = mx + (cos >= 0 ? 1 : -1) * 22
+  const ey = my
+  const textAnchor = cos >= 0 ? 'start' : 'end'
 
   return (
     <g>
@@ -78,17 +78,17 @@ const renderActiveShape = (props) => {
         {`(${(percent * 100).toFixed(2)}%)`}
       </text>
     </g>
-  );
-};
+  )
+}
 
 const ChartTime = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0)
   const onPieEnter = useCallback(
     (_, index) => {
-      setActiveIndex(index);
+      setActiveIndex(index)
     },
     [setActiveIndex]
-  );
+  )
 
   return (
     // <ResponsiveContainer width="100%" aspect={4}>
@@ -107,7 +107,7 @@ const ChartTime = () => {
       />
     </PieChart>
     // </ResponsiveContainer>
-  );
-};
+  )
+}
 
-export default ChartTime;
+export default ChartTime

@@ -1,18 +1,18 @@
-import React from "react";
-import Job from "./Job";
-import Card from "../Card";
+import React from 'react'
+import Job from './Job'
+import Card from '../Card'
 
 const fakeDataHistory = [
-  { title: "Job Number 4", status: "in progres" },
-  { title: "Job Number 5", status: "in progres" },
-  { title: "Job Number 6", status: "in progres" },
-  { title: "Job Number 7", status: "in progres" },
-  { title: "Job Number 8", status: "in progres" },
-  { title: "Job Number 9", status: "in progres" },
-  { title: "Job Number 10", status: "in progres" },
-  { title: "Job Number 11", status: "in progres" },
-  { title: "Job Number 12", status: "in progres" },
-];
+  { title: 'Job Number 4', status: 'in progres' },
+  { title: 'Job Number 5', status: 'in progres' },
+  { title: 'Job Number 6', status: 'in progres' },
+  { title: 'Job Number 7', status: 'in progres' },
+  { title: 'Job Number 8', status: 'in progres' },
+  { title: 'Job Number 9', status: 'in progres' },
+  { title: 'Job Number 10', status: 'in progres' },
+  { title: 'Job Number 11', status: 'in progres' },
+  { title: 'Job Number 12', status: 'in progres' }
+]
 
 const JobsBoxHistory = () => {
   return (
@@ -31,7 +31,7 @@ const JobsBoxHistory = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default JobsBoxHistory;
+export default JobsBoxHistory
