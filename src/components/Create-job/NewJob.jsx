@@ -24,7 +24,7 @@ const NewJob = ({ content, setContent, pubblicAddress }) => {
         Create New Job
         {logReady && (
           <div className="m-2">
-            <ButtonPrimary function={handleSubmit} name="Submit All" />
+            <ButtonPrimary function={handleSubmit} name="Parse" />
           </div>
         )}
       </div>

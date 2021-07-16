@@ -45,8 +45,26 @@ function FormParse({
   }
 
   return (
-    <div className="max-h-155 overflow-y-scroll ">
-      {content.result.length > 0 && (
+    <div className="max-h-155 overflow-y-auto ">
+      <div className="flex justify-around m-2">
+        {content.parseKeys[0].key !== '' && (
+          <button
+            className=" bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
+            onClick={handleAddClick}
+          >
+            Add Row
+          </button>
+        )}
+        {removedItemsHysotry.length > 0 && (
+          <button
+            className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
+            onClick={handleUndoClick}
+          >
+            Undo Remove
+          </button>
+        )}
+      </div>
+      {content.parseKeys[0].key !== '' && (
         <div className="flex border rounded m-1 font-bold p-1">
           <div className="border-1 p-1 w-2/12">Key:</div>
           <div className="border-1 p-1 w-2/12">Type:</div>
@@ -75,7 +93,6 @@ function FormParse({
                       value={x.dataType || ''}
                       onChange={(e) => handleInputChange(e, i)}
                     />
-
                     <input
                       className="border-2 p-2 w-7/12"
                       name="value"
@@ -83,7 +100,7 @@ function FormParse({
                       readOnly
                       value={x.value || ''}
                     />
-                    <div className="flex object-center w-20">
+                    <div className="flex justify-center justify-items-center w-20">
                       <div>
                         {content.parseKeys.length !== 1 && (
                           <button
@@ -99,26 +116,13 @@ function FormParse({
                   </div>
                 </div>
                 <div>
-                  {content.parseKeys.length - 1 === i && (
-                    <button
-                      className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
-                      onClick={handleAddClick}
-                    >
-                      Add
-                    </button>
-                  )}
+                  {/* {content.parseKeys.length - 1 === i && ( */}
+
+                  {/* )} */}
                 </div>
               </div>
             )
         )}
-      {removedItemsHysotry.length > 0 && (
-        <button
-          className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
-          onClick={handleUndoClick}
-        >
-          Undo
-        </button>
-      )}
     </div>
   )
 }

@@ -92,9 +92,9 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
   // ))
 
   return (
-    <div className="w-10/12 min-w-min">
-      <div className="text-base border-md shadow-xl text-center border rounded-sm p-2 m-2 min-w-min">
-        {!logReady && (
+    <div className="w-10/12 min-w-min h-155">
+      {!logReady && (
+        <div className="text-base border-md shadow-xl text-center border rounded-sm p-2 m-2 min-w-min">
           <NewjobForm
             getRootProps={getRootProps}
             getInputProps={getInputProps}
@@ -104,16 +104,16 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
             dataName={dataName}
             setDataName={setDataName}
           />
-        )}
-      </div>
+        </div>
+      )}
 
-      {displayUrl && <LogViewer file={displayUrl.file} />}
       {displayUrl && !logReady && (
-        <div className="m-6">
+        <div className="m-2">
           {' '}
           <ButtonPrimary function={handleSubmit} name="Submit" />{' '}
         </div>
       )}
+      {displayUrl && <LogViewer file={displayUrl.file} />}
     </div>
   )
 }
