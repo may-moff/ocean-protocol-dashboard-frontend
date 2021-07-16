@@ -1,10 +1,10 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import ChartTime from "./ChartTime";
-import FormParse from "./FormParse";
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import ChartTime from './ChartTime'
+import FormParse from './FormParse'
 
 const JobDetail = ({ content, setContent }) => {
-  const { id } = useParams();
+  const { id } = useParams()
   return (
     <div className="text-center p-6 ">
       <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-6 m-6 ">
@@ -20,7 +20,7 @@ const JobDetail = ({ content, setContent }) => {
         </div> */}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default JobDetail;
+export default JobDetail

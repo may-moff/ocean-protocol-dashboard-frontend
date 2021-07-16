@@ -1,5 +1,5 @@
-import React from 'react';
-import Waves from './Waves.jsx';
+import React from 'react'
+import Waves from './Waves.jsx'
 
 function Home() {
   return (
@@ -14,7 +14,7 @@ function Home() {
         <p className="font-fsbase"></p>
       </div>
     </>
-  );
+  )
 }
 
-export default Home;
+export default Home

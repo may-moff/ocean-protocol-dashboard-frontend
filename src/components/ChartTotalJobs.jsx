@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   BarChart,
   Bar,
@@ -8,71 +8,71 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
-} from "recharts";
+  ResponsiveContainer
+} from 'recharts'
 
 const data = [
   {
-    name: "January",
+    name: 'January',
     New: 0,
-    Tagged: 1,
+    Tagged: 1
   },
   {
-    name: "February",
+    name: 'February',
     New: 0,
-    Tagged: 2,
+    Tagged: 2
   },
   {
-    name: "March",
+    name: 'March',
     New: 0,
-    Tagged: 10,
+    Tagged: 10
   },
   {
-    name: "April",
+    name: 'April',
     New: 0,
-    Tagged: 5,
+    Tagged: 5
   },
   {
-    name: "May",
+    name: 'May',
     New: 1,
-    Tagged: 3,
+    Tagged: 3
   },
   {
-    name: "June",
+    name: 'June',
     New: 2,
-    Tagged: 4,
+    Tagged: 4
   },
   {
-    name: "July",
+    name: 'July',
     New: 1,
-    Tagged: 0,
+    Tagged: 0
   },
   {
-    name: "August",
+    name: 'August',
     New: 0,
-    Tagged: 0,
+    Tagged: 0
   },
   {
-    name: "September",
+    name: 'September',
     New: 0,
-    Tagged: 0,
+    Tagged: 0
   },
   {
-    name: "October",
+    name: 'October',
     New: 0,
-    Tagged: 0,
+    Tagged: 0
   },
   {
-    name: "November",
+    name: 'November',
     New: 0,
-    Tagged: 0,
+    Tagged: 0
   },
   {
-    name: "December",
+    name: 'December',
     New: 0,
-    Tagged: 0,
-  },
-];
+    Tagged: 0
+  }
+]
 
 const ChartTotalJobs = () => {
   return (
@@ -85,7 +85,7 @@ const ChartTotalJobs = () => {
           top: 20,
           right: 30,
           left: 20,
-          bottom: 5,
+          bottom: 5
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
@@ -97,7 +97,7 @@ const ChartTotalJobs = () => {
         <Bar dataKey="New" stackId="a" fill="#7b1173" />
       </BarChart>
     </ResponsiveContainer>
-  );
-};
+  )
+}
 
-export default ChartTotalJobs;
+export default ChartTotalJobs

@@ -1,52 +1,52 @@
-import React, { useState, useCallback } from 'react';
-import NewjobForm from './NewjobForm';
-import { useDropzone } from 'react-dropzone';
-import ButtonPrimary from '../ButtonPrimary';
-import axios from 'axios';
-import LogViewer from './LogViewer';
+import React, { useState, useCallback } from 'react'
+import NewjobForm from './NewjobForm'
+import { useDropzone } from 'react-dropzone'
+import ButtonPrimary from '../ButtonPrimary'
+import axios from 'axios'
+import LogViewer from './LogViewer'
 
 function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [displayUrl, setDisplayUrl] = useState(null);
-  const [algoName, setAlgoName] = useState('');
-  const [dataName, setDataName] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null)
+  const [displayUrl, setDisplayUrl] = useState(null)
+  const [algoName, setAlgoName] = useState('')
+  const [dataName, setDataName] = useState('')
 
   function getFormattedTime() {
-    const today = new Date();
-    const y = today.getFullYear();
+    const today = new Date()
+    const y = today.getFullYear()
     // JavaScript months are 0-based.
-    const m = today.getMonth() + 1;
-    const d = today.getDate();
-    const h = today.getHours();
-    const mi = today.getMinutes();
-    const s = today.getSeconds();
-    return y + '-' + m + '-' + d + '-' + h + '-' + mi + '-' + s;
+    const m = today.getMonth() + 1
+    const d = today.getDate()
+    const h = today.getHours()
+    const mi = today.getMinutes()
+    const s = today.getSeconds()
+    return y + '-' + m + '-' + d + '-' + h + '-' + mi + '-' + s
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const newAlgo = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/users/${pubblicAddress}/algo`,
       {
-        name: algoName,
+        name: algoName
       }
-    );
+    )
 
-    const fileName = `${getFormattedTime()}`;
-    const fileExtension = selectedFile.name.split('.').pop();
-    let formdata = new FormData();
-    formdata.append('logBlob', selectedFile, `${fileName}.${fileExtension}`);
-    formdata.append('algorithmId', newAlgo.data._id);
-    formdata.append('dataName', dataName);
+    const fileName = `${getFormattedTime()}`
+    const fileExtension = selectedFile.name.split('.').pop()
+    let formdata = new FormData()
+    formdata.append('logBlob', selectedFile, `${fileName}.${fileExtension}`)
+    formdata.append('algorithmId', newAlgo.data._id)
+    formdata.append('dataName', dataName)
     const httpRequestOptions = {
       url: `${process.env.REACT_APP_BACKEND_URL}/users/${newAlgo.data.userId}/jobs`,
       method: 'POST',
       data: formdata,
       headers: new Headers({
-        enctype: 'multipart/form-data',
-      }),
-    };
+        enctype: 'multipart/form-data'
+      })
+    }
 
     await axios(httpRequestOptions)
       .then((response) => {
@@ -55,11 +55,11 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
         //   value: response.data.result[e.key],
         // }));
         // const defaultKeys = response.data.parseKeys.map((e) => e.key);
-        setContent({ ...response.data });
-        setLogReady(true);
+        setContent({ ...response.data })
+        setLogReady(true)
       })
-      .catch((error) => console.error(error));
-  };
+      .catch((error) => console.error(error))
+  }
 
   // const handleSelect = (e) => {
   //   setSelectedFile(e.target.files[0]);
@@ -69,25 +69,25 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
   // };
 
   const onDrop = useCallback((acceptedFiles) => {
-    setSelectedFile(acceptedFiles[0]);
+    setSelectedFile(acceptedFiles[0])
 
     setDisplayUrl({
-      file: URL.createObjectURL(acceptedFiles[0]),
-    });
-  }, []);
+      file: URL.createObjectURL(acceptedFiles[0])
+    })
+  }, [])
 
   const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
     // Disable click and keydown behavior
     noClick: true,
     noKeyboard: true,
-    onDrop,
-  });
+    onDrop
+  })
 
   const files = acceptedFiles.map((file) => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
     </li>
-  ));
+  ))
 
   return (
     <div className="w-10/12 min-w-min">
@@ -113,7 +113,7 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default FileUpload;
+export default FileUpload

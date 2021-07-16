@@ -1,22 +1,22 @@
-import React, { useEffect } from 'react';
-import Blockies from 'react-blockies';
-import jwt_decode from 'jwt-decode';
+import React, { useEffect } from 'react'
+import Blockies from 'react-blockies'
+import jwt_decode from 'jwt-decode'
 
 export const Profile = ({ auth, setAuthorization, setPublicAddress }) => {
-  const { accessToken } = auth;
+  const { accessToken } = auth
 
   const {
-    payload: { publicAddress },
-  } = jwt_decode(accessToken);
+    payload: { publicAddress }
+  } = jwt_decode(accessToken)
 
   useEffect(() => {
     if (!publicAddress) {
-      setAuthorization(false);
+      setAuthorization(false)
     } else {
-      setAuthorization(true);
-      setPublicAddress(publicAddress);
+      setAuthorization(true)
+      setPublicAddress(publicAddress)
     }
-  }, [publicAddress]);
+  }, [publicAddress])
 
   return (
     <div className="flex justify-between">
@@ -26,6 +26,6 @@ export const Profile = ({ auth, setAuthorization, setPublicAddress }) => {
 
       <div className=" text-lg">{publicAddress}</div>
     </div>
-  );
-};
-export default Profile;
+  )
+}
+export default Profile

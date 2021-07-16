@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import FileUpload from '../Create-job/FileUpload';
-import FormParse from '../FormParse';
-import ButtonPrimary from '../ButtonPrimary';
-import axios from 'axios';
+import React, { useState } from 'react'
+import FileUpload from '../Create-job/FileUpload'
+import FormParse from '../FormParse'
+import ButtonPrimary from '../ButtonPrimary'
+import axios from 'axios'
 
 const NewJob = ({ content, setContent, pubblicAddress }) => {
-  const [logReady, setLogReady] = useState(false);
-  const [removedItemsHysotry, setRemovedItemsHistory] = useState([]);
+  const [logReady, setLogReady] = useState(false)
+  const [removedItemsHysotry, setRemovedItemsHistory] = useState([])
 
   const handleSubmit = async () => {
-    setRemovedItemsHistory([]);
+    setRemovedItemsHistory([])
 
     const secondParse = await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/users/${content.userId}/algo/${content.algorithmId}`,
       content
-    );
-    setContent(secondParse.data);
-  };
+    )
+    setContent(secondParse.data)
+  }
 
   return (
     <div className="text-center p-6">
@@ -49,7 +49,7 @@ const NewJob = ({ content, setContent, pubblicAddress }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NewJob;
+export default NewJob

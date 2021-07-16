@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const NewjobForm = ({
   getRootProps,
@@ -7,7 +7,7 @@ const NewjobForm = ({
   algoName,
   setAlgoName,
   dataName,
-  setDataName,
+  setDataName
 }) => {
   return (
     <form>
@@ -37,7 +37,7 @@ const NewjobForm = ({
           />
         </label>
       </div>
-      <div {...getRootProps({ className: "p-6 m-6 border-2" })}>
+      <div {...getRootProps({ className: 'p-6 m-6 border-2' })}>
         <input {...getInputProps()} />
         <p>Drag 'n' drop log file here or</p>
         <button
@@ -49,7 +49,7 @@ const NewjobForm = ({
         </button>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default NewjobForm;
+export default NewjobForm

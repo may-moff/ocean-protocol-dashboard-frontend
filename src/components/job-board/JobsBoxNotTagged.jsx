@@ -1,12 +1,12 @@
-import React from 'react';
-import Job from './Job';
-import Card from '../Card';
+import React from 'react'
+import Job from './Job'
+import Card from '../Card'
 
 const fakeDataNotTagged = [
   { title: 'Job Number 1', status: 'done' },
   { title: 'Job Number 2', status: 'done' },
-  { title: 'Job Number 3', status: 'done' },
-];
+  { title: 'Job Number 3', status: 'done' }
+]
 
 const JobsBoxNotTagged = ({ content, setContent }) => {
   return (
@@ -29,7 +29,7 @@ const JobsBoxNotTagged = ({ content, setContent }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default JobsBoxNotTagged;
+export default JobsBoxNotTagged

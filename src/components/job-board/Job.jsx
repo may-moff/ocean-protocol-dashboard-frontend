@@ -1,9 +1,9 @@
-import React from "react";
-import JobTitle from "./JobTitle";
-import JobStatus from "./JobStatus";
-import JobFileDownload from "./JobFileDownload";
-import ButtonDefault from "../ButtonDefault";
-import { NavLink } from "react-router-dom";
+import React from 'react'
+import JobTitle from './JobTitle'
+import JobStatus from './JobStatus'
+import JobFileDownload from './JobFileDownload'
+import ButtonDefault from '../ButtonDefault'
+import { NavLink } from 'react-router-dom'
 
 const Job = (props) => {
   return (
@@ -25,7 +25,7 @@ const Job = (props) => {
         </NavLink>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Job;
+export default Job
