@@ -1,7 +1,7 @@
 import React from 'react'
 
-const AmountFilter = (props) => {
-  const { amount } = props
+const AmountFilter = () => {
+  // const { amount } = props
   return <div></div>
 }
 

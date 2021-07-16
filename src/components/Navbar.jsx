@@ -4,7 +4,6 @@ import logo from '../Assets/logo.svg'
 import { Login } from './Login'
 import { Profile } from './Profile'
 import ButtonDefault from './ButtonDefault'
-import NewJob from './Create-job/NewJob'
 
 function Navbar({
   onLoggedIn,

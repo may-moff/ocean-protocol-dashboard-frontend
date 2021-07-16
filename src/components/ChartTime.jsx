@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts'
+import { PieChart, Pie, Sector } from 'recharts'
 
 const data = [
   { name: 'Setup', value: 40 },

@@ -1,4 +1,4 @@
-const JobFileDownloas = (props) => {
+const JobFileDownloas = () => {
   return <div>Download File</div>
 }
 

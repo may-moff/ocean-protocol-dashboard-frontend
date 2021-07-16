@@ -76,18 +76,20 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
     })
   }, [])
 
-  const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
-    // Disable click and keydown behavior
-    noClick: true,
-    noKeyboard: true,
-    onDrop
-  })
+  const { getRootProps, getInputProps, open /* acceptedFiles */ } = useDropzone(
+    {
+      // Disable click and keydown behavior
+      noClick: true,
+      noKeyboard: true,
+      onDrop
+    }
+  )
 
-  const files = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ))
+  // const files = acceptedFiles.map((file) => (
+  //   <li key={file.path}>
+  //     {file.path} - {file.size} bytes
+  //   </li>
+  // ))
 
   return (
     <div className="w-10/12 min-w-min">
