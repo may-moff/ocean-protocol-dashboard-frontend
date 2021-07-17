@@ -1,8 +1,8 @@
-import React from "react";
-import JobTitle from "./JobTitle";
-import JobStatus from "./JobStatus";
-import JobFileDownload from "./JobFileDownload";
-import ButtonDefault from "../ButtonDefault";
+import React from 'react'
+import JobTitle from './JobTitle'
+import JobStatus from './JobStatus'
+import ButtonDefault from '../ButtonDefault'
+import { NavLink } from 'react-router-dom'
 
 const Job = (props) => {
   return (
@@ -16,16 +16,15 @@ const Job = (props) => {
         </div>
       </div>
       <div className="justify-center m-4 overflow-hidden">
-        Ocean Protocol unlocks the value of data. Data owners and consumers use
-        Ocean Market app to publish, discover, and consume data assets in a
-        secure, privacy-preserving fashion. OCEAN holders stake liquidity to
-        data pools.
+        <p>Date of Purchase </p>
       </div>
       <div className="mb-4">
-        <ButtonDefault name="See Details" />
+        <NavLink to="/jobs/1">
+          <ButtonDefault name="See Details" />
+        </NavLink>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Job;
+export default Job
