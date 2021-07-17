@@ -22,7 +22,6 @@ export const App = () => {
   let history = useHistory()
 
   useEffect(() => {
-    // Access token is stored in localstorage
     const ls = window.localStorage.getItem(LS_KEY)
     const auth = ls && JSON.parse(ls)
     setState({ auth })
