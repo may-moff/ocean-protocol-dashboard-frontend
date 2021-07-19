@@ -4,6 +4,8 @@ const NewjobForm = ({
   getRootProps,
   getInputProps,
   open,
+  jobName,
+  setJobName,
   algoName,
   setAlgoName,
   dataName,
@@ -14,7 +16,13 @@ const NewjobForm = ({
       <div className="flex flex-col w-full">
         Job name:
         <label>
-          <input className="border-4 m-2 w-7/12" type="text" name="Job name" />
+          <input
+            className="border-4 m-2 w-7/12"
+            type="text"
+            name="Job name"
+            value={jobName}
+            onChange={(e) => setJobName(e.target.value)}
+          />
         </label>
         Data name:
         <label>

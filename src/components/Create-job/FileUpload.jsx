@@ -8,6 +8,7 @@ import LogViewer from './LogViewer'
 function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
   const [selectedFile, setSelectedFile] = useState(null)
   const [displayUrl, setDisplayUrl] = useState(null)
+  const [jobName, setJobName] = useState('')
   const [algoName, setAlgoName] = useState('')
   const [dataName, setDataName] = useState('')
 
@@ -29,7 +30,7 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
     const newAlgo = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/users/${pubblicAddress}/algo`,
       {
-        name: algoName
+        algoName: algoName
       }
     )
 
@@ -39,6 +40,8 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
     formdata.append('logBlob', selectedFile, fileExtension)
     formdata.append('algorithmId', newAlgo.data._id)
     formdata.append('dataName', dataName)
+    formdata.append('algoName', algoName)
+    formdata.append('jobName', jobName)
     const httpRequestOptions = {
       url: `${process.env.REACT_APP_BACKEND_URL}/users/${newAlgo.data.userId}/jobs`,
       method: 'POST',
@@ -99,6 +102,8 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
             getRootProps={getRootProps}
             getInputProps={getInputProps}
             open={open}
+            jobName={jobName}
+            setJobName={setJobName}
             algoName={algoName}
             setAlgoName={setAlgoName}
             dataName={dataName}
