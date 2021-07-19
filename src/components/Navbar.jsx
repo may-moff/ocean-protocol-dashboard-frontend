@@ -1,11 +1,17 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import logo from "../Assets/logo.svg";
-import { Login } from "./Login";
-import { Profile } from "./Profile";
-import ButtonDefault from "./ButtonDefault";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import logo from '../Assets/logo.svg'
+import { Login } from './Login'
+import { Profile } from './Profile'
+import ButtonDefault from './ButtonDefault'
 
-function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
+function Navbar({
+  onLoggedIn,
+  auth,
+  onLoggedOut,
+  setAuthorization,
+  setPublicAddress
+}) {
   return (
     <nav className="bg-bgreylighter">
       <div className="max-w-6xl mx-auto">
@@ -23,6 +29,9 @@ function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
               <div className="transform hover:-translate-y-0.5 duration-300">
                 <NavLink to="/dashboard">Dashboard</NavLink>
               </div>
+              <div className="transform hover:-translate-y-0.5 duration-300">
+                <NavLink to="/NewJob">New Job</NavLink>
+              </div>
 
               {/* <div className="transform hover:-translate-y-0.5 duration-300">
                 <NavLink to="/jobs/1">First Job</NavLink>
@@ -33,7 +42,11 @@ function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
             {auth ? (
               <div className="flex">
                 <div className="mx-10">
-                <Profile auth={auth} setAuthorization={setAuthorization} />
+                  <Profile
+                    auth={auth}
+                    setAuthorization={setAuthorization}
+                    setPublicAddress={setPublicAddress}
+                  />
                 </div>
                 <ButtonDefault function={onLoggedOut} name="Logout" />
               </div>
@@ -56,7 +69,7 @@ function Navbar({ onLoggedIn, auth, onLoggedOut, setAuthorization }) {
         </div>
       </div>
     </nav>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar

@@ -1,14 +1,19 @@
-import React from "react";
-import MenuBox from "./MenuBox";
-import JobsBox from "./JobsBox";
+import React from 'react'
+import JobsBoxNotTagged from './JobsBoxNotTagged'
+import JobsBoxHistory from './JobsBoxHistory'
+import ChartTotalJobs from '../ChartTotalJobs'
 
 const Dashboard = () => {
   return (
     <div className="text-center p-6 ">
-      <MenuBox name="XXXX" />
-      <JobsBox />
+      <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-6 m-6 ">
+        Total Jobs
+      </div>
+      <ChartTotalJobs />
+      <JobsBoxNotTagged />
+      <JobsBoxHistory />
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

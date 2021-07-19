@@ -1,5 +1,5 @@
-const JobFileDownloas = (props) => {
-  return <div>Download File</div>;
-};
+const JobFileDownloas = () => {
+  return <div>Download File</div>
+}
 
-export default JobFileDownloas;
+export default JobFileDownloas
