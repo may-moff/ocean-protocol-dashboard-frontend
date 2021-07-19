@@ -16,8 +16,6 @@ function FormParse({
   const handleRemoveClick = (index) => {
     const list = [...content.parseKeys]
     setRemovedItemsHistory([...removedItemsHysotry, list[index].key])
-    // removedItemsHysotry.push(list[index]);
-    // list.splice(index, 1);
     list[index].visualize = false
     setContent({ ...content, parseKeys: list })
   }
@@ -44,8 +42,12 @@ function FormParse({
     setContent({ ...content, parseKeys: list })
   }
 
-  return (
+  const normalizeValue = (state) => {
+    const output = state.replace(/_/g, ' ').toLocaleLowerCase()
+    return output.charAt(0).toLocaleUpperCase() + output.slice(1)
+  }
 
+  return (
     <div className="max-h-155 overflow-y-auto ">
       <div className="flex justify-around m-2">
         {content.parseKeys[0].key !== '' && (
@@ -84,7 +86,7 @@ function FormParse({
                       className="border-2 p-1 w-2/12"
                       name="key"
                       placeholder="Key"
-                      value={x.key || ''}
+                      value={normalizeValue(x.key) || ''}
                       onChange={(e) => handleInputChange(e, i)}
                     />
 
