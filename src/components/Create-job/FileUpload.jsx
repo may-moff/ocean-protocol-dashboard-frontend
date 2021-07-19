@@ -12,24 +12,10 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
   const [algoName, setAlgoName] = useState('')
   const [dataName, setDataName] = useState('')
 
-  /* function getFormattedTime() {
-    const today = new Date()
-    const y = today.getFullYear()
-    // JavaScript months are 0-based.
-    const m = today.getMonth() + 1
-    const d = today.getDate()
-    const h = today.getHours()
-    const mi = today.getMinutes()
-    const s = today.getSeconds()
-    return y + '-' + m + '-' + d + '-' + h + '-' + mi + '-' + s
-  } */
-
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     const inputValidation = [jobName, dataName, algoName]
-    console.log(inputValidation)
-    console.log(inputValidation.every((e) => e !== ''))
     if (inputValidation.every((e) => e)) {
       const newAlgo = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/users/${pubblicAddress}/algo`,
@@ -38,7 +24,6 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
         }
       )
 
-      // const fileName = `${getFormattedTime()}`
       const fileExtension = selectedFile.name.split('.').pop()
       let formdata = new FormData()
       formdata.append('logBlob', selectedFile, fileExtension)
