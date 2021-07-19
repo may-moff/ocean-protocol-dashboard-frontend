@@ -8,6 +8,7 @@ import LogViewer from './LogViewer'
 function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
   const [selectedFile, setSelectedFile] = useState(null)
   const [displayUrl, setDisplayUrl] = useState(null)
+  const [jobName, setJobName] = useState('')
   const [algoName, setAlgoName] = useState('')
   const [dataName, setDataName] = useState('')
 
@@ -26,39 +27,48 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const newAlgo = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/users/${pubblicAddress}/algo`,
-      {
-        name: algoName
+    const inputValidation = [jobName, dataName, algoName]
+    console.log(inputValidation)
+    console.log(inputValidation.every((e) => e !== ''))
+    if (inputValidation.every((e) => e)) {
+      const newAlgo = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/users/${pubblicAddress}/algo`,
+        {
+          name: algoName
+        }
+      )
+
+      // const fileName = `${getFormattedTime()}`
+      const fileExtension = selectedFile.name.split('.').pop()
+      let formdata = new FormData()
+      formdata.append('logBlob', selectedFile, fileExtension)
+      formdata.append('algorithmId', newAlgo.data._id)
+      formdata.append('dataName', dataName)
+      const httpRequestOptions = {
+        url: `${process.env.REACT_APP_BACKEND_URL}/users/${newAlgo.data.userId}/jobs`,
+        method: 'POST',
+        data: formdata,
+        headers: new Headers({
+          enctype: 'multipart/form-data'
+        })
       }
-    )
 
-    // const fileName = `${getFormattedTime()}`
-    const fileExtension = selectedFile.name.split('.').pop()
-    let formdata = new FormData()
-    formdata.append('logBlob', selectedFile, fileExtension)
-    formdata.append('algorithmId', newAlgo.data._id)
-    formdata.append('dataName', dataName)
-    const httpRequestOptions = {
-      url: `${process.env.REACT_APP_BACKEND_URL}/users/${newAlgo.data.userId}/jobs`,
-      method: 'POST',
-      data: formdata,
-      headers: new Headers({
-        enctype: 'multipart/form-data'
-      })
+      await axios(httpRequestOptions)
+        .then((response) => {
+          // const displayContent = response.data.parseKeys.map((e) => ({
+          //   ...e,
+          //   value: response.data.result[e.key],
+          // }));
+          // const defaultKeys = response.data.parseKeys.map((e) => e.key);
+          setContent({ ...response.data })
+          setLogReady(true)
+        })
+        .catch((error) => console.error(error))
+    } else {
+      window.alert(
+        'Please, make sure to fill all the fields before proceeding.'
+      )
     }
-
-    await axios(httpRequestOptions)
-      .then((response) => {
-        // const displayContent = response.data.parseKeys.map((e) => ({
-        //   ...e,
-        //   value: response.data.result[e.key],
-        // }));
-        // const defaultKeys = response.data.parseKeys.map((e) => e.key);
-        setContent({ ...response.data })
-        setLogReady(true)
-      })
-      .catch((error) => console.error(error))
   }
 
   // const handleSelect = (e) => {
@@ -99,6 +109,8 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
             getRootProps={getRootProps}
             getInputProps={getInputProps}
             open={open}
+            jobName={jobName}
+            setJobName={setJobName}
             algoName={algoName}
             setAlgoName={setAlgoName}
             dataName={dataName}
