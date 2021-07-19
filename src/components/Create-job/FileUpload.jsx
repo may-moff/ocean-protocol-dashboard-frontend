@@ -11,7 +11,7 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
   const [algoName, setAlgoName] = useState('')
   const [dataName, setDataName] = useState('')
 
-  function getFormattedTime() {
+  /* function getFormattedTime() {
     const today = new Date()
     const y = today.getFullYear()
     // JavaScript months are 0-based.
@@ -21,7 +21,7 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
     const mi = today.getMinutes()
     const s = today.getSeconds()
     return y + '-' + m + '-' + d + '-' + h + '-' + mi + '-' + s
-  }
+  } */
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -33,10 +33,10 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
       }
     )
 
-    const fileName = `${getFormattedTime()}`
+    // const fileName = `${getFormattedTime()}`
     const fileExtension = selectedFile.name.split('.').pop()
     let formdata = new FormData()
-    formdata.append('logBlob', selectedFile, `${fileName}.${fileExtension}`)
+    formdata.append('logBlob', selectedFile, fileExtension)
     formdata.append('algorithmId', newAlgo.data._id)
     formdata.append('dataName', dataName)
     const httpRequestOptions = {
