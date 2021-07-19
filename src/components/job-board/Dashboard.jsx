@@ -1,6 +1,6 @@
 import React from 'react'
 import JobsBoxNotTagged from './JobsBoxNotTagged'
-import JobsBoxHistory from './JobsBoxHistory'
+// import JobsBoxHistory from './JobsBoxHistory'
 import ChartTotalJobs from '../ChartTotalJobs'
 
 const Dashboard = () => {
@@ -11,7 +11,7 @@ const Dashboard = () => {
       </div>
       <ChartTotalJobs />
       <JobsBoxNotTagged />
-      <JobsBoxHistory />
+      {/* <JobsBoxHistory /> */}
     </div>
   )
 }

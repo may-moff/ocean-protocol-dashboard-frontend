@@ -9,7 +9,7 @@ const Job = (props) => {
     <div className="flex-1 my-1 ">
       <div className="flex justify-between m-2 mx-auto p-4">
         <div className="font-bold">
-          <JobTitle title={props.title} />
+          <JobTitle title={props.jobName} />
         </div>
         <div className="">
           <JobStatus status={props.status} />
