@@ -21,8 +21,7 @@ const LandingPageTile = (props) => {
       <button
         onClick={() => {
           if (url !== null) {
-            window.location.href = url
-            // openInNewTab(url)
+            window.open(url, '_blank')
           } else {
             history.push(push)
           }

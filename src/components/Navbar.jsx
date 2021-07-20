@@ -24,7 +24,7 @@ function Navbar({
             </div>
             <div className="flex items-center space-x-4 text-bgrey transform ">
               <div className="transform hover:-translate-y-0.5 duration-300">
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/home">Home</NavLink>
               </div>
               <div className="transform hover:-translate-y-0.5 duration-300">
                 <NavLink to="/dashboard">Dashboard</NavLink>

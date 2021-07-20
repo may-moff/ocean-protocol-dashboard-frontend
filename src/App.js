@@ -55,7 +55,7 @@ export const App = () => {
         setPublicAddress={setPublicAddress}
       />
       <Switch>
-        <Route exact path="/">
+        <Route path="/home">
           <Home />
         </Route>
         <Route path="/dashboard">
@@ -86,7 +86,7 @@ export const App = () => {
           )}
         </Route>
 
-        <Route path="/landing">
+        <Route exact path="/">
           <LandingPageContainer
             onLoggedIn={handleLoggedIn}
             auth={auth}

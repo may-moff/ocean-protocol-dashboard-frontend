@@ -56,17 +56,22 @@ const Waves = () => {
   }, [])
 
   return (
-    <svg
-      ref={ref}
-      style={{
-        height: 500,
-        width: '100%',
-        marginRight: '0px',
-        marginLeft: '0px',
-        maxWidth: '100%',
-        transform: 'scale(1.2) rotate(-8deg)'
-      }}
-    />
+    <>
+      <div style={{ paddingTop: '200px' }}></div>{' '}
+      <svg
+        ref={ref}
+        style={{
+          viewBox: '100% 100% 100% 100%',
+
+          height: '500px',
+          width: '100%',
+          marginRight: '0px',
+          marginLeft: '0px',
+          maxWidth: '100%',
+          transform: 'scale(1.2) rotate(-8deg)'
+        }}
+      />
+    </>
   )
 }
 

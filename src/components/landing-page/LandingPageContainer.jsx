@@ -4,12 +4,13 @@ import home from './home.gif'
 import metamask from './logo-metamask-1.png'
 import logo from './template-animation.gif'
 import ocean from './ocean-transparent.gif'
+import waves from './waves.svg'
 
 const LandingPageContainer = () => {
   return (
     <div>
       <h1
-        class="text-5xl p-10"
+        class="text-5xl p-10 "
         style={{
           display: 'flex',
           justifyContent: 'center',
@@ -37,7 +38,7 @@ const LandingPageContainer = () => {
           flexWrap: 'wrap'
         }}
       >
-        <img src={logo} style={{ height: '1000px', padding: '0px' }} />
+        <img src={logo} style={{ height: '1000px' }} />
         <div style={{ flexDirection: 'column', padding: '50px' }}>
           <LandingPageTile
             background={home}
@@ -57,7 +58,7 @@ const LandingPageContainer = () => {
             url="https://oceanprotocol.com/"
           />
           <LandingPageTile
-            background={ocean}
+            background={waves}
             text="Ocean Protocol Home"
             url="https://oceanprotocol.com/"
           />
