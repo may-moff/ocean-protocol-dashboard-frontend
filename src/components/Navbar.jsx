@@ -40,7 +40,7 @@ function Navbar({
           </div>
           <div className="flex items-center space-x-6 ">
             {auth ? (
-              <div className="flex">
+              <div className="flex items-center">
                 <div className="mx-10">
                   <Profile
                     auth={auth}

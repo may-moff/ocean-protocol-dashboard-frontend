@@ -20,7 +20,7 @@ const NewJob = ({ content, setContent, pubblicAddress }) => {
 
   return (
     <div className="text-center p-6">
-      <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-1 m-1 ">
+      <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-2 m-1 ">
         Create New Job
         {logReady && (
           <div className="m-2">
