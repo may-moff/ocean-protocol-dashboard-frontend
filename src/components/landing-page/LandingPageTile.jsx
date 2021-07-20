@@ -31,7 +31,7 @@ const LandingPageTile = (props) => {
           // backgroundImage: `url(${background})`,
           // backgroundRepeat: 'no-repeat',
           width: '500px',
-          height: '210px',
+          height: '150px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -42,7 +42,7 @@ const LandingPageTile = (props) => {
         <img
           src={background}
           style={{
-            height: '180px'
+            height: '80%'
           }}
         />
         <div>{text}</div>

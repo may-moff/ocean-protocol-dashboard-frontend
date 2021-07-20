@@ -1,10 +1,12 @@
 import React from 'react'
 import LandingPageTile from './LandingPageTile'
-import home from './home.gif'
+import home from './house-slow.gif'
 import metamask from './logo-metamask-1.png'
 import logo from './template-animation.gif'
 import ocean from './ocean-transparent.gif'
-import waves from './waves.svg'
+// import waves from './waves.svg'
+import manta from './mantaray-grid.svg'
+import dao from './dao.png'
 
 const LandingPageContainer = () => {
   return (
@@ -38,7 +40,7 @@ const LandingPageContainer = () => {
           flexWrap: 'wrap'
         }}
       >
-        <img src={logo} style={{ height: '1000px' }} />
+        <img src={logo} style={{ height: '75vh' }} />
         <div style={{ flexDirection: 'column', padding: '50px' }}>
           <LandingPageTile
             background={home}
@@ -58,9 +60,14 @@ const LandingPageContainer = () => {
             url="https://oceanprotocol.com/"
           />
           <LandingPageTile
-            background={waves}
-            text="Ocean Protocol Home"
-            url="https://oceanprotocol.com/"
+            background={manta}
+            text="Ocean Market"
+            url="https://market.oceanprotocol.com/"
+          />
+          <LandingPageTile
+            background={dao}
+            text="Get involved in the project"
+            url="https://oceanprotocol.com/dao"
           />
         </div>
       </div>
