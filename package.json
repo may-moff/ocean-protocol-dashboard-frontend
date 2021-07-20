@@ -24,6 +24,7 @@
     "react-metamask-login-button": "^1.0.18",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
+    "react-table": "^7.7.0",
     "recharts": "^2.0.9",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4",
     "tailwindcss-gradients": "^3.0.0",

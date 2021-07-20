@@ -19,12 +19,12 @@ export const Profile = ({ auth, setAuthorization, setPublicAddress }) => {
   }, [publicAddress, id])
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-center justify-items-center items-center">
       <div className="mx-3">
         <Blockies seed={publicAddress} />
       </div>
 
-      <div className=" text-lg">{publicAddress}</div>
+      <div className="place-content-center text-base">{publicAddress}</div>
     </div>
   )
 }
