@@ -5,7 +5,7 @@ import ButtonPrimary from '../ButtonPrimary'
 import axios from 'axios'
 import LogViewer from './LogViewer'
 
-function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
+function FileUpload({ setContent, publicAddress, logReady, setLogReady }) {
   const [selectedFile, setSelectedFile] = useState(null)
   const [displayUrl, setDisplayUrl] = useState(null)
   const [jobName, setJobName] = useState('')
@@ -28,7 +28,7 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
     e.preventDefault()
 
     const newAlgo = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/users/${pubblicAddress}/algo`,
+      `${process.env.REACT_APP_BACKEND_URL}/users/${publicAddress.userId}/algo`,
       {
         algoName: algoName
       }

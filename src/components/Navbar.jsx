@@ -30,7 +30,7 @@ function Navbar({
                 <NavLink to="/dashboard">Dashboard</NavLink>
               </div>
               <div className="transform hover:-translate-y-0.5 duration-300">
-                <NavLink to="/NewJob">New Job</NavLink>
+                <NavLink to="/newjob">New Job</NavLink>
               </div>
 
               {/* <div className="transform hover:-translate-y-0.5 duration-300">

@@ -4,7 +4,7 @@ import FormParse from '../FormParse'
 import ButtonPrimary from '../ButtonPrimary'
 import axios from 'axios'
 
-const NewJob = ({ content, setContent, pubblicAddress }) => {
+const NewJob = ({ content, setContent, publicAddress }) => {
   const [logReady, setLogReady] = useState(false)
   const [removedItemsHysotry, setRemovedItemsHistory] = useState([])
 
@@ -35,7 +35,7 @@ const NewJob = ({ content, setContent, pubblicAddress }) => {
             logReady={logReady}
             setLogReady={setLogReady}
             setContent={setContent}
-            pubblicAddress={pubblicAddress}
+            publicAddress={publicAddress}
           />
         </div>
         <div className="flex justify-center justify-items-center w-3/5 ">

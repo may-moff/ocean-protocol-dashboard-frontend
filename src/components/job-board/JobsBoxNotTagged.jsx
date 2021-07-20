@@ -7,26 +7,22 @@ const JobsBoxNotTagged = () => {
   // const getJobs = ({ publicAddress }) =>
   //   fetch(
   //     `${process.env.REACT_APP_BACKEND_URL}/users/${publicAddress}/jobs`
-  //   ).then((response) => response.json())
-
-  // let [data, setData] = useState([])
-
-  // useEffect(() => {
-  //   getJobs().then((data) => setData(data))
-  // }, [])
-
-  const stuff = ({ publicAddress }) => {
-    axios
-      .get(
-        `${process.env.REACT_APP_BACKEND_URL}/users/${publicAddress}/jobs/index`
-      )
-      .then((resp) => {
-        console.log(resp.data)
-      })
-
-    return (
-      <div>
-        {data.map((data, i) => (
+  // //   ).then((response) => response.json())
+  // // let [data, setData] = useState([])
+  // // useEffect(() => {
+  // //   getJobs().then((data) => setData(data))
+  // // }, [])
+  // const stuff = ({ publicAddress }) => {
+  //   axios
+  //     .get(
+  //       `${process.env.REACT_APP_BACKEND_URL}/users/${publicAddress}/jobs/index`
+  //     )
+  //     .then((resp) => {
+  //       console.log(resp.data)
+  //     })
+  return (
+    <div>
+      {/* /* {data.map((data, i) => (
           <Card key={i} additionalClasses="flex justify-center">
             <Job
               title={data.jobName}
@@ -36,9 +32,9 @@ const JobsBoxNotTagged = () => {
             />
           </Card>
         ))}
-        <h1></h1>
-      </div>
-    )
-  }
+        <h1></h1> */}
+    </div>
+  )
 }
+
 export default JobsBoxNotTagged

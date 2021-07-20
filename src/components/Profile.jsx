@@ -13,8 +13,9 @@ export const Profile = ({ auth, setAuthorization, setPublicAddress }) => {
     if (!publicAddress) {
       setAuthorization(false)
     } else {
+      console.log(publicAddress, id)
       setAuthorization(true)
-      setPublicAddress({ publicAddress, userId: id })
+      setPublicAddress({ address: publicAddress, userId: id })
     }
   }, [publicAddress])
 

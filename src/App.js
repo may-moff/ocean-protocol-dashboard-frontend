@@ -13,7 +13,7 @@ const LS_KEY = 'login-with-metamask:auth'
 export const App = () => {
   const [state, setState] = useState({})
   const [authorization, setAuthorization] = useState(false)
-  const [publicAddress, setPublicAddress] = useState('')
+  const [publicAddress, setPublicAddress] = useState({})
   const [content, setContent] = useState({
     parseKeys: [{ key: '', dataType: '', value: '', visualize: false }],
     result: {}
@@ -71,12 +71,12 @@ export const App = () => {
         <Route path="/jobs/:id">
           <JobDetail content={content} setContent={setContent} />
         </Route>
-        <Route path="/NewJob">
+        <Route path="/newjob">
           {authorization ? (
             <NewJob
               content={content}
               setContent={setContent}
-              pubblicAddress={publicAddress}
+              publicAddress={publicAddress}
             />
           ) : (
             <div className="flex justify-center justify-items-center mt-12 bg-balertred">
