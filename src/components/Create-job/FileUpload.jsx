@@ -1,17 +1,13 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useContext } from 'react'
 import NewjobForm from './NewjobForm'
 import { useDropzone } from 'react-dropzone'
 import ButtonPrimary from '../ButtonPrimary'
 import axios from 'axios'
 import LogViewer from './LogViewer'
 import { SET_STATE } from '../../reducers-actions/formReducerActions'
-
-function FileUpload({
-  dispatchCurrentJob,
-  pubblicAddress,
-  logReady,
-  setLogReady
-}) {
+import UserContext from '../../contexts/UserContext'
+function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
+  const { pubblicAddress } = useContext(UserContext)
   const [selectedFile, setSelectedFile] = useState(null)
   const [displayUrl, setDisplayUrl] = useState(null)
   const [jobName, setJobName] = useState('')
@@ -51,7 +47,10 @@ function FileUpload({
           //   value: response.data.result[e.key],
           // }));
           // const defaultKeys = response.data.parseKeys.map((e) => e.key);
-          dispatchCurrentJob({ type: SET_STATE, payload: response.data })
+          dispatchCurrentJob({
+            type: SET_STATE,
+            payload: { ...response.data, removedItemsHistory: [] }
+          })
           // setContent({ ...response.data })
           setLogReady(true)
         })

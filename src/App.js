@@ -7,6 +7,7 @@ import JobDetail from './components/JobDetail'
 import Dashboard from './components/job-board/Dashboard'
 import NewJob from './components/Create-job/NewJob'
 import formReducer from './reducers/formReducer'
+import UserContext from './contexts/UserContext'
 const LS_KEY = 'login-with-metamask:auth'
 
 const currentJobInitializer = {
@@ -18,16 +19,14 @@ const currentJobInitializer = {
 export const App = () => {
   const [state, setState] = useState({})
   const [authorization, setAuthorization] = useState(false)
-  const [publicAddress, setPublicAddress] = useState('')
+  const [publicAddress, setPublicAddress] = useState({
+    publicAddress: '',
+    userId: ''
+  })
   const [currentJob, dispatchCurrentJob] = useReducer(
     formReducer,
     currentJobInitializer
   )
-  const [content, setContent] = useState({
-    parseKeys: [],
-    result: {},
-    removedItemsHistory: []
-  })
 
   let history = useHistory()
 
@@ -37,7 +36,8 @@ export const App = () => {
     setState({ auth })
   }, [])
 
-  // useEffect(() => console.log(content), [content])
+  useEffect(() => console.log(currentJob), [currentJob])
+  useEffect(() => console.log(publicAddress), [publicAddress])
 
   const handleLoggedIn = (auth) => {
     console.log(auth)
@@ -55,7 +55,7 @@ export const App = () => {
   const { auth } = state
 
   return (
-    <>
+    <UserContext.Provider value={publicAddress}>
       <Navbar
         onLoggedIn={handleLoggedIn}
         auth={auth}
@@ -98,7 +98,7 @@ export const App = () => {
           )}
         </Route>
       </Switch>
-    </>
+    </UserContext.Provider>
   )
 }
 

@@ -2,7 +2,6 @@ import {
   ADD_ROW,
   REMOVE_ROW,
   UNDO_REMOVE,
-  HANDLE_INPUT_CHANGE,
   SET_STATE
 } from '../reducers-actions/formReducerActions'
 
@@ -14,7 +13,7 @@ const formReducer = (state, action) => {
         ...state,
         parseKeys: [
           ...state.parseKeys,
-          { key: '', dataType: '', value: '', visualize: true }
+          { key: action.payload, dataType: '', value: '', visualize: true }
         ]
       }
     case REMOVE_ROW:
@@ -38,10 +37,6 @@ const formReducer = (state, action) => {
         removedItemsHistory: removedList,
         parseKeys: parseList
       }
-    case HANDLE_INPUT_CHANGE:
-      const { name, value } = action.element.target
-      parseList[action.index][name] = value
-      return { ...state, parseKeys: parseList }
     case SET_STATE:
       return action.payload
     default:

@@ -7,17 +7,16 @@ import { SET_STATE } from '../../reducers-actions/formReducerActions'
 
 const NewJob = ({ currentJob, dispatchCurrentJob, pubblicAddress }) => {
   const [logReady, setLogReady] = useState(false)
-  // const [removedItemsHystory, setRemovedItemsHistory] = useState([])
 
   const handleSubmit = async () => {
-    // setRemovedItemsHistory([])
-
     const secondParse = await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/users/${currentJob.userId}/algo/${currentJob.algorithmId}`,
       currentJob
     )
-    dispatchCurrentJob({ type: SET_STATE, payload: secondParse.data })
-    // setContent(secondParse.data)
+    dispatchCurrentJob({
+      type: SET_STATE,
+      payload: { ...secondParse.data, removedItemsHistory: [] }
+    })
   }
 
   return (
