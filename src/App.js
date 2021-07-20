@@ -7,6 +7,7 @@ import Home from './components/Home'
 import JobDetail from './components/JobDetail'
 import Dashboard from './components/job-board/Dashboard'
 import NewJob from './components/Create-job/NewJob'
+import LandingPageContainer from './components/landing-page/LandingPageContainer'
 
 const LS_KEY = 'login-with-metamask:auth'
 
@@ -83,6 +84,16 @@ export const App = () => {
               <h1 className="text-white">Please login to create a new job</h1>
             </div>
           )}
+        </Route>
+
+        <Route path="/landing">
+          <LandingPageContainer
+            onLoggedIn={handleLoggedIn}
+            auth={auth}
+            onLoggedOut={handleLoggedOut}
+            setAuthorization={setAuthorization}
+            setPublicAddress={setPublicAddress}
+          />
         </Route>
       </Switch>
     </>
