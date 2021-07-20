@@ -1,6 +1,6 @@
 import React from 'react'
 import JobTitle from './JobTitle'
-import JobStatus from './JobStatus'
+// import JobStatus from './JobStatus'
 import ButtonDefault from '../ButtonDefault'
 import { NavLink } from 'react-router-dom'
 
@@ -11,9 +11,9 @@ const Job = (props) => {
         <div className="font-bold">
           <JobTitle title={props.jobName} />
         </div>
-        <div className="">
+        {/* <div className="">
           <JobStatus status={props.status} />
-        </div>
+        </div> */}
       </div>
       <div className="justify-center m-4 overflow-hidden">
         <p>Date of Purchase </p>
