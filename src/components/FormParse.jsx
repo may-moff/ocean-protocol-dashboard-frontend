@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react'
 import UserContext from '../contexts/UserContext'
 import axios from 'axios'
 import {
-  ADD_ROW,
   REMOVE_ROW,
   UNDO_REMOVE,
   SET_STATE
@@ -21,7 +20,22 @@ function FormParse({ currentJob, dispatchCurrentJob }) {
       `${process.env.REACT_APP_BACKEND_URL}/users/${userId}/algo/${currentJob.algorithmId}`,
       state
     )
-    return secondParse
+    return secondParse.data
+  }
+
+  const handleParse = async () => {
+    const updatedCurrentJob = {
+      ...currentJob,
+      parseKeys: [
+        ...currentJob.parseKeys,
+        { key: newUserKey, dataType: '', value: '', visualize: true }
+      ]
+    }
+    dispatchCurrentJob({
+      type: SET_STATE,
+      payload: await handleSubmit(updatedCurrentJob)
+    })
+    setNewUserKey('')
   }
 
   return (
@@ -36,26 +50,10 @@ function FormParse({ currentJob, dispatchCurrentJob }) {
         />
         <button
           className=" bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
-          onClick={async () => {
-            dispatchCurrentJob({ type: ADD_ROW, payload: newUserKey })
-            dispatchCurrentJob({
-              type: SET_STATE,
-              payload: await handleSubmit()
-            })
-          }}
+          onClick={() => handleParse()}
         >
           Add Row
         </button>
-      </div>
-      <div className="flex justify-around m-2">
-        {/* {currentJob.parseKeys.length > 0 && (
-          <button
-            className=" bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
-            onClick={() => dispatchCurrentJob({ type: ADD_ROW })}
-          >
-            Add Row
-          </button>
-        )} */}
         {currentJob.removedItemsHistory.length > 0 && (
           <button
             className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
@@ -65,6 +63,7 @@ function FormParse({ currentJob, dispatchCurrentJob }) {
           </button>
         )}
       </div>
+
       {currentJob.parseKeys.length > 0 && (
         <div className="flex border rounded m-1 font-bold p-1">
           <div className="border-1 p-1 w-2/12">Key:</div>
@@ -84,13 +83,6 @@ function FormParse({ currentJob, dispatchCurrentJob }) {
                     placeholder="Key"
                     readOnly
                     value={normalizeValue(x.key)}
-                    // onChange={(e) =>
-                    //   dispatchCurrentJob({
-                    //     action: HANDLE_INPUT_CHANGE,
-                    //     element: e,
-                    //     index: i
-                    //   })
-                    // }
                   />
 
                   <input
@@ -99,13 +91,6 @@ function FormParse({ currentJob, dispatchCurrentJob }) {
                     placeholder="Type"
                     readOnly
                     value={x.dataType}
-                    // onChange={(e) =>
-                    //   dispatchCurrentJob({
-                    //     action: HANDLE_INPUT_CHANGE,
-                    //     element: e,
-                    //     index: i
-                    //   })
-                    // }
                   />
                   <input
                     className="border-2 p-2 w-7/12"

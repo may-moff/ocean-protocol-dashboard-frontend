@@ -1,5 +1,4 @@
 import {
-  ADD_ROW,
   REMOVE_ROW,
   UNDO_REMOVE,
   SET_STATE
@@ -8,14 +7,6 @@ import {
 const formReducer = (state, action) => {
   const parseList = [...state.parseKeys]
   switch (action.type) {
-    case ADD_ROW:
-      return {
-        ...state,
-        parseKeys: [
-          ...state.parseKeys,
-          { key: action.payload, dataType: '', value: '', visualize: true }
-        ]
-      }
     case REMOVE_ROW:
       const removedItem = state.parseKeys[action.index]
       parseList[action.index].visualize = false

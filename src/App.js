@@ -36,9 +36,6 @@ export const App = () => {
     setState({ auth })
   }, [])
 
-  useEffect(() => console.log(currentJob), [currentJob])
-  useEffect(() => console.log(publicAddress), [publicAddress])
-
   const handleLoggedIn = (auth) => {
     console.log(auth)
     localStorage.setItem(LS_KEY, JSON.stringify(auth))
@@ -89,7 +86,6 @@ export const App = () => {
             <NewJob
               currentJob={currentJob}
               dispatchCurrentJob={dispatchCurrentJob}
-              pubblicAddress={publicAddress}
             />
           ) : (
             <div className="flex justify-center justify-items-center mt-12 bg-balertred">

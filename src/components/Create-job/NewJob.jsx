@@ -5,7 +5,7 @@ import ButtonPrimary from '../ButtonPrimary'
 import axios from 'axios'
 import { SET_STATE } from '../../reducers-actions/formReducerActions'
 
-const NewJob = ({ currentJob, dispatchCurrentJob, pubblicAddress }) => {
+const NewJob = ({ currentJob, dispatchCurrentJob }) => {
   const [logReady, setLogReady] = useState(false)
 
   const handleSubmit = async () => {
@@ -36,7 +36,6 @@ const NewJob = ({ currentJob, dispatchCurrentJob, pubblicAddress }) => {
             logReady={logReady}
             setLogReady={setLogReady}
             dispatchCurrentJob={dispatchCurrentJob}
-            pubblicAddress={pubblicAddress}
           />
         </div>
         <div className="flex justify-center justify-items-center w-3/5 ">
@@ -44,8 +43,6 @@ const NewJob = ({ currentJob, dispatchCurrentJob, pubblicAddress }) => {
             logReady={logReady}
             currentJob={currentJob}
             dispatchCurrentJob={dispatchCurrentJob}
-            /* removedItemsHystory={removedItemsHystory}
-            setRemovedItemsHistory={setRemovedItemsHistory} */
           />
         </div>
       </div>
