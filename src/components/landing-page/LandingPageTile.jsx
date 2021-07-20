@@ -32,12 +32,12 @@ const LandingPageTile = (props) => {
           // backgroundImage: `url(${background})`,
           // backgroundRepeat: 'no-repeat',
           width: '500px',
-          height: '200px',
+          height: '210px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          alignItems: 'center',
-          border: '3px'
+          alignItems: 'center'
+          // border: '3px'
         }}
       >
         <img
