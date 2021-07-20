@@ -1,0 +1,5 @@
+export const ADD_ROW = 'ADD_ROW'
+export const REMOVE_ROW = 'REMOVE_ROW'
+export const UNDO_REMOVE = 'UNDO_REMOVE'
+export const HANDLE_INPUT_CHANGE = 'HANDLE_INPUT_CHANGE'
+export const SET_STATE = 'SET_STATE'

@@ -3,7 +3,7 @@ import React from 'react'
 // import ChartTime from './ChartTime'
 import FormParse from './FormParse'
 
-const JobDetail = ({ content, setContent }) => {
+const JobDetail = ({ currentJob, dispatchCurrentJob }) => {
   // const { id } = useParams()
   return (
     <div className="text-center p-6 ">
@@ -12,7 +12,10 @@ const JobDetail = ({ content, setContent }) => {
       </div>
       <div className=" flex justify-between justify-items-center h-screen">
         <div className="p-4 m-4 ">
-          <FormParse content={content} setContent={setContent} />
+          <FormParse
+            currentJob={currentJob}
+            dispatchCurrentJob={dispatchCurrentJob}
+          />
         </div>
         {/* <div className="flex flex-col justify-center justify-items-center ">
           <div className="flex justify-center justify-items-center"></div>

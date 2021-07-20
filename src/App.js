@@ -1,22 +1,32 @@
 import './App.css'
 import { Switch, Route, useHistory } from 'react-router-dom'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import Navbar from './components/Navbar'
-
 import Home from './components/Home'
 import JobDetail from './components/JobDetail'
 import Dashboard from './components/job-board/Dashboard'
 import NewJob from './components/Create-job/NewJob'
-
+import formReducer from './reducers/formReducer'
 const LS_KEY = 'login-with-metamask:auth'
+
+const currentJobInitializer = {
+  parseKeys: [],
+  result: {},
+  removedItemsHistory: []
+}
 
 export const App = () => {
   const [state, setState] = useState({})
   const [authorization, setAuthorization] = useState(false)
   const [publicAddress, setPublicAddress] = useState('')
+  const [currentJob, dispatchCurrentJob] = useReducer(
+    formReducer,
+    currentJobInitializer
+  )
   const [content, setContent] = useState({
-    parseKeys: [{ key: '', dataType: '', value: '', visualize: false }],
-    result: {}
+    parseKeys: [],
+    result: {},
+    removedItemsHistory: []
   })
 
   let history = useHistory()
@@ -27,7 +37,7 @@ export const App = () => {
     setState({ auth })
   }, [])
 
-  useEffect(() => console.log(content), [content])
+  // useEffect(() => console.log(content), [content])
 
   const handleLoggedIn = (auth) => {
     console.log(auth)
@@ -69,13 +79,16 @@ export const App = () => {
           )}
         </Route>
         <Route path="/jobs/:id">
-          <JobDetail content={content} setContent={setContent} />
+          <JobDetail
+            currentJob={currentJob}
+            dispatchCurrentJob={dispatchCurrentJob}
+          />
         </Route>
         <Route path="/NewJob">
           {authorization ? (
             <NewJob
-              content={content}
-              setContent={setContent}
+              currentJob={currentJob}
+              dispatchCurrentJob={dispatchCurrentJob}
               pubblicAddress={publicAddress}
             />
           ) : (

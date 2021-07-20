@@ -4,8 +4,14 @@ import { useDropzone } from 'react-dropzone'
 import ButtonPrimary from '../ButtonPrimary'
 import axios from 'axios'
 import LogViewer from './LogViewer'
+import { SET_STATE } from '../../reducers-actions/formReducerActions'
 
-function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
+function FileUpload({
+  dispatchCurrentJob,
+  pubblicAddress,
+  logReady,
+  setLogReady
+}) {
   const [selectedFile, setSelectedFile] = useState(null)
   const [displayUrl, setDisplayUrl] = useState(null)
   const [jobName, setJobName] = useState('')
@@ -45,7 +51,8 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
           //   value: response.data.result[e.key],
           // }));
           // const defaultKeys = response.data.parseKeys.map((e) => e.key);
-          setContent({ ...response.data })
+          dispatchCurrentJob({ type: SET_STATE, payload: response.data })
+          // setContent({ ...response.data })
           setLogReady(true)
         })
         .catch((error) => console.error(error))
