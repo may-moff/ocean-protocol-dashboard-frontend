@@ -59,7 +59,7 @@ export const App = () => {
         </Route>
         <Route path="/dashboard">
           {authorization ? (
-            <Dashboard />
+            <Dashboard publicAddress={publicAddress} />
           ) : (
             <div className="flex justify-center justify-items-center mt-12 bg-balertred">
               <h1 className="text-white">

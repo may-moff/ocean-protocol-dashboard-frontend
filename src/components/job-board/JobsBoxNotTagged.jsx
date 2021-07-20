@@ -1,9 +1,9 @@
 import { React } from 'react'
-// import axios from 'axios'
+import axios from 'axios'
 import Job from './Job'
 import Card from '../Card'
 
-const JobsBoxNotTagged = () => {
+const JobsBoxNotTagged = ({ publicAddress }) => {
   // const getJobs = ({ publicAddress }) =>
   //   fetch(
   //     `${process.env.REACT_APP_BACKEND_URL}/users/${publicAddress}/jobs`
@@ -12,14 +12,15 @@ const JobsBoxNotTagged = () => {
   // // useEffect(() => {
   // //   getJobs().then((data) => setData(data))
   // // }, [])
-  // const stuff = ({ publicAddress }) => {
-  //   axios
-  //     .get(
-  //       `${process.env.REACT_APP_BACKEND_URL}/users/${publicAddress}/jobs/index`
-  //     )
-  //     .then((resp) => {
-  //       console.log(resp.data)
-  //     })
+
+  axios
+    .get(
+      `${process.env.REACT_APP_BACKEND_URL}/users/${publicAddress.userId}/jobs`
+    )
+    .then((resp) => {
+      console.log(resp.data)
+    })
+
   return (
     <div>
       {/* /* {data.map((data, i) => (
