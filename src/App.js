@@ -3,7 +3,6 @@ import { Switch, Route, useHistory } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 
-import Home from './components/Home'
 import JobDetail from './components/JobDetail'
 import Dashboard from './components/job-board/Dashboard'
 import NewJob from './components/Create-job/NewJob'
@@ -55,8 +54,8 @@ export const App = () => {
         setPublicAddress={setPublicAddress}
       />
       <Switch>
-        <Route path="/home">
-          <Home />
+        <Route exact path="/">
+          <LandingPageContainer />
         </Route>
         <Route path="/dashboard">
           {authorization ? (
@@ -84,16 +83,6 @@ export const App = () => {
               <h1 className="text-white">Please login to create a new job</h1>
             </div>
           )}
-        </Route>
-
-        <Route exact path="/">
-          <LandingPageContainer
-            onLoggedIn={handleLoggedIn}
-            auth={auth}
-            onLoggedOut={handleLoggedOut}
-            setAuthorization={setAuthorization}
-            setPublicAddress={setPublicAddress}
-          />
         </Route>
       </Switch>
     </>

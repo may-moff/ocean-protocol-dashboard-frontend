@@ -28,15 +28,12 @@ const LandingPageTile = (props) => {
         }}
         class="shadow-2xl flex space-x-4 text-xl transform hover:scale-110 motion-reduce:transform-none"
         style={{
-          // backgroundImage: `url(${background})`,
-          // backgroundRepeat: 'no-repeat',
-          width: '500px',
+          width: '350px',
           height: '150px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center'
-          // border: '3px'
         }}
       >
         <img
