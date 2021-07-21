@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import FileUpload from '../Create-job/FileUpload'
+import FileUpload from '../new-job/FileUpload'
 import FormParse from '../FormParse'
-import ButtonPrimary from '../Atoms/ButtonPrimary'
+import ButtonPrimary from '../atoms/ButtonPrimary'
 import axios from 'axios'
 import { SET_STATE } from '../../reducers-actions/formReducerActions'
 

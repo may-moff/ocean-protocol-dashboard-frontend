@@ -1,9 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import logo from '../Assets/logo.svg'
+import logo from '../assets/logo.svg'
 import { Login } from './Login'
 import { Profile } from './Profile'
-import ButtonDefault from './Atoms/ButtonDefault'
+import ButtonDefault from './atoms/ButtonDefault'
 
 function Navbar({
   onLoggedIn,

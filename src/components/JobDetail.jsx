@@ -1,7 +1,7 @@
 import React from 'react'
 import ChartTime from './ChartTime'
-import Table from './JobDetail/Table/Table'
-import SectionHeader from './Job-dashboard/SectionHeader'
+import Table from './job-detail/Table/Table'
+import SectionHeader from './jobs-dashboard/SectionHeader'
 
 const JobDetail = () => {
   return (

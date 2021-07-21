@@ -1,7 +1,7 @@
 import React from 'react'
-import ButtonDefault from '../Atoms/ButtonDefault'
+import ButtonDefault from '../atoms/ButtonDefault'
 import { NavLink } from 'react-router-dom'
-import Card from '../Atoms/Card'
+import Card from '../atoms/Card'
 
 const Job = ({ item }) => {
   const { date, jobName, algorithmId } = item

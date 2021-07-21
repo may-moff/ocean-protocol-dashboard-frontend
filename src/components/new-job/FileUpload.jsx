@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useContext } from 'react'
 import NewjobForm from './NewjobForm'
 import { useDropzone } from 'react-dropzone'
-import ButtonPrimary from '../Atoms/ButtonPrimary'
+import ButtonPrimary from '../atoms/ButtonPrimary'
 import axios from 'axios'
 import LogViewer from './LogViewer'
 import { SET_STATE } from '../../reducers-actions/formReducerActions'
