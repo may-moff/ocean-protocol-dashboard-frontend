@@ -8,7 +8,7 @@ import { SET_STATE } from '../../reducers-actions/formReducerActions'
 import UserContext from '../../contexts/UserContext'
 
 function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
-  const { userId } = useContext(UserContext)
+  const { userId, accessToken } = useContext(UserContext)
   const [selectedFile, setSelectedFile] = useState(null)
   const [displayUrl, setDisplayUrl] = useState(null)
   const [jobName, setJobName] = useState('')
@@ -38,9 +38,10 @@ function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
         url: `${process.env.REACT_APP_BACKEND_URL}/users/${newAlgo.data.userId}/jobs`,
         method: 'POST',
         data: formdata,
-        headers: new Headers({
-          enctype: 'multipart/form-data'
-        })
+        headers: {
+          enctype: 'multipart/form-data',
+          'ocean-auth-token': accessToken
+        }
       }
 
       await axios(httpRequestOptions)
