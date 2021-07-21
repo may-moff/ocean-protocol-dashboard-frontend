@@ -8,6 +8,8 @@ import Dashboard from './components/job-board/Dashboard'
 import NewJob from './components/Create-job/NewJob'
 import formReducer from './reducers/formReducer'
 import UserContext from './contexts/UserContext'
+import LandingPageContainer from './components/landing-page/LandingPageContainer'
+
 const LS_KEY = 'login-with-metamask:auth'
 
 const currentJobInitializer = {
@@ -62,7 +64,7 @@ export const App = () => {
       />
       <Switch>
         <Route exact path="/">
-          <Home />
+          <LandingPageContainer />
         </Route>
         <Route path="/dashboard">
           {authorization ? (
