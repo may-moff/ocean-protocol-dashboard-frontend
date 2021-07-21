@@ -1,5 +1,5 @@
 import React from 'react'
-import Waves from './Waves.jsx'
+import Waves from './Atoms/Waves.jsx'
 
 function Home() {
   return (

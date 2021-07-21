@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import logo from '../Assets/logo.svg'
 import { Login } from './Login'
 import { Profile } from './Profile'
-import ButtonDefault from './ButtonDefault'
+import ButtonDefault from './Atoms/ButtonDefault'
 
 function Navbar({
   onLoggedIn,
