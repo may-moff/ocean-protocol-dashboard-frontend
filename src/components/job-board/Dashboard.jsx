@@ -1,17 +1,15 @@
 import React from 'react'
 import JobsBoxNotTagged from './JobsBoxNotTagged'
-// import JobsBoxHistory from './JobsBoxHistory'
 import ChartTotalJobs from '../ChartTotalJobs'
+import SectionHead from './SectionHead'
 
-const Dashboard = ({ publicAddress }) => {
+const Dashboard = () => {
   return (
     <div className="text-center p-6 ">
-      <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-6 m-6 ">
-        Total Jobs
-      </div>
+      <SectionHead headline="Total Jobs" />
       <ChartTotalJobs />
-      <JobsBoxNotTagged publicAddress={publicAddress} />
-      {/* <JobsBoxHistory /> */}
+      <SectionHead headline="Jobs Overview" />
+      <JobsBoxNotTagged />
     </div>
   )
 }
