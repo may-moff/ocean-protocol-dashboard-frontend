@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
-// import Job from './Job'
-import Card from '../Card'
+import Job from './Job'
 import UserContext from '../../contexts/UserContext'
 
 const JobsBoxNotTagged = () => {
@@ -20,25 +19,18 @@ const JobsBoxNotTagged = () => {
 
   return (
     jobList && (
-      <div>
-        {jobList.map((item, i) => (
-          <>
-            <h1>{item.date}</h1>
-            <h1>{item.jobName}</h1>
-            <h1>{item.algorithmId.algoName}</h1>
-            {/* <h1>{item.algoName}</h1> */}
-          </>
-          // <Card
-          //   key={i}
-          //   additionalClasses="flex justify-center"
-          //   nunu={item.jobName}
-          //   nana={item.date}
-          //   // content={content}
-          //   // setContent={setContent}
-          // ></Card>
-        ))}
-        <h1>REMEMBER MEEEE!!!!</h1>
-      </div>
+      <>
+        <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-6 m-6 ">
+          Job overview
+        </div>
+        <div className="container mx-auto flex justify-around">
+          <div className="grid grid-cols-3 gap-8">
+            {jobList.map((item, i) => (
+              <Job key={i} item={item} />
+            ))}
+          </div>
+        </div>
+      </>
     )
   )
 }
