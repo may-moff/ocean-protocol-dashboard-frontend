@@ -6,7 +6,7 @@ export const Profile = ({ auth, setAuthorization, setPublicAddress }) => {
   const { accessToken } = auth
 
   const {
-    payload: { publicAddress }
+    payload: { publicAddress, id }
   } = jwt_decode(accessToken)
 
   useEffect(() => {
@@ -14,9 +14,9 @@ export const Profile = ({ auth, setAuthorization, setPublicAddress }) => {
       setAuthorization(false)
     } else {
       setAuthorization(true)
-      setPublicAddress(publicAddress)
+      setPublicAddress({ publicAddress, userId: id })
     }
-  }, [publicAddress])
+  }, [publicAddress, id])
 
   return (
     <div className="flex justify-center justify-items-center items-center">

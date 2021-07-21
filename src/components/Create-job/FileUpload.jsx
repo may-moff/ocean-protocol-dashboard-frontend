@@ -1,11 +1,14 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useContext } from 'react'
 import NewjobForm from './NewjobForm'
 import { useDropzone } from 'react-dropzone'
 import ButtonPrimary from '../ButtonPrimary'
 import axios from 'axios'
 import LogViewer from './LogViewer'
+import { SET_STATE } from '../../reducers-actions/formReducerActions'
+import UserContext from '../../contexts/UserContext'
 
-function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
+function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
+  const { publicAddress } = useContext(UserContext)
   const [selectedFile, setSelectedFile] = useState(null)
   const [displayUrl, setDisplayUrl] = useState(null)
   const [jobName, setJobName] = useState('')
@@ -18,7 +21,7 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
     const inputValidation = [jobName, dataName, algoName]
     if (inputValidation.every((e) => e)) {
       const newAlgo = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/users/${pubblicAddress}/algo`,
+        `${process.env.REACT_APP_BACKEND_URL}/users/${publicAddress}/algo`,
         {
           name: algoName
         }
@@ -40,12 +43,10 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
 
       await axios(httpRequestOptions)
         .then((response) => {
-          // const displayContent = response.data.parseKeys.map((e) => ({
-          //   ...e,
-          //   value: response.data.result[e.key],
-          // }));
-          // const defaultKeys = response.data.parseKeys.map((e) => e.key);
-          setContent({ ...response.data })
+          dispatchCurrentJob({
+            type: SET_STATE,
+            payload: response.data
+          })
           setLogReady(true)
         })
         .catch((error) => console.error(error))
@@ -55,13 +56,6 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
       )
     }
   }
-
-  // const handleSelect = (e) => {
-  //   setSelectedFile(e.target.files[0]);
-  //   setDisplayUrl({
-  //     file: URL.createObjectURL(e.target.files[0]),
-  //   });
-  // };
 
   const onDrop = useCallback((acceptedFiles) => {
     setSelectedFile(acceptedFiles[0])
@@ -106,8 +100,7 @@ function FileUpload({ setContent, pubblicAddress, logReady, setLogReady }) {
 
       {displayUrl && !logReady && (
         <div className="m-2">
-          {' '}
-          <ButtonPrimary function={handleSubmit} name="Submit" />{' '}
+          <ButtonPrimary function={handleSubmit} name="Submit" />
         </div>
       )}
       {displayUrl && <LogViewer file={displayUrl.file} />}

@@ -3,19 +3,20 @@ import FileUpload from '../Create-job/FileUpload'
 import FormParse from '../FormParse'
 import ButtonPrimary from '../ButtonPrimary'
 import axios from 'axios'
+import { SET_STATE } from '../../reducers-actions/formReducerActions'
 
-const NewJob = ({ content, setContent, pubblicAddress }) => {
+const NewJob = ({ currentJob, dispatchCurrentJob }) => {
   const [logReady, setLogReady] = useState(false)
-  const [removedItemsHysotry, setRemovedItemsHistory] = useState([])
 
   const handleSubmit = async () => {
-    setRemovedItemsHistory([])
-
     const secondParse = await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/users/${content.userId}/algo/${content.algorithmId}`,
-      content
+      `${process.env.REACT_APP_BACKEND_URL}/users/${currentJob.userId}/algo/${currentJob.algorithmId}`,
+      currentJob
     )
-    setContent(secondParse.data)
+    dispatchCurrentJob({
+      type: SET_STATE,
+      payload: { ...secondParse.data, removedItemsHistory: [] }
+    })
   }
 
   return (
@@ -34,17 +35,14 @@ const NewJob = ({ content, setContent, pubblicAddress }) => {
           <FileUpload
             logReady={logReady}
             setLogReady={setLogReady}
-            setContent={setContent}
-            pubblicAddress={pubblicAddress}
+            dispatchCurrentJob={dispatchCurrentJob}
           />
         </div>
         <div className="flex justify-center justify-items-center w-3/5 ">
           <FormParse
             logReady={logReady}
-            content={content}
-            setContent={setContent}
-            removedItemsHysotry={removedItemsHysotry}
-            setRemovedItemsHistory={setRemovedItemsHistory}
+            currentJob={currentJob}
+            dispatchCurrentJob={dispatchCurrentJob}
           />
         </div>
       </div>

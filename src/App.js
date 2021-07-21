@@ -1,23 +1,32 @@
 import './App.css'
 import { Switch, Route, useHistory } from 'react-router-dom'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import Navbar from './components/Navbar'
-
 import Home from './components/Home'
 import JobDetail from './components/JobDetail'
 import Dashboard from './components/job-board/Dashboard'
 import NewJob from './components/Create-job/NewJob'
-
+import formReducer from './reducers/formReducer'
+import UserContext from './contexts/UserContext'
 const LS_KEY = 'login-with-metamask:auth'
+
+const currentJobInitializer = {
+  parseKeys: [],
+  result: {},
+  removedItemsHistory: []
+}
 
 export const App = () => {
   const [state, setState] = useState({})
   const [authorization, setAuthorization] = useState(false)
-  const [publicAddress, setPublicAddress] = useState('')
-  const [content, setContent] = useState({
-    parseKeys: [{ key: '', dataType: '', value: '', visualize: false }],
-    result: {}
+  const [publicAddress, setPublicAddress] = useState({
+    publicAddress: '',
+    userId: ''
   })
+  const [currentJob, dispatchCurrentJob] = useReducer(
+    formReducer,
+    currentJobInitializer
+  )
 
   let history = useHistory()
 
@@ -26,8 +35,6 @@ export const App = () => {
     const auth = ls && JSON.parse(ls)
     setState({ auth })
   }, [])
-
-  useEffect(() => console.log(content), [content])
 
   const handleLoggedIn = (auth) => {
     console.log(auth)
@@ -45,7 +52,7 @@ export const App = () => {
   const { auth } = state
 
   return (
-    <>
+    <UserContext.Provider value={publicAddress}>
       <Navbar
         onLoggedIn={handleLoggedIn}
         auth={auth}
@@ -69,14 +76,16 @@ export const App = () => {
           )}
         </Route>
         <Route path="/jobs/:id">
-          <JobDetail content={content} setContent={setContent} />
+          <JobDetail
+            currentJob={currentJob}
+            dispatchCurrentJob={dispatchCurrentJob}
+          />
         </Route>
         <Route path="/NewJob">
           {authorization ? (
             <NewJob
-              content={content}
-              setContent={setContent}
-              pubblicAddress={publicAddress}
+              currentJob={currentJob}
+              dispatchCurrentJob={dispatchCurrentJob}
             />
           ) : (
             <div className="flex justify-center justify-items-center mt-12 bg-balertred">
@@ -85,7 +94,7 @@ export const App = () => {
           )}
         </Route>
       </Switch>
-    </>
+    </UserContext.Provider>
   )
 }
 

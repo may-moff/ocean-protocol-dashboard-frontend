@@ -1,10 +1,8 @@
 import React from 'react'
-// import { useParams } from 'react-router-dom'
 import ChartTime from './ChartTime'
 import Table from './JobDetail/Table/Table'
 
 const JobDetail = () => {
-  // const { id } = useParams()
   return (
     <div className=" p-6 ">
       <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-2 mb-4 ">
@@ -14,7 +12,7 @@ const JobDetail = () => {
         <div className=" w-1/2">
           <div className="flex flex-col place-content-center font-bold">
             <h1 className="bg-bgreylighter flex place-content-center py-3">
-              Data name:{' '}
+              {'Data name: '}
             </h1>
             <h1 className="bg-bgreylighter flex place-content-center py-3">
               Algorithm name:
