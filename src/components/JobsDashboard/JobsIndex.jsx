@@ -3,7 +3,7 @@ import axios from 'axios'
 import Job from './Job'
 import UserContext from '../../contexts/UserContext'
 
-const JobsBoxNotTagged = () => {
+const JobsIndex = () => {
   const { userId } = useContext(UserContext)
 
   const getJobs = () =>
@@ -32,4 +32,4 @@ const JobsBoxNotTagged = () => {
   )
 }
 
-export default JobsBoxNotTagged
+export default JobsIndex

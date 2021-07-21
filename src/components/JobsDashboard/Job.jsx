@@ -1,12 +1,11 @@
 import React from 'react'
-// import JobTitle from './JobTitle'
-// import JobStatus from './JobStatus'
-import ButtonDefault from '../ButtonDefault'
+import ButtonDefault from '../Atoms/ButtonDefault'
 import { NavLink } from 'react-router-dom'
-import Card from '../Card'
+import Card from '../Atoms/Card'
 
 const Job = ({ item }) => {
   const { date, jobName, algorithmId } = item
+  console.log(jobName)
   return (
     <Card additionalClasses="flex-1 my-1 ">
       <div className="flex justify-center m-2 mx-auto p-4">

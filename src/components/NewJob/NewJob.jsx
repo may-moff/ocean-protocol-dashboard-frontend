@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import FileUpload from '../Create-job/FileUpload'
 import FormParse from '../FormParse'
-import ButtonPrimary from '../ButtonPrimary'
+import ButtonPrimary from '../Atoms/ButtonPrimary'
 import axios from 'axios'
 import { SET_STATE } from '../../reducers-actions/formReducerActions'
 
@@ -21,7 +21,7 @@ const NewJob = ({ currentJob, dispatchCurrentJob }) => {
 
   return (
     <div className="text-center p-6">
-      <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-2 m-1 ">
+      <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-6 m-6 ">
         Create New Job
         {logReady && (
           <div className="m-2">

@@ -1,15 +1,15 @@
 import React from 'react'
-import JobsBoxNotTagged from './JobsBoxNotTagged'
+import JobsIndex from './JobsIndex'
 import ChartTotalJobs from '../ChartTotalJobs'
-import SectionHead from './SectionHead'
+import SectionHeader from './SectionHeader'
 
 const Dashboard = () => {
   return (
     <div className="text-center p-6 ">
-      <SectionHead headline="Total Jobs" />
+      <SectionHeader headline="Total Jobs" />
       <ChartTotalJobs />
-      <SectionHead headline="Jobs Overview" />
-      <JobsBoxNotTagged />
+      <SectionHeader headline="Jobs Overview" />
+      <JobsIndex />
     </div>
   )
 }
