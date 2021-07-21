@@ -2,7 +2,7 @@ import React from 'react'
 import LandingPageTile from './LandingPageTile'
 import ocean from './ocean-transparent.gif'
 import manta from './mantaray-grid.svg'
-import dao from './dao.png'
+import dao from '../../Assets/landing-page/dao.png'
 import pearl from './ocean-pearl.png'
 import logo from './template-animation.gif'
 
