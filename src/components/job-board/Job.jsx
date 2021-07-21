@@ -1,5 +1,5 @@
 import React from 'react'
-import JobTitle from './JobTitle'
+// import JobTitle from './JobTitle'
 // import JobStatus from './JobStatus'
 import ButtonDefault from '../ButtonDefault'
 import { NavLink } from 'react-router-dom'
@@ -9,11 +9,11 @@ const Job = (props) => {
     <div className="flex-1 my-1 ">
       <div className="flex justify-between m-2 mx-auto p-4">
         <div className="font-bold">
-          <JobTitle title={props.jobName} />
+          {/* <JobTitle title={props.jobName} />
         </div>
-        {/* <div className="">
-          <JobStatus status={props.status} />
-        </div> */}
+        <div className="">
+          <JobStatus status={props.date} /> */}
+        </div>
       </div>
       <div className="justify-center m-4 overflow-hidden">
         <p>Date of Purchase </p>
