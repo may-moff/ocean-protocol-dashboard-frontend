@@ -60,7 +60,7 @@ const FormParse = ({ currentJob, dispatchCurrentJob }) => {
             className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
             onClick={() => dispatchCurrentJob({ type: UNDO_REMOVE })}
           >
-            Undo Remove
+            Undo
           </button>
         )}
       </div>
