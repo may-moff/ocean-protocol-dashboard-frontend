@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Blockies from 'react-blockies'
 import jwt_decode from 'jwt-decode'
 
-export const Profile = ({ auth, setAuthorization, setPublicAddress }) => {
+export const Profile = ({ auth, setAuthorization, setCurrentUser }) => {
   const { accessToken } = auth
 
   const {
@@ -13,8 +13,9 @@ export const Profile = ({ auth, setAuthorization, setPublicAddress }) => {
     if (!publicAddress) {
       setAuthorization(false)
     } else {
+      console.log(publicAddress, id)
       setAuthorization(true)
-      setPublicAddress({ publicAddress, userId: id })
+      setCurrentUser({ address: publicAddress, userId: id })
     }
   }, [publicAddress, id])
 

@@ -6,7 +6,8 @@ import {
   UNDO_REMOVE,
   SET_STATE
 } from '../reducers-actions/formReducerActions'
-function FormParse({ currentJob, dispatchCurrentJob }) {
+
+const FormParse = ({ currentJob, dispatchCurrentJob }) => {
   const { userId } = useContext(UserContext)
   const [newUserKey, setNewUserKey] = useState('')
 

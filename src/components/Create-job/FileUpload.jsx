@@ -8,7 +8,7 @@ import { SET_STATE } from '../../reducers-actions/formReducerActions'
 import UserContext from '../../contexts/UserContext'
 
 function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
-  const { publicAddress } = useContext(UserContext)
+  const { userId } = useContext(UserContext)
   const [selectedFile, setSelectedFile] = useState(null)
   const [displayUrl, setDisplayUrl] = useState(null)
   const [jobName, setJobName] = useState('')
@@ -21,7 +21,7 @@ function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
     const inputValidation = [jobName, dataName, algoName]
     if (inputValidation.every((e) => e)) {
       const newAlgo = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/users/${publicAddress}/algo`,
+        `${process.env.REACT_APP_BACKEND_URL}/users/${userId}/algo`,
         {
           name: algoName
         }
@@ -32,6 +32,8 @@ function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
       formdata.append('logBlob', selectedFile, fileExtension)
       formdata.append('algorithmId', newAlgo.data._id)
       formdata.append('dataName', dataName)
+      formdata.append('algoName', algoName)
+      formdata.append('jobName', jobName)
       const httpRequestOptions = {
         url: `${process.env.REACT_APP_BACKEND_URL}/users/${newAlgo.data.userId}/jobs`,
         method: 'POST',

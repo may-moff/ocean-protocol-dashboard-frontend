@@ -19,8 +19,8 @@ const currentJobInitializer = {
 export const App = () => {
   const [state, setState] = useState({})
   const [authorization, setAuthorization] = useState(false)
-  const [publicAddress, setPublicAddress] = useState({
-    publicAddress: '',
+  const [currentUser, setCurrentUser] = useState({
+    address: '',
     userId: ''
   })
   const [currentJob, dispatchCurrentJob] = useReducer(
@@ -52,13 +52,13 @@ export const App = () => {
   const { auth } = state
 
   return (
-    <UserContext.Provider value={publicAddress}>
+    <UserContext.Provider value={currentUser}>
       <Navbar
         onLoggedIn={handleLoggedIn}
         auth={auth}
         onLoggedOut={handleLoggedOut}
         setAuthorization={setAuthorization}
-        setPublicAddress={setPublicAddress}
+        setCurrentUser={setCurrentUser}
       />
       <Switch>
         <Route exact path="/">
@@ -81,7 +81,7 @@ export const App = () => {
             dispatchCurrentJob={dispatchCurrentJob}
           />
         </Route>
-        <Route path="/NewJob">
+        <Route path="/newjob">
           {authorization ? (
             <NewJob
               currentJob={currentJob}

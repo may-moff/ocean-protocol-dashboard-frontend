@@ -10,7 +10,7 @@ function Navbar({
   auth,
   onLoggedOut,
   setAuthorization,
-  setPublicAddress
+  setCurrentUser
 }) {
   return (
     <nav className="bg-bgreylighter">
@@ -30,7 +30,7 @@ function Navbar({
                 <NavLink to="/dashboard">Dashboard</NavLink>
               </div>
               <div className="transform hover:-translate-y-0.5 duration-300">
-                <NavLink to="/NewJob">New Job</NavLink>
+                <NavLink to="/newjob">New Job</NavLink>
               </div>
 
               {/* <div className="transform hover:-translate-y-0.5 duration-300">
@@ -45,7 +45,7 @@ function Navbar({
                   <Profile
                     auth={auth}
                     setAuthorization={setAuthorization}
-                    setPublicAddress={setPublicAddress}
+                    setCurrentUser={setCurrentUser}
                   />
                 </div>
                 <ButtonDefault function={onLoggedOut} name="Logout" />
