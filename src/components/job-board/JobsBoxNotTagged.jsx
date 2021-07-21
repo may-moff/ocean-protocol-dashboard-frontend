@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 // import Job from './Job'
 import Card from '../Card'
@@ -6,22 +6,22 @@ import UserContext from '../../contexts/UserContext'
 
 const JobsBoxNotTagged = () => {
   const { userId } = useContext(UserContext)
-  const [data, setData] = useState([])
 
   const getJobs = () =>
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/users/${userId}/jobs`)
       .then((response) => response.data)
+  const [jobList, setJobList] = useState([])
 
   useEffect(() => {
-    getJobs().then((data) => setData(data))
+    getJobs().then((data) => setJobList(data))
   }, [])
-  console.log(data)
+  console.log(jobList)
 
   return (
-    data && (
+    jobList && (
       <div>
-        {data.map((item, i) => (
+        {jobList.map((item, i) => (
           <>
             <h1>{item.date}</h1>
             <h1>{item.jobName}</h1>

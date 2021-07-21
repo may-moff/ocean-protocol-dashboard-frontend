@@ -23,7 +23,7 @@ function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
       const newAlgo = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/users/${userId}/algo`,
         {
-          name: algoName
+          algoName
         }
       )
 
