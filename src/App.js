@@ -22,7 +22,8 @@ export const App = () => {
   const [authorization, setAuthorization] = useState(false)
   const [currentUser, setCurrentUser] = useState({
     address: '',
-    userId: ''
+    userId: '',
+    accessToken: ''
   })
   const [currentJob, dispatchCurrentJob] = useReducer(
     formReducer,

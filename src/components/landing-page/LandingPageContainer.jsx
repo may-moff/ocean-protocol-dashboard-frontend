@@ -11,7 +11,7 @@ const LandingPageContainer = () => {
     <>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <h1
-          class="text-5xl p-10 "
+          className="text-5xl p-10 "
           style={{
             display: 'flex',
             justifyContent: 'center',
@@ -55,7 +55,7 @@ const LandingPageContainer = () => {
             }}
           >
             <div
-              class="text-3xl"
+              className="text-3xl"
               style={{
                 width: '35vw',
                 textAlign: 'justify',

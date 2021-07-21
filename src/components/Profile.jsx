@@ -13,11 +13,10 @@ export const Profile = ({ auth, setAuthorization, setCurrentUser }) => {
     if (!publicAddress) {
       setAuthorization(false)
     } else {
-      console.log(publicAddress, id)
       setAuthorization(true)
-      setCurrentUser({ address: publicAddress, userId: id })
+      setCurrentUser({ address: publicAddress, userId: id, accessToken })
     }
-  }, [publicAddress, id])
+  }, [publicAddress, id, setAuthorization, setCurrentUser, accessToken])
 
   return (
     <div className="flex justify-center justify-items-center items-center">
