@@ -1,10 +1,10 @@
 import React from 'react'
 import LandingPageTile from './LandingPageTile'
-import ocean from './ocean-transparent.gif'
-import manta from './mantaray-grid.svg'
-import dao from '../../Assets/landing-page/dao.png'
-import pearl from './ocean-pearl.png'
-import logo from './template-animation.gif'
+import ocean from './../../Assets/landing-page/ocean-transparent.gif'
+import manta from './../../Assets/landing-page/mantaray-grid.svg'
+import dao from '../../Assets/landing-page/oceandao-logo.png'
+import pearl from './../../Assets/landing-page/ocean-pearl.png'
+import logo from './../../Assets/landing-page/template-animation.gif'
 
 const LandingPageContainer = () => {
   return (
