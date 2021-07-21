@@ -12,7 +12,7 @@ const JobsBoxNotTagged = ({ publicAddress }) => {
   // // useEffect(() => {
   // //   getJobs().then((data) => setData(data))
   // // }, [])
-
+  console.log({ publicAddress })
   axios
     .get(
       `${process.env.REACT_APP_BACKEND_URL}/users/${publicAddress.userId}/jobs`
