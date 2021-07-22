@@ -1,6 +1,7 @@
 import React from 'react'
 import MOCK_DATA from '../Table/MOCK_DATA.json'
-import MOCK_DATA2 from '../Table/MOCK_DATA.json'
+import MOCK_DATA2 from '../Table/MOCK_DATA2.json'
+import MOCK_DATA3 from '../Table/MOCK_DATA3.json'
 import {
   BarChart,
   Bar,
@@ -13,65 +14,77 @@ import {
   ResponsiveContainer
 } from 'recharts'
 
-const generateExecutionChartData = (entryData) => {
-  const found = entryData.find((element) => element.key === 'EXECUTION_TIME')
-  let value = parseInt(found.value)
+// const testDataGenerator = (entryData, dataKey) => {
+//   const colors = { primary: '#7b1173', secondary: '#8b98a9' }
 
-  return [
-    {
-      name: 'Job A',
-      Speed: value
-    },
-    {
-      name: 'Job B',
-      Speed: 13
-    },
-    {
-      name: 'Job C',
-      Speed: 48
-    },
-    {
-      name: 'Job D',
-      Speed: 39
-    }
-  ]
-}
+//   const currentJobValue = entryData.currentJob.parseKeys.filter(
+//     (e) => e.key.toLowerCase() === dataKey.toLowerCase()
+//   )
+//   const otherJobsValues = entryData.otherJobs.map((e) =>
+//     e.parseKeys.filter((x) => x.key.toLowerCase() === dataKey.toLowerCase())
+//   )
+//   const currentJobInfo = {
+//     _id: entryData.currentJob._id,
+//     jobName: entryData.currentJob.jobName,
+//     value: parseInt(currentJobValue[0].value),
+//     color: colors.primary
+//   }
 
-const colors = ['#303030', '#7b1173']
+//   const otherJobsInfo = entryData.otherJobs.map((e, i) => {
+//     return {
+//       _id: e._id,
+//       jobName: e.jobName,
+//       value: parseInt(otherJobsValues[i][0].value),
+//       color: colors.secondary
+//     }
+//   })
 
-const ExecutionChart = () => {
-  const data = generateExecutionChartData(MOCK_DATA)
+//   return [currentJobInfo, ...otherJobsInfo]
+// }
+
+const ExecutionChart = ({ data, yLabel, title }) => {
   return (
-    // <ResponsiveContainer width="100%" aspect={5}>
-    <BarChart
-      width={700}
-      height={200}
-      data={generateExecutionChartData(MOCK_DATA)}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5
-      }}
-      barSize={20}
-    >
-      <XAxis dataKey="name" scale="point" padding={{ left: 20, right: 20 }} />
-      <YAxis
-        label={{ value: 'time (ms)', angle: -90, position: 'insideLeft' }}
-      />
-      <Tooltip />
-      <CartesianGrid strokeDasharray="3 3" />
-      <Bar
-        dataKey="Speed"
-        // fill={('#303030', '#7b1173')}
-        background={{ fill: '#eee' }}
-      >
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[index]} />
-        ))}
-      </Bar>
-    </BarChart>
-    // </ResponsiveContainer>
+    <>
+      <h1 className="flex justify-center justify-items-center">{title}</h1>
+      <ResponsiveContainer width="100%" maxHeight="300px" aspect={5}>
+        <BarChart
+          width={700}
+          height={200}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5
+          }}
+          barSize={40}
+        >
+          <XAxis
+            dataKey="jobName"
+            scale="point"
+            padding={{ left: 40, right: 40 }}
+          />
+          <YAxis
+            label={{
+              value: yLabel,
+              angle: -90,
+              position: 'insideBottomLeft'
+            }}
+          />
+          <Tooltip />
+          <CartesianGrid strokeDasharray="3 3" />
+          <Bar
+            dataKey="value"
+            // fill={('#303030', '#7b1173')}
+            background={{ fill: '#eee' }}
+          >
+            {data.map((e, i) => (
+              <Cell key={i} fill={e.color} />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </>
   )
 }
 
