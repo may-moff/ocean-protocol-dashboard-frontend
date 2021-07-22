@@ -1,12 +1,15 @@
 import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
-import MOCK_DATA from './MOCK_DATA.json'
+import MOCK_DATA3 from './MOCK_DATA3.json'
 import { COLUMNS } from './columns'
 import './table.css'
 
 const Table = () => {
   const columns = useMemo(() => COLUMNS, [])
-  const data = useMemo(() => MOCK_DATA.filter((e) => e.visualize), [])
+  const data = useMemo(
+    () => MOCK_DATA3.currentJob.parseKeys.filter((e) => e.visualize),
+    []
+  )
 
   console.log(data)
 
