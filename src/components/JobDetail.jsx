@@ -36,7 +36,7 @@ const JobDetail = () => {
     <>
       <div className=" p-6 ">
         <>
-          <SectionHeader headline={displayData.jobName} />
+          <SectionHeader headline={displayData ? displayData.jobName : null} />
           <div className="flex justify-between justify-items-center h-155">
             <div className=" w-1/2">
               <div className="flex flex-col place-content-center font-bold">
@@ -44,7 +44,7 @@ const JobDetail = () => {
                   {/* {jobDetail.algorithmId.algoName} */}
                 </h1>
                 <h1 className="bg-bgreylighter flex place-content-center py-3">
-                  Data Name: {displayData.dataName}
+                  Data Name: {displayData ? displayData.dataName : null}
                 </h1>
               </div>
               <div className=" max-h-full overflow-auto ">
