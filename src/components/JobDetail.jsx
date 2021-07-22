@@ -30,23 +30,29 @@ const JobDetail = () => {
     getOneJob()
   }, [])
 
+  const displayData = jobDetail.find((e) => e._id === _id)
+
   return (
     <>
       <div className=" p-6 ">
         <>
-          <SectionHeader headline={jobDetail.jobName} />
+          <SectionHeader headline={displayData.jobName} />
           <div className="flex justify-between justify-items-center h-155">
             <div className=" w-1/2">
               <div className="flex flex-col place-content-center font-bold">
-                <h1 className="bg-bgreylighter flex place-content-center py-3"></h1>
-                <h1 className="bg-bgreylighter flex place-content-center py-3"></h1>
+                <h1 className="bg-bgreylighter flex place-content-center py-3">
+                  {/* {jobDetail.algorithmId.algoName} */}
+                </h1>
+                <h1 className="bg-bgreylighter flex place-content-center py-3">
+                  Data Name: {displayData.dataName}
+                </h1>
               </div>
               <div className=" max-h-full overflow-auto ">
-                <Table {...jobDetail} />
+                <Table {...displayData} />
               </div>
             </div>
             <div className="flex justify-end justify-items-center w-1/2">
-              <ChartTime {...jobDetail} />
+              <ChartTime {...displayData} />
             </div>
           </div>
         </>

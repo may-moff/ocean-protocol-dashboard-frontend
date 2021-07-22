@@ -7,11 +7,11 @@ import './table.css'
 const Table = (props) => {
   console.log(props)
   const columns = useMemo(() => COLUMNS, [])
-  // const data = useMemo(() => MOCK_DATA, [])
+  const data = useMemo(() => MOCK_DATA, [])
 
   const tableInstance = useTable({
     columns,
-    data: props.result
+    data
   })
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
