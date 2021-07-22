@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import UserContext from '../contexts/UserContext'
-import axios from 'axios'
+import axios from '../axiosConfig'
 import {
   REMOVE_ROW,
   UNDO_REMOVE,
@@ -18,7 +18,7 @@ const FormParse = ({ currentJob, dispatchCurrentJob }) => {
 
   const handleSubmit = async (state) => {
     const secondParse = await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/users/${userId}/algo/${currentJob.algorithmId}`,
+      `/users/${userId}/algo/${currentJob.algorithmId}`,
       state
     )
     return secondParse.data

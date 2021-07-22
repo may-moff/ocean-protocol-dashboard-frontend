@@ -14,9 +14,9 @@ export const Profile = ({ auth, setAuthorization, setCurrentUser }) => {
       setAuthorization(false)
     } else {
       setAuthorization(true)
-      setCurrentUser({ address: publicAddress, userId: id, accessToken })
+      setCurrentUser({ address: publicAddress, userId: id })
     }
-  }, [publicAddress, id, setAuthorization, setCurrentUser, accessToken])
+  }, [publicAddress, id, setAuthorization, setCurrentUser])
 
   return (
     <div className="flex justify-center justify-items-center items-center">
