@@ -4,13 +4,14 @@ import MOCK_DATA from './MOCK_DATA.json'
 import { COLUMNS } from './columns'
 import './table.css'
 
-const Table = () => {
+const Table = (props) => {
+  console.log(props)
   const columns = useMemo(() => COLUMNS, [])
-  const data = useMemo(() => MOCK_DATA, [])
+  // const data = useMemo(() => MOCK_DATA, [])
 
   const tableInstance = useTable({
     columns,
-    data
+    data: props.result
   })
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =

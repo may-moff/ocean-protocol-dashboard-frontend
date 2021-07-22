@@ -5,7 +5,7 @@ import Card from '../atoms/Card'
 
 const Job = ({ item }) => {
   const { date, jobName, algorithmId, _id } = item
-  // console.log(item)
+  console.log(item)
   return (
     <Card additionalClasses="flex-1 my-1 ">
       <div className="flex justify-center m-2 mx-auto p-4">

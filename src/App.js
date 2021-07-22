@@ -76,7 +76,7 @@ export const App = () => {
             </div>
           )}
         </Route>
-        <Route path="/jobs/:id">
+        <Route path="/jobs/:_id">
           <JobDetail
             currentJob={currentJob}
             dispatchCurrentJob={dispatchCurrentJob}
