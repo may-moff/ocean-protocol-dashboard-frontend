@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import FileUpload from '../new-job/FileUpload'
 import FormParse from '../FormParse'
 import ButtonPrimary from '../atoms/ButtonPrimary'
-import axios from 'axios'
+import axios from '../../axiosConfig'
 import { SET_STATE } from '../../reducers-actions/formReducerActions'
+import UserContext from '../../contexts/UserContext'
 
 const NewJob = ({ currentJob, dispatchCurrentJob }) => {
+  const { userId } = useContext(UserContext)
   const [logReady, setLogReady] = useState(false)
 
   const handleSubmit = async () => {
     const secondParse = await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/users/${currentJob.userId}/algo/${currentJob.algorithmId}`,
+      `/users/${userId}/algo/${currentJob.algorithmId}`,
       currentJob
     )
     dispatchCurrentJob({
