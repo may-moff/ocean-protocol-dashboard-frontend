@@ -2,10 +2,10 @@ import React, { useState, useCallback, useContext } from 'react'
 import NewjobForm from './NewjobForm'
 import { useDropzone } from 'react-dropzone'
 import ButtonPrimary from '../atoms/ButtonPrimary'
-import axios from 'axios'
 import LogViewer from './LogViewer'
 import { SET_STATE } from '../../reducers-actions/formReducerActions'
 import UserContext from '../../contexts/UserContext'
+import axios from '../../axiosConfig'
 
 function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
   const { userId } = useContext(UserContext)
@@ -20,12 +20,9 @@ function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
 
     const inputValidation = [jobName, dataName, algoName]
     if (inputValidation.every((e) => e)) {
-      const newAlgo = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/users/${userId}/algo`,
-        {
-          algoName
-        }
-      )
+      const newAlgo = await axios.post(`/users/${userId}/algo`, {
+        algoName
+      })
 
       const fileExtension = selectedFile.name.split('.').pop()
       let formdata = new FormData()
@@ -35,12 +32,12 @@ function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
       formdata.append('algoName', algoName)
       formdata.append('jobName', jobName)
       const httpRequestOptions = {
-        url: `${process.env.REACT_APP_BACKEND_URL}/users/${newAlgo.data.userId}/jobs`,
+        url: `/users/${userId}/jobs`,
         method: 'POST',
         data: formdata,
-        headers: new Headers({
+        headers: {
           enctype: 'multipart/form-data'
-        })
+        }
       }
 
       await axios(httpRequestOptions)

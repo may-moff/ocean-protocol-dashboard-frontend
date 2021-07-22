@@ -26,7 +26,7 @@ const LandingPageTile = (props) => {
             history.push(push)
           }
         }}
-        class="shadow-2xl flex space-x-4 text-xl transform hover:scale-110 motion-reduce:transform-none"
+        className="shadow-2xl flex space-x-4 text-xl transform hover:scale-110 motion-reduce:transform-none"
         style={{
           width: '350px',
           height: '150px',
