@@ -6,7 +6,7 @@ import './table.css'
 
 const Table = () => {
   const columns = useMemo(() => COLUMNS, [])
-  const data = useMemo(() => MOCK_DATA, [])
+  const data = useMemo(() => MOCK_DATA.filter((e) => e.visualize), [])
 
   console.log(data)
 
