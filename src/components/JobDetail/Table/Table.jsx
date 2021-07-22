@@ -8,6 +8,8 @@ const Table = () => {
   const columns = useMemo(() => COLUMNS, [])
   const data = useMemo(() => MOCK_DATA, [])
 
+  console.log(data)
+
   const tableInstance = useTable({
     columns,
     data
@@ -17,13 +19,13 @@ const Table = () => {
     tableInstance
 
   return (
-    <table className="border-collapse w-full" {...getTableProps()}>
+    <table className="border-collapse" {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
               <th
-                className="sticky top-0 border border-solid p-2 py-3 text-left bg-bgreylight text-pink"
+                className="sticky top-0 border border-solid p-2 py-3 text-left bg-bgreylight"
                 {...column.getHeaderProps()}
               >
                 {column.render('Header')}
