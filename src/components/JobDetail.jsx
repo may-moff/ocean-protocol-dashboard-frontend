@@ -3,7 +3,8 @@ import ChartTime from './JobDetail/Charts/ChartTime'
 import Table from './JobDetail/Table/Table'
 import ExecutionChart from './JobDetail/Charts/ExecutionChart'
 import LineDataChart from './JobDetail/Charts/LineChart'
-import ButtonPrimary from './ButtonPrimary'
+import ButtonDefault from './ButtonDefault'
+import RadarDataChart from './JobDetail/Charts/RadarDataChart'
 
 const JobDetail = () => {
   return (
@@ -31,15 +32,18 @@ const JobDetail = () => {
               AVAILABLE VISUALIZATIONS:
             </h1>
             <div className="bg-bgreylighter flex justify-around place-content-center py-3">
-              <ButtonPrimary name="Execution time" />
-              <ButtonPrimary name="Job time details" />
-              <ButtonPrimary name="Comperation" />
+              <ButtonDefault name="Execution time" />
+              <ButtonDefault name="Job time details" />
+              <ButtonDefault name="Comperation" />
             </div>
           </div>
           <div className="max-h-full max-w-full block m-auto mt-10 h-155">
             <ExecutionChart />
             <LineDataChart />
-            <ChartTime />
+            <div className="flex">
+              <ChartTime />
+              <RadarDataChart />
+            </div>
           </div>
         </div>
       </div>

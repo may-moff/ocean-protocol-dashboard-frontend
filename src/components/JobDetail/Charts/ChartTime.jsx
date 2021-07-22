@@ -2,10 +2,10 @@ import React, { useCallback, useState } from 'react'
 import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts'
 
 const data = [
-  { name: 'Setup', value: 40 },
-  { name: 'Computing', value: 30 },
-  { name: 'Labeling', value: 30 },
-  { name: 'Visualization', value: 20 }
+  { name: 'Job A', value: 40 },
+  { name: 'Job B', value: 30 },
+  { name: 'Job C', value: 30 },
+  { name: 'Job D', value: 20 }
 ]
 
 const renderActiveShape = (props) => {

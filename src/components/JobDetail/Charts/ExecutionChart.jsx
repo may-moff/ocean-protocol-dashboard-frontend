@@ -4,6 +4,7 @@ import MOCK_DATA2 from '../Table/MOCK_DATA.json'
 import {
   BarChart,
   Bar,
+  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -36,7 +37,10 @@ const generateExecutionChartData = (entryData) => {
   ]
 }
 
+const colors = ['#303030', '#7b1173']
+
 const ExecutionChart = () => {
+  const data = generateExecutionChartData(MOCK_DATA)
   return (
     // <ResponsiveContainer width="100%" aspect={5}>
     <BarChart
@@ -57,7 +61,15 @@ const ExecutionChart = () => {
       />
       <Tooltip />
       <CartesianGrid strokeDasharray="3 3" />
-      <Bar dataKey="Speed" fill="#8884d8" background={{ fill: '#eee' }} />
+      <Bar
+        dataKey="Speed"
+        // fill={('#303030', '#7b1173')}
+        background={{ fill: '#eee' }}
+      >
+        {data.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={colors[index]} />
+        ))}
+      </Bar>
     </BarChart>
     // </ResponsiveContainer>
   )
