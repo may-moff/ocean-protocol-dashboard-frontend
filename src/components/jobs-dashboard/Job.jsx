@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom'
 import Card from '../atoms/Card'
 
 const Job = ({ item }) => {
-  const { date, jobName, algorithmId } = item
-  console.log(jobName)
+  const { date, jobName, algorithmId, _id } = item
+  console.log(item)
   return (
     <Card additionalClasses="flex-1 my-1 ">
       <div className="flex justify-center m-2 mx-auto p-4">
@@ -16,7 +16,7 @@ const Job = ({ item }) => {
         </div>
       </div>
       <div className="mb-4">
-        <NavLink to="/jobs/1">
+        <NavLink to={`/jobs/${_id}`}>
           <ButtonDefault name="See Details" />
         </NavLink>
       </div>
