@@ -46,10 +46,8 @@ const ExecutionChart = ({ data, yLabel, title }) => {
   return (
     <>
       <h1 className="flex justify-center justify-items-center">{title}</h1>
-      <ResponsiveContainer width="100%" maxHeight="300px" aspect={5}>
+      <ResponsiveContainer width="100%" maxHeight="250px" aspect={4}>
         <BarChart
-          width={700}
-          height={200}
           data={data}
           margin={{
             top: 5,
@@ -57,7 +55,7 @@ const ExecutionChart = ({ data, yLabel, title }) => {
             left: 20,
             bottom: 5
           }}
-          barSize={40}
+          barSize={50}
         >
           <XAxis
             dataKey="jobName"

@@ -69,6 +69,18 @@ const JobDetail = () => {
             </div>
           </div>
           <div className="max-h-full max-w-full block m-auto mt-10 h-155">
+            {MOCK_DATA3.currentJob.parseKeys.map((e) => {
+              if (e.dataType === 'number') {
+                return (
+                  <ExecutionChart
+                    data={testDataGenerator(MOCK_DATA3, e.key)}
+                    title={e.key}
+                    yLabel={e.key}
+                  />
+                )
+              }
+              return null
+            })}
             <ExecutionChart data={data} title="title" yLabel="time (ms)" />
             <LineDataChart />
             <div className="flex">
