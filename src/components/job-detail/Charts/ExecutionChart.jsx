@@ -1,7 +1,7 @@
 import React from 'react'
-import MOCK_DATA from '../Table/MOCK_DATA.json'
-import MOCK_DATA2 from '../Table/MOCK_DATA2.json'
-import MOCK_DATA3 from '../Table/MOCK_DATA3.json'
+import MOCK_DATA from '../table/MOCK_DATA.json'
+import MOCK_DATA2 from '../table/MOCK_DATA2.json'
+import MOCK_DATA3 from '../table/MOCK_DATA3.json'
 import {
   BarChart,
   Bar,

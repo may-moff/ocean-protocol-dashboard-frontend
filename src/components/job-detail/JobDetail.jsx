@@ -1,12 +1,12 @@
 import React from 'react'
-import ChartTime from './job-detail/Charts/ChartTime'
-import Table from './job-detail/Table/Table'
-import ExecutionChart from './job-detail/Charts/ExecutionChart'
-import LineDataChart from './job-detail/Charts/LineChart'
-import ButtonDefault from './atoms/ButtonDefault'
-import RadarDataChart from './job-detail/Charts/RadarDataChart'
-import SectionHeader from './jobs-dashboard/SectionHeader'
-import MOCK_DATA3 from './job-detail/Table/MOCK_DATA3.json'
+import ChartTime from './charts/ChartTime'
+import Table from './table/Table'
+import ExecutionChart from './charts/ExecutionChart'
+import LineDataChart from './charts/LineChart'
+import ButtonDefault from '../atoms/ButtonDefault'
+import RadarDataChart from './charts/RadarDataChart'
+import SectionHeader from '../jobs-dashboard/SectionHeader'
+import MOCK_DATA3 from './table/MOCK_DATA3.json'
 
 const testDataGenerator = (entryData, dataKey) => {
   const colors = { primary: '#7b1173', secondary: '#8b98a9' }
