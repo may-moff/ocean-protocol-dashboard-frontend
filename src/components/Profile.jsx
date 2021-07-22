@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Blockies from 'react-blockies'
 import jwt_decode from 'jwt-decode'
 
-export const Profile = ({ auth, setAuthorization, setPublicAddress }) => {
+export const Profile = ({ auth, setAuthorization, setCurrentUser }) => {
   const { accessToken } = auth
 
   const {
@@ -14,9 +14,9 @@ export const Profile = ({ auth, setAuthorization, setPublicAddress }) => {
       setAuthorization(false)
     } else {
       setAuthorization(true)
-      setPublicAddress({ publicAddress, userId: id })
+      setCurrentUser({ address: publicAddress, userId: id })
     }
-  }, [publicAddress, id])
+  }, [publicAddress, id, setAuthorization, setCurrentUser])
 
   return (
     <div className="flex justify-center justify-items-center items-center">

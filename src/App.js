@@ -2,12 +2,13 @@ import './App.css'
 import { Switch, Route, useHistory } from 'react-router-dom'
 import React, { useState, useEffect, useReducer } from 'react'
 import Navbar from './components/Navbar'
-import Home from './components/Home'
 import JobDetail from './components/JobDetail'
-import Dashboard from './components/job-board/Dashboard'
-import NewJob from './components/Create-job/NewJob'
+import Dashboard from './components/jobs-dashboard/Dashboard'
+import NewJob from './components/new-job/NewJob'
 import formReducer from './reducers/formReducer'
 import UserContext from './contexts/UserContext'
+import LandingPageContainer from './components/landing-page/LandingPageContainer'
+
 const LS_KEY = 'login-with-metamask:auth'
 
 const currentJobInitializer = {
@@ -19,9 +20,10 @@ const currentJobInitializer = {
 export const App = () => {
   const [state, setState] = useState({})
   const [authorization, setAuthorization] = useState(false)
-  const [publicAddress, setPublicAddress] = useState({
-    publicAddress: '',
-    userId: ''
+  const [currentUser, setCurrentUser] = useState({
+    address: '',
+    userId: '',
+    accessToken: ''
   })
   const [currentJob, dispatchCurrentJob] = useReducer(
     formReducer,
@@ -52,17 +54,17 @@ export const App = () => {
   const { auth } = state
 
   return (
-    <UserContext.Provider value={publicAddress}>
+    <UserContext.Provider value={currentUser}>
       <Navbar
         onLoggedIn={handleLoggedIn}
         auth={auth}
         onLoggedOut={handleLoggedOut}
         setAuthorization={setAuthorization}
-        setPublicAddress={setPublicAddress}
+        setCurrentUser={setCurrentUser}
       />
       <Switch>
         <Route exact path="/">
-          <Home />
+          <LandingPageContainer />
         </Route>
         <Route path="/dashboard">
           {authorization ? (
@@ -81,7 +83,7 @@ export const App = () => {
             dispatchCurrentJob={dispatchCurrentJob}
           />
         </Route>
-        <Route path="/NewJob">
+        <Route path="/newjob">
           {authorization ? (
             <NewJob
               currentJob={currentJob}

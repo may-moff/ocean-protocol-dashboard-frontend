@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Web3 from 'web3'
-import axios from 'axios'
+import axios from '../axiosConfig'
 
 let web3 = new Web3(Web3.givenProvider || undefined)
 
@@ -9,13 +9,10 @@ export const Login = ({ onLoggedIn }) => {
 
   const handleAuthenticate = async ({ publicAddress, signature }) => {
     try {
-      const userAuth = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/auth`,
-        {
-          publicAddress,
-          signature
-        }
-      )
+      const userAuth = await axios.post(`/auth`, {
+        publicAddress,
+        signature
+      })
       return userAuth.data
     } catch (err) {
       console.log(err)
@@ -38,12 +35,9 @@ export const Login = ({ onLoggedIn }) => {
 
   const handleSignup = async (publicAddress) => {
     try {
-      const user = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/users`,
-        {
-          publicAddress
-        }
-      )
+      const user = await axios.post(`/users`, {
+        publicAddress
+      })
       return user.data
     } catch (err) {
       console.log(err)
@@ -84,9 +78,7 @@ export const Login = ({ onLoggedIn }) => {
     setLoading(true)
     // Look if user with current publicAddress is already present on backend
     axios
-      .get(
-        `${process.env.REACT_APP_BACKEND_URL}/users?publicAddress=${publicAddress}`
-      )
+      .get(`/users?publicAddress=${publicAddress}`)
       .then((response) => {
         const users = response.data
         return users.length ? users[0] : handleSignup(publicAddress)

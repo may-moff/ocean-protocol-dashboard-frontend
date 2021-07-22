@@ -1,11 +1,12 @@
 import React from 'react'
-import ChartTime from './JobDetail/Charts/ChartTime'
-import Table from './JobDetail/Table/Table'
-import ExecutionChart from './JobDetail/Charts/ExecutionChart'
-import LineDataChart from './JobDetail/Charts/LineChart'
-import ButtonDefault from './ButtonDefault'
-import RadarDataChart from './JobDetail/Charts/RadarDataChart'
-import MOCK_DATA3 from './JobDetail/Table/MOCK_DATA3.json'
+import ChartTime from './job-detail/Charts/ChartTime'
+import Table from './job-detail/Table/Table'
+import ExecutionChart from './job-detail/Charts/ExecutionChart'
+import LineDataChart from './job-detail/Charts/LineChart'
+import ButtonDefault from './atoms/ButtonDefault'
+import RadarDataChart from './job-detail/Charts/RadarDataChart'
+import SectionHeader from './jobs-dashboard/SectionHeader'
+import MOCK_DATA3 from './job-detail/Table/MOCK_DATA3.json'
 
 const testDataGenerator = (entryData, dataKey) => {
   const colors = { primary: '#7b1173', secondary: '#8b98a9' }
@@ -40,10 +41,8 @@ const JobDetail = () => {
 
   return (
     <div className=" p-6 ">
-      <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-2 mb-4 ">
-        Job Name
-      </div>
-      <div className="flex justify-between justify-items-center h-150">
+      <SectionHeader headline="Job Name (this should be jobName)" />
+      <div className="flex justify-between justify-items-center h-155">
         <div className=" w-1/2">
           <div className="flex flex-col place-content-center font-bold">
             <h1 className="bg-bgreylighter flex place-content-center py-3">

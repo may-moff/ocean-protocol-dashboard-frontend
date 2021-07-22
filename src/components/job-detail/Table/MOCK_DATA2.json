@@ -1,0 +1,131 @@
+[
+  {
+    "key": "DEFAULT_1",
+    "dataType": "string",
+    "visualize": false,
+    "value": "This demo algorithm is brought to you by"
+  },
+  {
+    "key": "DEFAULT_10",
+    "dataType": "string",
+    "visualize": false,
+    "value": "delta-dao.com"
+  },
+  {
+    "key": "DEFAULT_15",
+    "dataType": "string",
+    "visualize": false,
+    "value": "Results will be written in results.txt"
+  },
+  {
+    "key": "DEFAULT_18",
+    "dataType": "string",
+    "visualize": false,
+    "value": "SYSTEM INFO"
+  },
+  {
+    "key": "START_TIME",
+    "dataType": "timestamp",
+    "visualize": true,
+    "value": "2021-06-09T07:37:08.000Z"
+  },
+  {
+    "key": "NAME",
+    "dataType": "string",
+    "visualize": true,
+    "value": "fa39dba8cf6646668e40a4ba6b675e25-algorithm-job-nqb8g"
+  },
+  { "key": "TYPE", "dataType": "string", "visualize": true, "value": "Linux" },
+  {
+    "key": "VERSION",
+    "dataType": "string",
+    "visualize": true,
+    "value": "1 SMP Tue Mar 16 04:56:19 UTC 2021"
+  },
+  {
+    "key": "MEMORY",
+    "dataType": "string",
+    "visualize": true,
+    "value": "1.9GB"
+  },
+  {
+    "key": "DEFAULT_26",
+    "dataType": "string",
+    "visualize": false,
+    "value": "Intel(R) Xeon(R) Platinum 8259CL CPU @ 2.50GHz"
+  },
+  {
+    "key": "DEFAULT_27",
+    "dataType": "string",
+    "visualize": false,
+    "value": "Intel(R) Xeon(R) Platinum 8259CL CPU @ 2.50GHz"
+  },
+  {
+    "key": "DEFAULT_30",
+    "dataType": "string",
+    "visualize": false,
+    "value": "Starting to look for files in /data/inputs to count rows"
+  },
+  {
+    "key": "DEFAULT_31",
+    "dataType": "string",
+    "visualize": false,
+    "value": "Found directory at /data/inputs/473C473b11d808D2Dbc32B42DC8281d25181242d"
+  },
+  {
+    "key": "DEFAULT_32",
+    "dataType": "string",
+    "visualize": false,
+    "value": "Starting to look for files in /data/inputs/473C473b11d808D2Dbc32B42DC8281d25181242d to count rows"
+  },
+  {
+    "key": "DEFAULT_34",
+    "dataType": "string",
+    "visualize": false,
+    "value": "FILLE INFO"
+  },
+  {
+    "key": "FILE",
+    "dataType": "string",
+    "visualize": true,
+    "value": "data/inputs/473C473b11d808D2Dbc32B42DC8281d25181242d/0"
+  },
+  { "key": "SIZE", "dataType": "string", "visualize": true, "value": "45039B" },
+  {
+    "key": "HASH",
+    "dataType": "string",
+    "visualize": true,
+    "value": "8820733372b716a988132290562331641cceed4496f443dd9f9477d68d6a7f43"
+  },
+  {
+    "key": "DEFAULT_40",
+    "dataType": "string",
+    "visualize": false,
+    "value": "Start counting lines for /data/inputs/473C473b11d808D2Dbc32B42DC8281d25181242d/0"
+  },
+  {
+    "key": "DEFAULT_41",
+    "dataType": "string",
+    "visualize": false,
+    "value": "Added row count for /data/inputs/473C473b11d808D2Dbc32B42DC8281d25181242d/0 to results"
+  },
+  {
+    "key": "DEFAULT_43",
+    "dataType": "string",
+    "visualize": false,
+    "value": "ALGORITHM FINISHED"
+  },
+  {
+    "key": "END_TIME",
+    "dataType": "timestamp",
+    "visualize": true,
+    "value": "2021-06-09T07:37:08.000Z"
+  },
+  {
+    "key": "EXECUTION_TIME",
+    "dataType": "string",
+    "visualize": true,
+    "value": "52ms"
+  },
+  { "key": "#_OF_FILES", "dataType": "number", "visualize": true, "value": 1 }
+]
