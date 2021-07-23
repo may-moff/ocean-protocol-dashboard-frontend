@@ -95,10 +95,11 @@ const JobDetail = () => {
           </div>
           <div className="flex flex-col justify-items-center w-7/12 max-w-full">
             <div className="max-h-full max-w-full block m-auto mt-10 h-155">
-              {MOCK_DATA3.currentJob.parseKeys.map((e) => {
+              {MOCK_DATA3.currentJob.parseKeys.map((e, i) => {
                 if (e.dataType === 'number') {
                   return (
                     <ExecutionChart
+                      key={i}
                       data={testDataGenerator(MOCK_DATA3, e.key)}
                       title={e.key}
                       yLabel={e.key}
