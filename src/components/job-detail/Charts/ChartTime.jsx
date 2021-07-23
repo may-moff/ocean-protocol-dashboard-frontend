@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react'
-import { PieChart, Pie, Sector } from 'recharts'
+import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts'
 
 const data = [
-  { name: 'Setup', value: 40 },
-  { name: 'Computing', value: 30 },
-  { name: 'Labeling', value: 30 },
-  { name: 'Visualization', value: 20 }
+  { name: 'Job A', value: 40 },
+  { name: 'Job B', value: 30 },
+  { name: 'Job C', value: 30 },
+  { name: 'Job D', value: 20 }
 ]
 
 const renderActiveShape = (props) => {
@@ -91,22 +91,24 @@ const ChartTime = () => {
   )
 
   return (
-    // <ResponsiveContainer width="100%" aspect={4}>
-    <PieChart width={430} height={430}>
-      <Pie
-        activeIndex={activeIndex}
-        activeShape={renderActiveShape}
-        data={data}
-        cx={200}
-        cy={200}
-        innerRadius={60}
-        outerRadius={80}
-        fill="#7b1173"
-        dataKey="value"
-        onMouseEnter={onPieEnter}
-      />
-    </PieChart>
-    // </ResponsiveContainer>
+    <div className="place-content-center content-center">
+      {/* <ResponsiveContainer width="100%" aspect={2}> */}
+      <PieChart width={400} height={400}>
+        <Pie
+          activeIndex={activeIndex}
+          activeShape={renderActiveShape}
+          data={data}
+          cx={200}
+          cy={200}
+          innerRadius={60}
+          outerRadius={80}
+          fill="#7b1173"
+          dataKey="value"
+          onMouseEnter={onPieEnter}
+        />
+      </PieChart>
+      {/* </ResponsiveContainer> */}
+    </div>
   )
 }
 

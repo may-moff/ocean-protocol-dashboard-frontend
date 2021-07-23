@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import axios from 'axios'
+import axios from '../../axiosConfig'
 import Job from './Job'
 import UserContext from '../../contexts/UserContext'
 
@@ -7,9 +7,7 @@ const JobsIndex = () => {
   const { userId } = useContext(UserContext)
 
   const getJobs = () =>
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/users/${userId}/jobs`)
-      .then((response) => response.data)
+    axios.get(`/users/${userId}/jobs`).then((response) => response.data)
   const [jobList, setJobList] = useState([])
 
   useEffect(() => {

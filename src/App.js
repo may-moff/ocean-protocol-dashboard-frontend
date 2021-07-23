@@ -2,7 +2,7 @@ import './App.css'
 import { Switch, Route, useHistory } from 'react-router-dom'
 import React, { useState, useEffect, useReducer } from 'react'
 import Navbar from './components/Navbar'
-import JobDetail from './components/JobDetail'
+import JobDetail from './components/job-detail/JobDetail'
 import Dashboard from './components/jobs-dashboard/Dashboard'
 import NewJob from './components/new-job/NewJob'
 import formReducer from './reducers/formReducer'
@@ -22,7 +22,8 @@ export const App = () => {
   const [authorization, setAuthorization] = useState(false)
   const [currentUser, setCurrentUser] = useState({
     address: '',
-    userId: ''
+    userId: '',
+    accessToken: ''
   })
   const [currentJob, dispatchCurrentJob] = useReducer(
     formReducer,

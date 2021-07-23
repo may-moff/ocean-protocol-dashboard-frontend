@@ -1,13 +1,18 @@
 import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
-import MOCK_DATA from './MOCK_DATA.json'
+import MOCK_DATA3 from './MOCK_DATA3.json'
 import { COLUMNS } from './columns'
 import './table.css'
 
 const Table = (props) => {
   console.log(props)
   const columns = useMemo(() => COLUMNS, [])
-  const data = useMemo(() => MOCK_DATA, [])
+  const data = useMemo(
+    () => MOCK_DATA3.currentJob.parseKeys.filter((e) => e.visualize),
+    []
+  )
+
+  console.log(data)
 
   const tableInstance = useTable({
     columns,
@@ -18,13 +23,13 @@ const Table = (props) => {
     tableInstance
 
   return (
-    <table className="border-collapse w-full" {...getTableProps()}>
+    <table className="border-collapse" {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
               <th
-                className="sticky top-0 border border-solid p-2 py-3 text-left bg-bgreylight text-pink"
+                className="sticky top-0 border border-solid p-2 py-3 text-left bg-bgreylight"
                 {...column.getHeaderProps()}
               >
                 {column.render('Header')}
