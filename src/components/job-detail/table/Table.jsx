@@ -1,13 +1,9 @@
 import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
 import MOCK_DATA3 from './MOCK_DATA3.json'
-import { COLUMNS } from './columns'
 import './table.css'
 
 const Table = (props) => {
-  console.log(props)
-  // const columns = useMemo(() => COLUMNS, [])
-
   const columns = useMemo(
     () => [
       {
@@ -15,7 +11,7 @@ const Table = (props) => {
         accessor: 'key',
         minWidth: '10px',
         maxWidth: '50px',
-        width: '30px'
+        width: '40px'
       },
       {
         Header: 'Type',

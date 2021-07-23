@@ -42,31 +42,27 @@ const JobDetail = () => {
   return (
     <div className=" p-6 ">
       <SectionHeader headline="Job Name" />
-      <div className="text-xl border-md text-center border rounded-sm p-2 bg-bgreylighter">
-        <div className="flex flex-col">
-          <div className="flex justify-around font-bold">
-            <h1 className="bg-bgreylighter flex place-content-center">
-              PARSED INFO:
-            </h1>
-            <h1 className="bg-bgreylighter flex place-content-center">
-              AVAILABLE VISUALIZATIONS:
-            </h1>
+      <div className=" flex justify-around text-xl border-md text-center border rounded-sm p-2 bg-bgreylighter">
+        <div className="flex flex-col w-1/2">
+          <div className="place-content-center font-bold">PARSED INFO:</div>
+          <div className="place-content-center mt-3">
+            Algorithm name: xxxxx Data name: xxxxx
           </div>
-          <div className="flex justify-around m-1">
-            <h1 className="bg-bgreylighter flex place-content-center">
-              Algorithm name: xxxxx Data name: xxxxx
-            </h1>
-            <div className="bg-bgreylighter flex justify-between m-2">
-              <ButtonDefault name="Execution time" />
-              <ButtonDefault name="Job time details" />
-              <ButtonDefault name="Comperation" />
-            </div>
+        </div>
+        <div className="w-1/2">
+          <div className="place-content-center mb-2 font-bold">
+            AVAILABLE VISUALIZATIONS:
+          </div>
+          <div className="m-2 flex flex-row justify-around">
+            <ButtonDefault name="Execution time" />
+            <ButtonDefault name="Job time details" />
+            <ButtonDefault name="Comperation" />
           </div>
         </div>
       </div>
       <div className="flex justify-between justify-items-center h-155">
         <div className=" w-5/12">
-          <div className=" max-h-full max-w-full overflow-auto mt-8">
+          <div className=" max-h-full max-w-full overflow-auto mt-8 ml-4">
             <Table />
           </div>
         </div>
