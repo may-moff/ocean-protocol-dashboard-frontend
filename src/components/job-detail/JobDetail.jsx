@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from '../../axiosConfig'
+import ButtonDefault from '../atoms/ButtonDefault'
 import ChartTime from './charts/ChartTime'
-import Table from './table/Table'
 import ExecutionChart from './charts/ExecutionChart'
 import LineDataChart from './charts/LineChart'
-import ButtonDefault from '../atoms/ButtonDefault'
 import RadarDataChart from './charts/RadarDataChart'
 import SectionHeader from '../jobs-dashboard/SectionHeader'
+import Table from './table/Table'
+import UserContext from '../../contexts/UserContext'
 import MOCK_DATA3 from './table/MOCK_DATA3.json'
 
 const testDataGenerator = (entryData, dataKey) => {
@@ -37,62 +40,88 @@ const testDataGenerator = (entryData, dataKey) => {
 }
 
 const JobDetail = () => {
+  let { _id } = useParams()
+  const [jobDetail, setJobDetail] = useState([])
+  const { userId } = useContext(UserContext)
+  console.log(userId)
+  const getOneJob = () => {
+    console.log('im in he fucton')
+    console.log(userId)
+    axios.get(`/users/${userId}/jobs/${_id}`).then((response) => {
+      setJobDetail(response.data)
+      console.log(response.data)
+      return response.data
+    })
+  }
+  console.log('hellllooo')
+  useEffect(() => {
+    getOneJob()
+  }, [])
+
+  const displayData = jobDetail.find((e) => e._id === _id)
   const data = testDataGenerator(MOCK_DATA3, 'EXECUTION_TIME')
 
   return (
     <div className=" p-6 ">
-      <SectionHeader headline="Job Name" />
-      <div className="text-xl border-md text-center border rounded-sm p-2 bg-bgreylighter">
-        <div className="flex flex-col">
-          <div className="flex justify-around font-bold">
-            <h1 className="bg-bgreylighter flex place-content-center">
-              PARSED INFO:
-            </h1>
-            <h1 className="bg-bgreylighter flex place-content-center">
-              AVAILABLE VISUALIZATIONS:
-            </h1>
-          </div>
-          <div className="flex justify-around m-1">
-            <h1 className="bg-bgreylighter flex place-content-center">
-              Algorithm name: xxxxx Data name: xxxxx
-            </h1>
-            <div className="bg-bgreylighter flex justify-between m-2">
-              <ButtonDefault name="Execution time" />
-              <ButtonDefault name="Job time details" />
-              <ButtonDefault name="Comperation" />
+      <>
+        <SectionHeader headline={displayData ? displayData.jobName : null} />
+
+        <div className="text-xl border-md text-center border rounded-sm p-2 bg-bgreylighter">
+          <div className="flex flex-col">
+            <div className="flex justify-around font-bold">
+              <h1 className="bg-bgreylighter flex place-content-center">
+                PARSED INFO:
+              </h1>
+              <h1 className="bg-bgreylighter flex place-content-center">
+                AVAILABLE VISUALIZATIONS:
+              </h1>
+            </div>
+            <div className="flex justify-around m-1">
+              <h1 className="bg-bgreylighter flex place-content-center py-3">
+                Algorithm Name:{' '}
+                {displayData ? displayData.algorithmId.algoName : null}
+              </h1>
+              <h1 className="bg-bgreylighter flex place-content-center py-3">
+                Data Name: {displayData ? displayData.dataName : null}
+              </h1>
+              <div className="bg-bgreylighter flex justify-between m-2">
+                <ButtonDefault name="Execution time" />
+                <ButtonDefault name="Job time details" />
+                <ButtonDefault name="Comperation" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex justify-between justify-items-center h-155">
-        <div className=" w-5/12">
-          <div className=" max-h-full max-w-full overflow-auto mt-8">
-            <Table />
-          </div>
-        </div>
-        <div className="flex flex-col justify-items-center w-7/12 max-w-full">
-          <div className="max-h-full max-w-full block m-auto mt-10 h-155">
-            {MOCK_DATA3.currentJob.parseKeys.map((e) => {
-              if (e.dataType === 'number') {
-                return (
-                  <ExecutionChart
-                    data={testDataGenerator(MOCK_DATA3, e.key)}
-                    title={e.key}
-                    yLabel={e.key}
-                  />
-                )
-              }
-              return null
-            })}
-            <ExecutionChart data={data} title="title" yLabel="time (ms)" />
-            <div className="flex">
-              <ChartTime />
-              <RadarDataChart />
+        <div className="flex justify-between justify-items-center h-155">
+          <div className=" w-5/12">
+            <div className=" max-h-full max-w-full overflow-auto mt-8">
+              <Table />
             </div>
-            <LineDataChart />
+          </div>
+          <div className="flex flex-col justify-items-center w-7/12 max-w-full">
+            <div className="max-h-full max-w-full block m-auto mt-10 h-155">
+              {MOCK_DATA3.currentJob.parseKeys.map((e) => {
+                if (e.dataType === 'number') {
+                  return (
+                    <ExecutionChart
+                      data={testDataGenerator(MOCK_DATA3, e.key)}
+                      title={e.key}
+                      yLabel={e.key}
+                    />
+                  )
+                }
+                return null
+              })}
+              <ExecutionChart data={data} title="title" yLabel="time (ms)" />
+              <div className="flex">
+                <ChartTime />
+                <RadarDataChart />
+              </div>
+              <LineDataChart />
+            </div>
           </div>
         </div>
-      </div>
+      </>
     </div>
   )
 }
