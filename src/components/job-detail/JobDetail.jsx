@@ -56,21 +56,21 @@ const JobDetail = () => {
             <h1 className="bg-bgreylighter flex place-content-center">
               Algorithm name: xxxxx Data name: xxxxx
             </h1>
-            {/* <div className="bg-bgreylighter flex justify-between m-2">
+            <div className="bg-bgreylighter flex justify-between m-2">
               <ButtonDefault name="Execution time" />
               <ButtonDefault name="Job time details" />
               <ButtonDefault name="Comperation" />
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
       <div className="flex justify-between justify-items-center h-155">
-        <div className=" w-1/2">
-          <div className=" max-h-full max-w-max overflow-auto mt-8">
+        <div className=" w-5/12">
+          <div className=" max-h-full max-w-full overflow-auto mt-8">
             <Table />
           </div>
         </div>
-        <div className="flex flex-col justify-items-center w-1/2 max-w-full">
+        <div className="flex flex-col justify-items-center w-7/12 max-w-full">
           <div className="max-h-full max-w-full block m-auto mt-10 h-155">
             {MOCK_DATA3.currentJob.parseKeys.map((e) => {
               if (e.dataType === 'number') {

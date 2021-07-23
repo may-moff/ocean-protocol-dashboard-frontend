@@ -6,7 +6,35 @@ import './table.css'
 
 const Table = (props) => {
   console.log(props)
-  const columns = useMemo(() => COLUMNS, [])
+  // const columns = useMemo(() => COLUMNS, [])
+
+  const columns = useMemo(
+    () => [
+      {
+        Header: 'Key',
+        accessor: 'key',
+        minWidth: '10px',
+        maxWidth: '50px',
+        width: '30px'
+      },
+      {
+        Header: 'Type',
+        accessor: 'dataType',
+        minWidth: '10px',
+        maxWidth: '50px',
+        width: '20px'
+      },
+      {
+        Header: 'Value',
+        accessor: 'value',
+        maxWidth: '180px',
+        minWidth: '100px',
+        width: '120px'
+      }
+    ],
+    []
+  )
+
   const data = useMemo(
     () => MOCK_DATA3.currentJob.parseKeys.filter((e) => e.visualize),
     []
@@ -23,14 +51,16 @@ const Table = (props) => {
     tableInstance
 
   return (
-    <table className="border-collapse" {...getTableProps()}>
+    <table className=" border-collapse break-all w-full" {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
               <th
                 className="sticky top-0 border border-solid p-2 py-3 text-left bg-bgreylight"
-                {...column.getHeaderProps()}
+                {...column.getHeaderProps({
+                  style: { minWidth: column.minWidth, width: column.width }
+                })}
               >
                 {column.render('Header')}
               </th>
@@ -46,8 +76,13 @@ const Table = (props) => {
               {row.cells.map((cell) => {
                 return (
                   <td
-                    className="border border-solid p-2"
-                    {...cell.getCellProps()}
+                    className="border border-solid py-3"
+                    {...cell.getCellProps({
+                      style: {
+                        minWidth: cell.column.minWidth,
+                        width: cell.column.width
+                      }
+                    })}
                   >
                     {cell.render('Cell')}
                   </td>
