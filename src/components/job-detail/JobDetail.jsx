@@ -65,19 +65,20 @@ const JobDetail = () => {
     <div className=" p-6 ">
       <SectionHeader headline={displayData ? displayData.jobName : null} />
       <div className=" flex justify-around text-xl border-md text-center border rounded-sm p-2 bg-bgreylighter">
-        <div className="flex flex-col w-1/2">
+        <div className="flex flex-col w-1/2 justify-around">
           <div className="place-content-center font-bold">PARSED INFO:</div>
           <div className="place-content-center mt-3">
-            <h1 className="bg-bgreylighter flex place-content-center py-3">
-              Algorithm Name:{' '}
+            <div className="place-content-center">
+              <strong>Algorithm Name: </strong>
               {displayData ? displayData.algorithmId.algoName : null}
-            </h1>
-            <h1 className="bg-bgreylighter flex place-content-center py-3">
-              Data Name: {displayData ? displayData.dataName : null}
-            </h1>
+            </div>
+            <div className="place-content-center">
+              <strong>Data Name:</strong>{' '}
+              {displayData ? displayData.dataName : null}
+            </div>
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="flex flex-col justify-around w-1/2">
           <div className="place-content-center mb-2 font-bold">
             AVAILABLE VISUALIZATIONS:
           </div>
@@ -89,32 +90,30 @@ const JobDetail = () => {
         </div>
       </div>
       <div className="flex justify-between justify-items-center h-155">
-        <div className=" w-5/12">
-          <div className=" max-h-full max-w-full overflow-auto mt-8 ml-4">
-            <Table />
-          </div>
-          <div className="flex flex-col justify-items-center w-7/12 max-w-full">
-            <div className="max-h-full max-w-full block m-auto mt-10 h-155">
-              {MOCK_DATA3.currentJob.parseKeys.map((e, i) => {
-                if (e.dataType === 'number') {
-                  return (
-                    <ExecutionChart
-                      key={i}
-                      data={testDataGenerator(MOCK_DATA3, e.key)}
-                      title={e.key}
-                      yLabel={e.key}
-                    />
-                  )
-                }
-                return null
-              })}
-              <ExecutionChart data={data} title="title" yLabel="time (ms)" />
-              <div className="flex">
-                <ChartTime />
-                <RadarDataChart />
-              </div>
-              <LineDataChart />
+        <div className=" max-h-full w-5/12 overflow-auto mt-8 ml-4">
+          <Table />
+        </div>
+        <div className="flex flex-col justify-items-center w-7/12 max-w-full">
+          <div className="max-h-full max-w-full block m-auto mt-10 h-155">
+            {MOCK_DATA3.currentJob.parseKeys.map((e, i) => {
+              if (e.dataType === 'number') {
+                return (
+                  <ExecutionChart
+                    key={i}
+                    data={testDataGenerator(MOCK_DATA3, e.key)}
+                    title={e.key}
+                    yLabel={e.key}
+                  />
+                )
+              }
+              return null
+            })}
+            <ExecutionChart data={data} title="title" yLabel="time (ms)" />
+            <div className="flex">
+              <ChartTime />
+              <RadarDataChart />
             </div>
+            <LineDataChart />
           </div>
         </div>
       </div>
