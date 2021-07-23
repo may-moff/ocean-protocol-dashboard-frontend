@@ -10,8 +10,8 @@ const Job = ({ item }) => {
     <Card additionalClasses="flex-1 my-1 ">
       <div className="flex justify-center m-2 mx-auto p-4">
         <div className="font-bold">
-          <h2>{`Job: ${jobName}`}</h2>
-          <h2>{`Algorithm: ${algorithmId.algoName}`}</h2>
+          <h2>{jobName}</h2>
+          <h2>{`Algorithm Name: ${algorithmId.algoName}`}</h2>
           <h2>{`Date: ${date.slice(0, 10)}`}</h2>
         </div>
       </div>

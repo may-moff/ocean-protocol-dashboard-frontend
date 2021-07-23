@@ -41,7 +41,8 @@ const JobDetail = () => {
             <div className=" w-1/2">
               <div className="flex flex-col place-content-center font-bold">
                 <h1 className="bg-bgreylighter flex place-content-center py-3">
-                  {/* {jobDetail.algorithmId.algoName} */}
+                  Algorithm Name:{' '}
+                  {displayData ? displayData.algorithmId.algoName : null}
                 </h1>
                 <h1 className="bg-bgreylighter flex place-content-center py-3">
                   Data Name: {displayData ? displayData.dataName : null}
