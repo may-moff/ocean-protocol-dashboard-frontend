@@ -2,6 +2,10 @@ import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
 import MOCK_DATA3 from './MOCK_DATA3.json'
 import './table.css'
+import {
+  localizeTimeStamp,
+  normalizeValue
+} from '../../../helpers/textManipulation'
 
 const Table = (props) => {
   const columns = useMemo(
@@ -31,16 +35,17 @@ const Table = (props) => {
     []
   )
 
-  const normalizeValue = (value) => {
-    const output = value.replace(/_/g, ' ').toLocaleLowerCase()
-    return output.charAt(0).toLocaleUpperCase() + output.slice(1)
-  }
-
   const data = useMemo(
     () =>
       MOCK_DATA3.currentJob.parseKeys
         .filter((e) => e.visualize)
-        .map((e) => ({ ...e, key: normalizeValue(e.key) })),
+        .map((e) => {
+          const output = { ...e, key: normalizeValue(e.key) }
+          if (e.dataType === 'timestamp') {
+            output.value = localizeTimeStamp(e.value)
+          }
+          return output
+        }),
     []
   )
 

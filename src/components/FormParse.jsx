@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import UserContext from '../contexts/UserContext'
 import axios from '../axiosConfig'
+import { localizeTimeStamp, normalizeValue } from '../helpers/textManipulation'
 import {
   REMOVE_ROW,
   UNDO_REMOVE,
@@ -10,11 +11,6 @@ import {
 const FormParse = ({ currentJob, dispatchCurrentJob }) => {
   const { userId } = useContext(UserContext)
   const [newUserKey, setNewUserKey] = useState('')
-
-  const normalizeValue = (value) => {
-    const output = value.replace(/_/g, ' ').toLocaleLowerCase()
-    return output.charAt(0).toLocaleUpperCase() + output.slice(1)
-  }
 
   const handleSubmit = async (state) => {
     const secondParse = await axios.put(
@@ -100,7 +96,11 @@ const FormParse = ({ currentJob, dispatchCurrentJob }) => {
                     name="value"
                     placeholder="Value"
                     readOnly
-                    value={x.value}
+                    value={
+                      x.dataType === 'timestamp'
+                        ? localizeTimeStamp(x.value)
+                        : x.value
+                    }
                   />
                   <div className="flex justify-center justify-items-center w-20">
                     <div>
