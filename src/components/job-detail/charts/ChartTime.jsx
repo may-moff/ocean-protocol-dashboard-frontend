@@ -92,7 +92,7 @@ const ChartTime = () => {
 
   return (
     <div className="place-content-center content-center">
-      {/* <ResponsiveContainer width="100%" aspect={2}> */}
+      {/* <ResponsiveContainer width="100%" maxHeight="250px" aspect={1}> */}
       <PieChart width={400} height={400}>
         <Pie
           activeIndex={activeIndex}
