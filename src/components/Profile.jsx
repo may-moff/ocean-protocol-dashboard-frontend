@@ -25,7 +25,7 @@ export const Profile = ({ auth, setAuthorization, setCurrentUser }) => {
       </div>
 
       <div className="place-content-center text-base ">
-        {publicAddress.replace(/(\d{3})(.*)(\d{3})/, '$1(***)$3')}
+        {publicAddress.replace(/([a-z\d]{6})(.*)([a-z\d]{4})/i, '$1...$3')}
       </div>
     </div>
   )
