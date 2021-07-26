@@ -87,7 +87,7 @@ const JobDetail = () => {
       <SectionHeader headline={displayData ? displayData.jobName : null} />
       <div className=" flex justify-around text-xl border-md text-center border rounded-sm p-2 bg-bgreylighter">
         <div className="flex flex-col w-1/2 justify-around">
-          <div className="place-content-center font-bold">PARSED INFO:</div>
+          <div className="place-content-center font-bold">Parsed Assets:</div>
           <div className="place-content-center mt-3">
             <div className="place-content-center">
               <strong>Algorithm Name: </strong>
@@ -101,7 +101,7 @@ const JobDetail = () => {
         </div>
         <div className="flex flex-col justify-around w-1/2">
           <div className="place-content-center mb-2 font-bold">
-            AVAILABLE VISUALIZATIONS:
+            Available Visualizations:
           </div>
           {/* <div className="m-2 flex flex-row justify-around">
             <ButtonDefault name="Execution time" />
