@@ -9,8 +9,9 @@ const Job = ({ item }) => {
   return (
     <Card additionalClasses="flex-1 my-1 ">
       <div className="flex justify-center m-2 mx-auto p-4 flex-col">
-        <div className="font-bold">
-          <h2>{jobName}</h2>
+        <div className="flex justify-center mx-auto">
+          <h2>Job Name:</h2>
+          <h2 className="font-bold pl-1">{jobName}</h2>
         </div>
         <div className="flex justify-center mx-auto">
           <h2>Algorithm Name:</h2>
