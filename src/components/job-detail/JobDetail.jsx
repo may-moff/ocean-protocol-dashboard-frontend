@@ -110,12 +110,12 @@ const JobDetail = () => {
           </div> */}
         </div>
       </div>
-      <div className="flex justify-between justify-items-center h-155">
-        <div className=" max-h-full w-5/12 overflow-auto mt-8 ml-4">
+      <div className="flex justify-between justify-items-center h-146">
+        <div className="  w-5/12 overflow-y-auto mt-8 ml-4">
           <Table />
         </div>
         <div className="flex flex-col justify-items-center w-7/12 max-w-full">
-          <div className="max-h-148 overflow-y-auto max-w-full block m-auto mt-10">
+          <div className=" overflow-y-auto max-w-full block m-auto mt-10">
             {/* {MOCK_DATA3.currentJob.parseKeys.map((e, i) => {
               if (e.dataType === 'number' || e.dataType === 'number_um') {
                 return (
