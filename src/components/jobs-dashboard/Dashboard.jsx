@@ -1,9 +1,10 @@
 import React from 'react'
 import JobsIndex from './JobsIndex'
+import JobsSeed from './JobsSeed'
 import ChartTotalJobs from '../ChartTotalJobs'
 import SectionHeader from './SectionHeader'
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   return (
     <div className="text-center p-6 w-screen ">
       <SectionHeader headline="Total Jobs" />
