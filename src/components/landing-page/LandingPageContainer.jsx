@@ -15,10 +15,12 @@ const LandingPageContainer = () => {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            textAlign: 'center'
+            textAlign: 'center',
+            wrap: 'nowrap'
           }}
         >
-          Welcome to the &nbsp;<b> Ocean Protocol Dashboard!</b>
+          <div className="tablet:hidden">Welcome to the</div>
+          &nbsp;<b> Ocean Protocol Dashboard!</b>
         </h1>
         <div>
           {/* <h2
@@ -51,7 +53,7 @@ const LandingPageContainer = () => {
           />
 
           <div
-            className="flex flex-column-wrap justify-center w-1/2 tablet:w-screen tablet:text-2xl"
+            className="flex flex-column-wrap justify-center w-1/2 tablet:w-screen tablet:text-2xl tablet:w-4/5"
             // style={{
             //   display: 'flex',
             //   flexDirection: 'column',
@@ -61,7 +63,7 @@ const LandingPageContainer = () => {
             // }}
           >
             <div
-              className="text-3xl text-align:justify pb-5 leading-normal w-10/12 pt-4 justify-center tablet:w-10/12 tablet:text-2xl"
+              className="text-3xl text-justify pb-5 leading-normal w-10/12 pt-4 justify-center tablet:w-10/12 tablet:text-2xl"
               // style={{
               //   width: '35vw',
               //   textAlign: 'justify',
