@@ -75,7 +75,8 @@ module.exports = {
         balertorange: '#b35f36',
         balertyellow: '#eac146',
         colorprimary: '#ff4092',
-        colorsecondary: '#8b98a9'
+        colorsecondary: '#8b98a9',
+        oceanpurple: '#7b1173'
       }
     }
   },

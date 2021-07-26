@@ -16,11 +16,12 @@ const LandingPageTile = (props) => {
           }
         }}
         className="shadow-2xl flex flex-col justify-center items-center space-x-4 text-xl transform 
-        hover:-translate-y-0.5 duration-300"
-        style={{
-          width: '350px',
-          height: '150px'
-        }}
+        hover:-translate-y-0.5 duration-300 w-80 h-36 mobile:py-2 mobile:px-4 mobile:border
+         mobile:border-oceanpurple mobile:rounded mobile:border-8"
+        // style={{
+        //   width: '350px',
+        //   height: '150px'
+        // }}
       >
         <img className="h-4/5" src={background} />
         <div>{text}</div>
