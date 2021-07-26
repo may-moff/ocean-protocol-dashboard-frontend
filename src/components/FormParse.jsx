@@ -41,29 +41,31 @@ const FormParse = ({ currentJob, dispatchCurrentJob }) => {
 
   return (
     <div className="max-h-155 overflow-y-auto ">
-      <div className="flex justify-around m-2">
-        <input
-          className="border-2 p-1 w-7/12"
-          name="key"
-          placeholder="Key"
-          value={newUserKey}
-          onChange={(e) => setNewUserKey(e.target.value)}
-        />
-        <button
-          className=" bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
-          onClick={() => handleParse()}
-        >
-          Add Row
-        </button>
-        {currentJob.removedItemsHistory.length > 0 && (
+      {currentJob.parseKeys.length > 0 && (
+        <div className="flex justify-around m-2">
+          <input
+            className="border-2 p-1 w-7/12"
+            name="key"
+            placeholder="Key"
+            value={newUserKey}
+            onChange={(e) => setNewUserKey(e.target.value)}
+          />
           <button
-            className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
-            onClick={() => dispatchCurrentJob({ type: UNDO_REMOVE })}
+            className=" bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
+            onClick={() => handleParse()}
           >
-            Undo
+            Add Row
           </button>
-        )}
-      </div>
+          {currentJob.removedItemsHistory.length > 0 && (
+            <button
+              className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
+              onClick={() => dispatchCurrentJob({ type: UNDO_REMOVE })}
+            >
+              Undo
+            </button>
+          )}
+        </div>
+      )}
 
       {currentJob.parseKeys.length > 0 && (
         <div className="flex border rounded m-1 font-bold p-1">
