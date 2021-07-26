@@ -21,10 +21,12 @@ export const Profile = ({ auth, setAuthorization, setCurrentUser }) => {
   return (
     <div className="flex justify-center justify-items-center items-center">
       <div className="mx-3">
-        <Blockies seed={publicAddress} />
+        <Blockies className="rounded-full" seed={publicAddress} />
       </div>
 
-      <div className="place-content-center text-base">{publicAddress}</div>
+      <div className="place-content-center text-base ">
+        {publicAddress.replace(/(\d{3})(.*)(\d{3})/, '$1(***)$3')}
+      </div>
     </div>
   )
 }
