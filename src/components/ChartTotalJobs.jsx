@@ -13,63 +13,51 @@ import {
 const data = [
   {
     name: 'January',
-    New: 0,
-    Tagged: 1
+    Total: 1
   },
   {
     name: 'February',
-    New: 0,
-    Tagged: 2
+    Total: 4
   },
   {
     name: 'March',
-    New: 0,
-    Tagged: 10
+    Total: 10
   },
   {
     name: 'April',
-    New: 0,
-    Tagged: 5
+    Total: 5
   },
   {
     name: 'May',
-    New: 1,
-    Tagged: 3
+    Total: 10
   },
   {
     name: 'June',
-    New: 2,
-    Tagged: 4
+    Total: 3
   },
   {
     name: 'July',
-    New: 1,
-    Tagged: 0
+    Total: 1
   },
   {
     name: 'August',
-    New: 0,
-    Tagged: 0
+    Total: 0
   },
   {
     name: 'September',
-    New: 0,
-    Tagged: 0
+    Total: 0
   },
   {
     name: 'October',
-    New: 0,
-    Tagged: 0
+    Total: 0
   },
   {
     name: 'November',
-    New: 0,
-    Tagged: 0
+    Total: 0
   },
   {
     name: 'December',
-    New: 0,
-    Tagged: 0
+    Total: 0
   }
 ]
 
@@ -92,8 +80,8 @@ const ChartTotalJobs = () => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="Tagged" stackId="a" fill="#8b98a9" />
-        <Bar dataKey="New" stackId="a" fill="#7b1173" />
+        {/* <Bar dataKey="Tagged" stackId="a" fill="#8b98a9" /> */}
+        <Bar dataKey="Total" stackId="a" fill="#7b1173" />
       </BarChart>
     </ResponsiveContainer>
   )

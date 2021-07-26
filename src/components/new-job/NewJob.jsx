@@ -5,11 +5,13 @@ import ButtonPrimary from '../atoms/ButtonPrimary'
 import axios from '../../axiosConfig'
 import { SET_STATE } from '../../reducers-actions/formReducerActions'
 import UserContext from '../../contexts/UserContext'
+import { useHistory } from 'react-router-dom'
 
 const NewJob = ({ currentJob, dispatchCurrentJob }) => {
   const { userId } = useContext(UserContext)
   const [logReady, setLogReady] = useState(false)
-
+  let history = useHistory()
+  console.log(currentJob)
   const handleSubmit = async () => {
     const secondParse = await axios.put(
       `/users/${userId}/algo/${currentJob.algorithmId}`,
@@ -19,6 +21,8 @@ const NewJob = ({ currentJob, dispatchCurrentJob }) => {
       type: SET_STATE,
       payload: { ...secondParse.data, removedItemsHistory: [] }
     })
+    console.log('currentJob', currentJob)
+    history.push(`/jobs/${currentJob.jobId}`)
   }
 
   return (

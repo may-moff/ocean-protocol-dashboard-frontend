@@ -50,7 +50,7 @@ const NewjobForm = ({
         <p>Drag 'n' drop log file here or</p>
         <button
           type="button"
-          className="bg-bgreylight m-6 text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300 "
+          className="bg-bgreylight m-6 text-white text-xs md:text-base py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300 "
           onClick={open}
         >
           Open File Dialog

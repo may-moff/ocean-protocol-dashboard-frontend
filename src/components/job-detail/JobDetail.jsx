@@ -103,11 +103,11 @@ const JobDetail = () => {
           <div className="place-content-center mb-2 font-bold">
             AVAILABLE VISUALIZATIONS:
           </div>
-          <div className="m-2 flex flex-row justify-around">
+          {/* <div className="m-2 flex flex-row justify-around">
             <ButtonDefault name="Execution time" />
             <ButtonDefault name="Job time details" />
             <ButtonDefault name="Comperation" />
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="flex justify-between justify-items-center h-155">
@@ -144,12 +144,16 @@ const JobDetail = () => {
               }
               return null
             })}
-            {/* <ExecutionChart data={data} title="title" yLabel="time (ms)" /> */}
-            <div className="flex">
-              <ChartTime />
-              <RadarDataChart />
-            </div>
+
             <LineDataChart />
+            <div className="flex">
+              <div className="w-1/2">
+                <ChartTime />
+              </div>
+              <div className="w-1/2">
+                <RadarDataChart />
+              </div>
+            </div>
           </div>
         </div>
       </div>
