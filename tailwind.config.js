@@ -4,7 +4,8 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-      tablet: { max: '1024px' }
+      tablet: { max: '1024px' },
+      mobile: { max: '500px' }
     },
 
     extend: {

@@ -5,19 +5,8 @@ const LandingPageTile = (props) => {
   const { background, text, push, url } = props
   const history = useHistory()
 
-  // const openInNewTab = (url) => {
-  //   const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
-  //   if (newWindow) newWindow.opener = null
-
   return (
-    <div
-      style={{
-        padding: '20px',
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'column'
-      }}
-    >
+    <div className="p-5 flex items-center flex-col">
       <button
         onClick={() => {
           if (url !== null) {
@@ -26,22 +15,14 @@ const LandingPageTile = (props) => {
             history.push(push)
           }
         }}
-        className="shadow-2xl flex space-x-4 text-xl transform hover:-translate-y-0.5 duration-300"
+        className="shadow-2xl flex flex-col justify-center items-center space-x-4 text-xl transform 
+        hover:-translate-y-0.5 duration-300"
         style={{
           width: '350px',
-          height: '150px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center'
+          height: '150px'
         }}
       >
-        <img
-          src={background}
-          style={{
-            height: '80%'
-          }}
-        />
+        <img className="h-4/5" src={background} />
         <div>{text}</div>
       </button>
     </div>
