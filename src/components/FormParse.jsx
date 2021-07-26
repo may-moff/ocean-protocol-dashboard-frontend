@@ -43,14 +43,14 @@ const FormParse = ({ currentJob, dispatchCurrentJob }) => {
     <div className="max-h-155 overflow-y-auto ">
       <div className="flex justify-around m-2">
         <input
-          className="border-2 p-1 w-7/12"
+          className="border-2 p-1 w-7/12 ml-1 md:ml-4"
           name="key"
           placeholder="Key"
           value={newUserKey}
           onChange={(e) => setNewUserKey(e.target.value)}
         />
         <button
-          className=" bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
+          className="text-xs md:text-base bg-bpink text-white py-2 px-4 md:px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
           onClick={() => handleParse()}
         >
           Add Row
