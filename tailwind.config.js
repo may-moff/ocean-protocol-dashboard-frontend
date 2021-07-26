@@ -3,6 +3,10 @@ module.exports = {
 
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      tablet: { max: '800px' }
+    },
+
     extend: {
       boxShadow: {
         default: '4px 4px 20px rgb(0 0 0 / 10%)'

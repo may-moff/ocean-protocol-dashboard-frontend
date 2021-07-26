@@ -11,7 +11,7 @@ const LandingPageContainer = () => {
     <>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <h1
-          className="text-5xl p-10 "
+          className="text-5xl p-10 tablet:p-2 tablet:text-3xl"
           style={{
             display: 'flex',
             justifyContent: 'center',
@@ -35,34 +35,40 @@ const LandingPageContainer = () => {
       </div>
       <div>
         <div
+          className="tablet:p-0"
           style={{
             display: 'flex',
             flexDirection: 'row',
-            padding: '50px',
+            // padding: '50px',
             flexWrap: 'wrap',
             justifyContent: 'center'
           }}
         >
-          <img src={logo} style={{ height: '40vh', paddingRight: '12vw' }} />
+          <img
+            src={logo}
+            className="tablet:h-auto tablet:w-4/5"
+            // style={{ height: '40vh', paddingRight: '12vw' }}
+          />
 
           <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              flexWrap: 'wrap',
-              width: '50vw',
-              justifyContent: 'center'
-            }}
+            className="flex flex-column-wrap justify-center w-1/2 tablet:w-screen tablet:text-2xl"
+            // style={{
+            //   display: 'flex',
+            //   flexDirection: 'column',
+            //   flexWrap: 'wrap',
+            //   width: '50vw',
+            //   justifyContent: 'center'
+            // }}
           >
             <div
-              className="text-3xl"
-              style={{
-                width: '35vw',
-                textAlign: 'justify',
-                lineHeight: '1.5em',
-                paddingBottom: '5vh',
-                justifyContent: 'center'
-              }}
+              className="text-3xl text-align:justify pb-5 leading-normal w-10/12 pt-4 justify-center tablet:w-10/12 tablet:text-2xl"
+              // style={{
+              //   width: '35vw',
+              //   textAlign: 'justify',
+              //   lineHeight: '1.5em',
+              //   paddingBottom: '5vh',
+              //   justifyContent: 'center'
+              // }}
             >
               Parsing and displaying results of algorithm work has never been
               easier.

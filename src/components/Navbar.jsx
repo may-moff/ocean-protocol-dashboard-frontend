@@ -13,12 +13,12 @@ function Navbar({
   setCurrentUser
 }) {
   return (
-    <nav className="bg-bgreylighter">
-      <div className="max-w-6xl mx-auto">
+    <nav className="bg-bgreylighter tablet:w-screen">
+      <div className="max-w-6xl mx-auto tablet:w-screen">
         <div className="flex justify-between">
           <div className="flex space-x-4">
-            <div className="mr-8">
-              <NavLink to="/" className="flex items-center py-2 px-4 ">
+            <div className="mr-8 tablet:hidden">
+              <NavLink to="/" className="flex items-center py-2 px-4  ">
                 <img className="h-12 w-12" src={logo} alt="logo" />
               </NavLink>
             </div>
@@ -37,34 +37,34 @@ function Navbar({
                 <NavLink to="/jobs/1">First Job</NavLink>
               </div> */}
             </div>
-          </div>
-          <div className="flex items-center space-x-6 ">
-            {auth ? (
-              <div className="flex items-center">
-                <div className="mx-10">
-                  <Profile
-                    auth={auth}
-                    setAuthorization={setAuthorization}
-                    setCurrentUser={setCurrentUser}
-                  />
+            <div className="flex items-center space-x-6 tablet:space-x-0">
+              {auth ? (
+                <div className="flex items-center">
+                  <div className="mx-10 tablet:mx-0">
+                    <Profile
+                      auth={auth}
+                      setAuthorization={setAuthorization}
+                      setCurrentUser={setCurrentUser}
+                    />
+                  </div>
+                  <ButtonDefault function={onLoggedOut} name="Logout" />
                 </div>
-                <ButtonDefault function={onLoggedOut} name="Logout" />
-              </div>
-            ) : (
-              <Login onLoggedIn={onLoggedIn} />
-            )}
-            {/*  <a
+              ) : (
+                <Login onLoggedIn={onLoggedIn} />
+              )}
+              {/*  <a
               href="#"
               className="py-1 px-3 text-bwhite bg-bpink rounded shadow hover:bg-bpurple duration-500"
             >
               Connect Your Wallet
             </a> */}
-            {/* <a
+              {/* <a
               href="#"
               className="py-5 px-3 text-bgrey transform hover:-translate-y-0.5 duration-300"
             >
               Settings
             </a> */}
+            </div>
           </div>
         </div>
       </div>
