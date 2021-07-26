@@ -85,7 +85,7 @@ const JobDetail = () => {
   return (
     <div className=" p-6 ">
       <SectionHeader headline={displayData ? displayData.jobName : null} />
-      <div className=" flex justify-around text-xl border-md text-center border rounded-sm p-2 bg-bgreylighter">
+      <div className=" flex justify-around border-md shadow-xl text-center border rounded-sm font-bold p-4 m-4 ">
         <div className="flex flex-col w-1/2 justify-around">
           <div className="place-content-center font-bold">PARSED INFO:</div>
           <div className="place-content-center mt-3">
@@ -115,7 +115,7 @@ const JobDetail = () => {
           <Table />
         </div>
         <div className="flex flex-col justify-items-center w-7/12 max-w-full">
-          <div className="max-h-full max-w-full block m-auto mt-10 h-155">
+          <div className="max-h-148 overflow-y-auto max-w-full block m-auto mt-10">
             {/* {MOCK_DATA3.currentJob.parseKeys.map((e, i) => {
               if (e.dataType === 'number' || e.dataType === 'number_um') {
                 return (
