@@ -6,11 +6,17 @@ import Card from '../atoms/Card'
 const JobsSeed = (props) => {
   return (
     <Card additionalClasses="flex-1 my-1 ">
-      <div className="flex justify-center m-2 mx-auto p-4">
+      <div className="flex justify-center m-2 mx-auto p-4 flex-col">
         <div className="font-bold">
           <h2>{props.name}</h2>
-          <h2>Algorithm Name: {props.algo}1</h2>
-          <h2>Date: {props.date}</h2>
+        </div>
+        <div className="flex justify-center mx-auto">
+          <h2>Algorithm Name:</h2>
+          <h2 className="font-bold pl-1">{props.algo}</h2>
+        </div>
+        <div className="flex justify-center mx-auto">
+          <h2>Date:</h2>
+          <h2 className="font-bold pl-1">{props.date.slice(0, 10)}</h2>
         </div>
       </div>
       <div className="mb-4">
