@@ -19,7 +19,7 @@ const JobsIndex = () => {
     jobList && (
       <>
         <div className="container mx-auto flex justify-around">
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {jobList.map((item, i) => (
               <Job key={i} item={item} />
             ))}

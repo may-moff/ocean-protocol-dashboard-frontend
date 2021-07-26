@@ -13,7 +13,7 @@ function Navbar({
   setCurrentUser
 }) {
   return (
-    <nav className="bg-bgreylighter">
+    <nav className="bg-bgreylighter w-full">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between">
           <div className="flex space-x-4">

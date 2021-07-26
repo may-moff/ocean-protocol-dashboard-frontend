@@ -7,7 +7,7 @@ const Job = ({ item }) => {
   const { date, jobName, algorithmId, _id } = item
   console.log(item)
   return (
-    <Card additionalClasses="flex-1 my-1 ">
+    <Card additionalClasses="flex-1 my-1">
       <div className="flex justify-center m-2 mx-auto p-4">
         <div className="font-bold">
           <h2>{jobName}</h2>

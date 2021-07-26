@@ -37,27 +37,27 @@ const data = [
 
 const RadarDataChart = () => {
   return (
-    // <ResponsiveContainer width="50%%" aspect={2}>
-    <RadarChart
-      cx="50%"
-      cy="50%"
-      outerRadius="70%"
-      data={data}
-      width={400}
-      height={400}
-    >
-      <PolarGrid />
-      <PolarAngleAxis dataKey="subject" />
-      <PolarRadiusAxis />
-      <Radar
-        name="Mike"
-        dataKey="A"
-        stroke="#8884d8"
-        fill="#8884d8"
-        fillOpacity={0.6}
-      />
-    </RadarChart>
-    /* </ResponsiveContainer> */
+    <ResponsiveContainer width="99%" aspect={1}>
+      <RadarChart
+        cx="50%"
+        cy="50%"
+        outerRadius="70%"
+        data={data}
+        width={400}
+        height={400}
+      >
+        <PolarGrid />
+        <PolarAngleAxis dataKey="subject" />
+        <PolarRadiusAxis />
+        <Radar
+          name="Mike"
+          dataKey="A"
+          stroke="#8884d8"
+          fill="#8884d8"
+          fillOpacity={0.6}
+        />
+      </RadarChart>
+    </ResponsiveContainer>
   )
 }
 
