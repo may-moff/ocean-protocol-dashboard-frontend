@@ -31,8 +31,16 @@ const Table = (props) => {
     []
   )
 
+  const normalizeValue = (value) => {
+    const output = value.replace(/_/g, ' ').toLocaleLowerCase()
+    return output.charAt(0).toLocaleUpperCase() + output.slice(1)
+  }
+
   const data = useMemo(
-    () => MOCK_DATA3.currentJob.parseKeys.filter((e) => e.visualize),
+    () =>
+      MOCK_DATA3.currentJob.parseKeys
+        .filter((e) => e.visualize)
+        .map((e) => ({ ...e, key: normalizeValue(e.key) })),
     []
   )
 
