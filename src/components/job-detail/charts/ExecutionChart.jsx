@@ -45,6 +45,8 @@ import {
 const ExecutionChart = ({ data, yLabel, title }) => {
   return (
     <>
+      {/* <div className="w-max">title</div>
+      <br></br> */}
       <h1 className="flex justify-center justify-items-center">{title}</h1>
       <ResponsiveContainer
         width="99%"

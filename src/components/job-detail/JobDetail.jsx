@@ -10,6 +10,7 @@ import SectionHeader from '../jobs-dashboard/SectionHeader'
 import Table from './table/Table'
 import UserContext from '../../contexts/UserContext'
 import MOCK_DATA3 from './table/MOCK_DATA3.json'
+import { normalizeValue } from '../../helpers/textManipulation'
 
 const findValueWithMeasureUnit = (str) => {
   const res = str.match(/^(-?[\d.]+)([a-z%]*)$/i)
@@ -36,6 +37,7 @@ const testDataGenerator = (entryData, dataKey) => {
   const currentJobInfo = {
     _id: entryData.currentJob._id,
     jobName: entryData.currentJob.jobName,
+    title: normalizeValue(dataKey),
     value: currentJobUM ? currentJobUM.val : currentJobValue[0].value,
     color: colors.primary,
     unitOfMeasure: currentJobUM ? currentJobUM.unit : '-'
@@ -48,6 +50,7 @@ const testDataGenerator = (entryData, dataKey) => {
     return {
       _id: e._id,
       jobName: e.jobName,
+      title: normalizeValue(dataKey),
       value: otherJobsUM[i] ? otherJobsUM[i].val : otherJobsValues[i][0].value,
       color: colors.secondary,
       unitOfMeasure: currentJobInfo.unitOfMeasure
@@ -132,14 +135,17 @@ const JobDetail = () => {
             {dataToPlot.map((e, i) => {
               if (e) {
                 return (
-                  <ExecutionChart
-                    key={i}
-                    data={e}
-                    title={e[0].key}
-                    yLabel={
-                      e[0].dataType === 'number' ? '-' : e[0].unitOfMeasure
-                    }
-                  />
+                  <>
+                    <div className="w-screen flex pl-20">{e[0].title}</div>
+                    <ExecutionChart
+                      key={i}
+                      data={e}
+                      title={e[0].key}
+                      yLabel={
+                        e[0].dataType === 'number' ? '-' : e[0].unitOfMeasure
+                      }
+                    />
+                  </>
                 )
               }
               return null
