@@ -3,7 +3,6 @@ import Web3 from 'web3'
 import axios from '../axiosConfig'
 
 let web3 = new Web3(Web3.givenProvider || undefined)
-console.log(web3)
 
 export const Login = ({ onLoggedIn }) => {
   const [loading, setLoading] = useState(false)
