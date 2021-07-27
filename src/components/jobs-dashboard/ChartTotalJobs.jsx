@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { getMonthFromDate } from '../helpers/textManipulation'
+import { getMonthFromDate } from '../../helpers/textManipulation'
 import {
   BarChart,
   Bar,
