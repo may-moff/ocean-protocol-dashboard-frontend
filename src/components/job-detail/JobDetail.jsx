@@ -67,10 +67,11 @@ const JobDetail = () => {
       setJobDetail(response.data)
     })
   }
+
   useEffect(() => {
     getOneJob()
   }, [])
-
+  console.log(jobDetail)
   const displayData = jobDetail.find((e) => e._id === _id)
   const dataToPlot = MOCK_DATA3.currentJob.parseKeys
     .map((e, i) => {
