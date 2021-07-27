@@ -53,9 +53,9 @@
       },
       {
         "key": "MEMORY",
-        "dataType": "string",
+        "dataType": "number_um",
         "visualize": true,
-        "value": "1.9GB"
+        "value": "1.8GB"
       },
       {
         "key": "DEFAULT_26",
@@ -101,7 +101,7 @@
       },
       {
         "key": "SIZE",
-        "dataType": "string",
+        "dataType": "number_um",
         "visualize": true,
         "value": "45039B"
       },
@@ -137,7 +137,7 @@
       },
       {
         "key": "EXECUTION_TIME",
-        "dataType": "string",
+        "dataType": "number_um",
         "visualize": true,
         "value": "32ms"
       },
@@ -210,9 +210,9 @@
         },
         {
           "key": "MEMORY",
-          "dataType": "string",
+          "dataType": "number_um",
           "visualize": true,
-          "value": "1.9GB"
+          "value": "1.6GB"
         },
         {
           "key": "DEFAULT_26",
@@ -258,7 +258,7 @@
         },
         {
           "key": "SIZE",
-          "dataType": "string",
+          "dataType": "number_um",
           "visualize": true,
           "value": "45039B"
         },
@@ -294,7 +294,7 @@
         },
         {
           "key": "EXECUTION_TIME",
-          "dataType": "string",
+          "dataType": "number_um",
           "visualize": true,
           "value": "48ms"
         },
@@ -366,9 +366,9 @@
         },
         {
           "key": "MEMORY",
-          "dataType": "string",
+          "dataType": "number_um",
           "visualize": true,
-          "value": "1.9GB"
+          "value": "2.5GB"
         },
         {
           "key": "DEFAULT_26",
@@ -414,7 +414,7 @@
         },
         {
           "key": "SIZE",
-          "dataType": "string",
+          "dataType": "number_um",
           "visualize": true,
           "value": "45039B"
         },
@@ -450,7 +450,7 @@
         },
         {
           "key": "EXECUTION_TIME",
-          "dataType": "string",
+          "dataType": "number_um",
           "visualize": true,
           "value": "52ms"
         },
@@ -522,7 +522,7 @@
         },
         {
           "key": "MEMORY",
-          "dataType": "string",
+          "dataType": "number_um",
           "visualize": true,
           "value": "1.9GB"
         },
@@ -570,7 +570,7 @@
         },
         {
           "key": "SIZE",
-          "dataType": "string",
+          "dataType": "number_um",
           "visualize": true,
           "value": "45039B"
         },
@@ -606,7 +606,7 @@
         },
         {
           "key": "EXECUTION_TIME",
-          "dataType": "string",
+          "dataType": "number_um",
           "visualize": true,
           "value": "22ms"
         },
