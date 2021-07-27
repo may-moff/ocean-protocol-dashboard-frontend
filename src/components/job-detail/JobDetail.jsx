@@ -82,35 +82,38 @@ const JobDetail = () => {
 
   return (
     <div className=" p-6 ">
-      <SectionHeader
-        headline={jobDetail ? jobDetail.currentJob.jobName : null}
-      />
-      <div className=" flex justify-around border-md shadow-xl text-center border rounded-sm font-bold p-4 m-4 ">
-        <div className="flex flex-col w-1/2 justify-around">
-          <div className="place-content-center font-bold">Parsed Assets:</div>
-          <div className="place-content-center mt-3">
-            <div className="place-content-center">
-              <strong>Algorithm Name: </strong>
-              {jobDetail ? jobDetail.currentJob.algorithmId.algoName : null}
-            </div>
-            <div className="place-content-center">
-              <strong>Data Name:</strong>{' '}
-              {jobDetail ? jobDetail.currentJob.dataName : null}
-            </div>
-          </div>
+<div className="border-md shadow-xl text-center border rounded-sm p-4 m-4 ">
+        <div className="text-xl font-bold p-2">
+          {jobDetail ? jobDetail.currentJob.jobName : null}
         </div>
-        <div className="flex flex-col justify-around w-1/2">
-          <div className="place-content-center mb-2 font-bold">
-            Available Visualizations:
+        <div className="flex justify-around">
+          <div className="flex flex-col w-1/2 justify-around">
+            <div className="place-content-center">Parsed Assets:</div>
+            <div className="place-content-center mt-3">
+              <div className="place-content-center">
+                Algorithm Name:{' '}
+                <strong> {jobDetail ? jobDetail.currentJob.algorithmId.algoName : null}
+                </strong>
+              </div>
+              <div className="place-content-center">
+                Data Name:{' '}
+                <strong>{jobDetail ? jobDetail.currentJob.dataName : null}</strong>
+              </div>
+            </div>
           </div>
-          {/* <div className="m-2 flex flex-row justify-around">
+          <div className="flex flex-col justify-around w-1/2">
+            <div className="place-content-center mb-2">
+              Available Visualizations:
+            </div>
+            {/* <div className="m-2 flex flex-row justify-around">
             <ButtonDefault name="Execution time" />
             <ButtonDefault name="Job time details" />
             <ButtonDefault name="Comperation" />
           </div> */}
+          </div>
         </div>
       </div>
-      <div className="flex justify-between justify-items-center h-146">
+      <div className="flex justify-between justify-items-center h-150">
         <div className="  w-5/12 overflow-y-auto mt-8 ml-4">
           <Table />
         </div>
