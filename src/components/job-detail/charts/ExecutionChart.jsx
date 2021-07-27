@@ -45,7 +45,7 @@ import {
 const ExecutionChart = ({ data, yLabel, title }) => {
   return (
     <>
-      <h1 className="flex justify-center justify-items-center">{title}</h1>
+      <h1 className="flex justify-center justify-items-center"></h1>
       <ResponsiveContainer
         width="99%"
         minHeight="100px"
