@@ -10,14 +10,10 @@ import SectionHeader from '../jobs-dashboard/SectionHeader'
 import Table from './table/Table'
 import UserContext from '../../contexts/UserContext'
 import MOCK_DATA3 from './table/MOCK_DATA3.json'
-
-const findValueWithMeasureUnit = (str) => {
-  const res = str.match(/^(-?[\d.]+)([a-z%]*)$/i)
-  return {
-    val: parseFloat(res[1]),
-    unit: res[2]
-  }
-}
+import {
+  findValueWithMeasureUnit,
+  normalizeValue
+} from '../../helpers/textManipulation'
 
 const testDataGenerator = (entryData, dataKey) => {
   const colors = { primary: '#7b1173', secondary: '#8b98a9' }
@@ -36,6 +32,7 @@ const testDataGenerator = (entryData, dataKey) => {
   const currentJobInfo = {
     _id: entryData.currentJob._id,
     jobName: entryData.currentJob.jobName,
+    title: normalizeValue(dataKey),
     value: currentJobUM ? currentJobUM.val : currentJobValue[0].value,
     color: colors.primary,
     unitOfMeasure: currentJobUM ? currentJobUM.unit : '-'
@@ -48,6 +45,7 @@ const testDataGenerator = (entryData, dataKey) => {
     return {
       _id: e._id,
       jobName: e.jobName,
+      title: normalizeValue(dataKey),
       value: otherJobsUM[i] ? otherJobsUM[i].val : otherJobsValues[i][0].value,
       color: colors.secondary,
       unitOfMeasure: currentJobInfo.unitOfMeasure
@@ -59,24 +57,24 @@ const testDataGenerator = (entryData, dataKey) => {
 
 const JobDetail = () => {
   let { _id } = useParams()
-  const [jobDetail, setJobDetail] = useState([])
+  const [jobDetail, setJobDetail] = useState()
   const { userId } = useContext(UserContext)
 
   const getOneJob = () => {
     axios.get(`/users/${userId}/jobs/${_id}`).then((response) => {
       setJobDetail(response.data)
+      console.log(response.data)
     })
   }
 
   useEffect(() => {
     getOneJob()
   }, [])
-  console.log(jobDetail)
-  const displayData = jobDetail.find((e) => e._id === _id)
-  const dataToPlot = MOCK_DATA3.currentJob.parseKeys
+  
+  const dataToPlot = jobDetail?.currentJob?.parseKeys
     .map((e, i) => {
       if (e.dataType === 'number' || e.dataType === 'number_um') {
-        return testDataGenerator(MOCK_DATA3, e.key)
+        return testDataGenerator(jobDetail, e.key)
       }
       return null
     })
@@ -87,7 +85,7 @@ const JobDetail = () => {
     <div className=" p-6 ">
       <div className="border-md shadow-xl text-center border rounded-sm p-4 m-4 ">
         <div className="text-xl font-bold p-2">
-          {displayData ? displayData.jobName : null}
+          {jobDetail ? jobDetail.currentJob.jobName : null}
         </div>
         <div className="flex justify-around">
           <div className="flex flex-col w-1/2 justify-around">
@@ -95,13 +93,12 @@ const JobDetail = () => {
             <div className="place-content-center mt-3">
               <div className="place-content-center">
                 Algorithm Name:{' '}
-                <strong>
-                  {displayData ? displayData.algorithmId.algoName : null}
+                <strong> {jobDetail ? jobDetail.currentJob.algorithmId.algoName : null}
                 </strong>
               </div>
               <div className="place-content-center">
                 Data Name:{' '}
-                <strong>{displayData ? displayData.dataName : null}</strong>
+                <strong>{jobDetail ? jobDetail.currentJob.dataName : null}</strong>
               </div>
             </div>
           </div>
@@ -123,34 +120,22 @@ const JobDetail = () => {
         </div>
         <div className="flex flex-col justify-items-center w-7/12 max-w-full">
           <div className=" overflow-y-auto max-w-full block m-auto mt-10">
-            {/* {MOCK_DATA3.currentJob.parseKeys.map((e, i) => {
-              if (e.dataType === 'number' || e.dataType === 'number_um') {
-                return (
-                  <ExecutionChart
-                    key={i}
-                    data={testDataGenerator(MOCK_DATA3, e.key)}
-                    title={e.key}
-                    yLabel={e.dataType === 'number' ? '-' : e.unitOfMeasure}
-                  />
-                )
-              }
-              return null
-            })} */}
-            {dataToPlot.map((e, i) => {
-              if (e) {
-                return (
-                  <ExecutionChart
-                    key={i}
-                    data={e}
-                    title={e[0].key}
-                    yLabel={
-                      e[0].dataType === 'number' ? '-' : e[0].unitOfMeasure
-                    }
-                  />
-                )
-              }
-              return null
-            })}
+            {dataToPlot &&
+              dataToPlot.map((e, i) => {
+                if (e) {
+                  return (
+                    <ExecutionChart
+                      key={i}
+                      data={e}
+                      title={e[0].title}
+                      yLabel={
+                        e[0].dataType === 'number' ? '-' : e[0].unitOfMeasure
+                      }
+                    />
+                  )
+                }
+                return null
+              })}
 
             <LineDataChart />
             <div className="flex">
