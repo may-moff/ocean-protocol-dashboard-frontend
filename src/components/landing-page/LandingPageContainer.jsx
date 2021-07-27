@@ -9,61 +9,18 @@ import logo from './../../assets/landing-page/template-animation.gif'
 const LandingPageContainer = () => {
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <h1
-          className="text-5xl p-10 "
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            textAlign: 'center'
-          }}
-        >
-          Welcome to the &nbsp;<b> Ocean Protocol Dashboard!</b>
+      <div className="flex justify-center">
+        <h1 className="flex justify-center text-center flex-nowrap text-5xl p-10 tablet:p-2 tablet:text-3xl">
+          <div className="tablet:hidden">Welcome to the</div>
+          &nbsp;<b> Ocean Protocol Dashboard!</b>
         </h1>
-        <div>
-          {/* <h2
-            class="float-center text-5xl fwbold pl-10"
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              textAlign: 'center'
-            }}
-          >
-            Parse and visualize
-          </h2> */}
-        </div>
       </div>
       <div>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            padding: '50px',
-            flexWrap: 'wrap',
-            justifyContent: 'center'
-          }}
-        >
-          <img src={logo} style={{ height: '40vh', paddingRight: '12vw' }} />
+        <div className="flex flex-row flex-wrap justify-center tablet:p-0">
+          <img src={logo} className="tablet:h-auto tablet:w-4/5" />
 
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              flexWrap: 'wrap',
-              width: '50vw',
-              justifyContent: 'center'
-            }}
-          >
-            <div
-              className="text-3xl"
-              style={{
-                width: '35vw',
-                textAlign: 'justify',
-                lineHeight: '1.5em',
-                paddingBottom: '5vh',
-                justifyContent: 'center'
-              }}
-            >
+          <div className="flex flex-column-wrap justify-center w-1/2 tablet:w-screen tablet:text-2xl tablet:w-4/5">
+            <div className="text-3xl text-justify pb-5 leading-normal w-10/12 pt-4 justify-center tablet:w-10/12 tablet:text-2xl">
               Parsing and displaying results of algorithm work has never been
               easier.
               <p style={{ color: '#A3AEB7' }}>
@@ -76,15 +33,7 @@ const LandingPageContainer = () => {
               </p>
             </div>
           </div>
-          <div
-            style={{
-              display: 'flex',
-              width: '100vw',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              justifyContent: 'space-evenly'
-            }}
-          >
+          <div className="flex w-full flex-row flex-wrap justify-evenly">
             <LandingPageTile
               background={ocean}
               text="Ocean Protocol Home"

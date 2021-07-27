@@ -3,6 +3,11 @@ module.exports = {
 
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      tablet: { max: '1024px' },
+      mobile: { max: '500px' }
+    },
+
     extend: {
       boxShadow: {
         default: '4px 4px 20px rgb(0 0 0 / 10%)'
@@ -71,7 +76,8 @@ module.exports = {
         balertorange: '#b35f36',
         balertyellow: '#eac146',
         colorprimary: '#ff4092',
-        colorsecondary: '#8b98a9'
+        colorsecondary: '#8b98a9',
+        oceanpurple: '#7b1173'
       }
     }
   },
