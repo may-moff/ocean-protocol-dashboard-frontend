@@ -1,15 +1,14 @@
-import { useState, useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import axios from '../../axiosConfig'
 import Job from './Job'
 import UserContext from '../../contexts/UserContext'
 import JobsSeed from './JobsSeed'
 
-const JobsIndex = () => {
+const JobsIndex = ({ jobList, setJobList }) => {
   const { userId } = useContext(UserContext)
 
   const getJobs = () =>
     axios.get(`/users/${userId}/jobs`).then((response) => response.data)
-  const [jobList, setJobList] = useState([])
 
   useEffect(() => {
     getJobs().then((data) => setJobList(data))

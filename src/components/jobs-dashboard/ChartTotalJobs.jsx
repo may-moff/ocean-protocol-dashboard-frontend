@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
+import { getMonthFromDate } from '../helpers/textManipulation'
 import {
   BarChart,
   Bar,
@@ -13,62 +14,76 @@ import {
 const data = [
   {
     name: 'January',
-    Total: 1
+    total: 0
   },
   {
     name: 'February',
-    Total: 4
+    total: 0
   },
   {
     name: 'March',
-    Total: 10
+    total: 2
   },
   {
     name: 'April',
-    Total: 5
+    total: 2
   },
   {
     name: 'May',
-    Total: 10
+    total: 3
   },
   {
     name: 'June',
-    Total: 3
+    total: 2
   },
   {
     name: 'July',
-    Total: 1
+    total: 0
   },
   {
     name: 'August',
-    Total: 0
+    total: 0
   },
   {
     name: 'September',
-    Total: 0
+    total: 0
   },
   {
     name: 'October',
-    Total: 0
+    total: 0
   },
   {
     name: 'November',
-    Total: 0
+    total: 0
   },
   {
     name: 'December',
-    Total: 0
+    total: 0
   }
 ]
 
-const ChartTotalJobs = () => {
+const ChartTotalJobs = ({ jobList }) => {
+  const [jobCount, setJobCount] = useState(data)
+
+  const newJobCount = useCallback(() => {
+    const output = [...data]
+    jobList.forEach((job) => {
+      const currentMonth = getMonthFromDate(job.date)
+      const index = output.findIndex((x) => x.name === currentMonth)
+      output[index].total++
+    })
+    setJobCount(output)
+  }, [jobList])
+
+  useEffect(() => newJobCount(), [newJobCount])
+
   return (
     <div className="tablet:h-4/5">
       <ResponsiveContainer width="100%" aspect={8}>
         <BarChart
           width={600}
           height={200}
-          data={data}
+          data={jobCount}
           margin={{
             top: 20,
             right: 30,
@@ -82,7 +97,7 @@ const ChartTotalJobs = () => {
           <Tooltip />
           {/* <Legend /> */}
           {/* <Bar dataKey="Tagged" stackId="a" fill="#8b98a9" /> */}
-          <Bar dataKey="Total" stackId="a" fill="#7b1173" />
+          <Bar dataKey="total" stackId="a" fill="#7b1173" />
         </BarChart>
       </ResponsiveContainer>
     </div>

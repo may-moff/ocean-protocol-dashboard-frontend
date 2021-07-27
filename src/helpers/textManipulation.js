@@ -13,3 +13,8 @@ export const findValueWithMeasureUnit = (str) => {
     unit: res[2]
   }
 }
+
+export const getMonthFromDate = (timestamp) => {
+  const date = new Date(timestamp)
+  return date.toLocaleString('en-EN', { month: 'long' })
+}

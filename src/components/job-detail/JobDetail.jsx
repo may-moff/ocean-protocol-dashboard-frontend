@@ -93,12 +93,16 @@ const JobDetail = () => {
             <div className="place-content-center mt-3">
               <div className="place-content-center">
                 Algorithm Name:{' '}
-                <strong> {jobDetail ? jobDetail.currentJob.algorithmId.algoName : null}
+                <strong>
+                  {' '}
+                  {jobDetail ? jobDetail.currentJob.algorithmId.algoName : null}
                 </strong>
               </div>
               <div className="place-content-center">
                 Data Name:{' '}
-                <strong>{jobDetail ? jobDetail.currentJob.dataName : null}</strong>
+                <strong>
+                  {jobDetail ? jobDetail.currentJob.dataName : null}
+                </strong>
               </div>
             </div>
           </div>
