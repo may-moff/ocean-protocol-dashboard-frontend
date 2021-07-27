@@ -4,6 +4,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
+      sm: { min: '640px' },
+      md: { min: '768px' },
+      lg: { min: '1024px' },
       tablet: { max: '1024px' },
       mobile: { max: '500px' }
     },

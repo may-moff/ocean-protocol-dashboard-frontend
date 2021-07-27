@@ -35,7 +35,7 @@ function Navbar({
                 </div>
               </div>
             </div>
-            <div className="button+avatar">
+            <div className="button+avatar flex">
               <div className="flex items-center space-x-6 tablet:space-x-0">
                 {auth ? (
                   <div className="flex items-center">
