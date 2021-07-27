@@ -66,10 +66,11 @@ const JobDetail = () => {
       console.log(response.data)
     })
   }
+
   useEffect(() => {
     getOneJob()
   }, [])
-
+  
   const dataToPlot = jobDetail?.currentJob?.parseKeys
     .map((e, i) => {
       if (e.dataType === 'number' || e.dataType === 'number_um') {
@@ -82,7 +83,7 @@ const JobDetail = () => {
 
   return (
     <div className=" p-6 ">
-<div className="border-md shadow-xl text-center border rounded-sm p-4 m-4 ">
+      <div className="border-md shadow-xl text-center border rounded-sm p-4 m-4 ">
         <div className="text-xl font-bold p-2">
           {jobDetail ? jobDetail.currentJob.jobName : null}
         </div>

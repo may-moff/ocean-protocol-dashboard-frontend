@@ -1,7 +1,7 @@
 import React from 'react'
 import JobsIndex from './JobsIndex'
-import JobsSeed from './JobsSeed'
-import ChartTotalJobs from '../ChartTotalJobs'
+
+import ChartTotalJobs from './ChartTotalJobs'
 import SectionHeader from './SectionHeader'
 
 const Dashboard = (props) => {
