@@ -81,7 +81,7 @@ const ChartTotalJobs = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-        {/* <Bar dataKey="Tagged" stackId="a" fill="#8b98a9" /> */}
+          {/* <Bar dataKey="Tagged" stackId="a" fill="#8b98a9" /> */}
           <Bar dataKey="New" stackId="a" fill="#7b1173" />
         </BarChart>
       </ResponsiveContainer>

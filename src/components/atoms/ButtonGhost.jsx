@@ -5,7 +5,8 @@ const ButtonGhost = (props) => {
     <div>
       <button
         onClick={props.function}
-        class="bg-bwhite text-bgrey py-2 px-6 font-semibold text-xs md:text-base rounded shadow-xl transform hover:-translate-y-0.5 duration-300"
+        class="bg-bwhite text-bgrey py-2 px-6 font-semibold text-xs 
+        md:text-base rounded shadow-xl transform hover:-translate-y-0.5 duration-300"
       >
         {props.name}
       </button>
