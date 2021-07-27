@@ -9,7 +9,7 @@ import logo from './../../assets/landing-page/template-animation.gif'
 const LandingPageContainer = () => {
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div className="flex justify-center">
         <h1 className="flex justify-center text-center flex-nowrap text-5xl p-10 tablet:p-2 tablet:text-3xl">
           <div className="tablet:hidden">Welcome to the</div>
           &nbsp;<b> Ocean Protocol Dashboard!</b>

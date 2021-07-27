@@ -97,7 +97,7 @@ export const Login = ({ onLoggedIn }) => {
   }
 
   return (
-    <div className="py-1 px-3 text-bwhite bg-bpink rounded shadow hover:bg-bpurple duration-500 tablet:py-0">
+    <div className="py-1 px-3 pl-2 text-bwhite bg-bpink rounded shadow hover:bg-bpurple duration-500 tablet:py-0">
       <button onClick={handleClickMeta}>
         {loading ? 'Loading...' : 'Login with MetaMask'}
       </button>{' '}

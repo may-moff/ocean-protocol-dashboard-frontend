@@ -5,7 +5,7 @@ import SectionHeader from './SectionHeader'
 
 const Dashboard = () => {
   return (
-    <div className="text-center p-6 ">
+    <div className="text-center p-6">
       <SectionHeader headline="Total Jobs" />
       <ChartTotalJobs />
       <SectionHeader headline="Jobs Overview" />
