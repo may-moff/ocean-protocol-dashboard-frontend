@@ -17,13 +17,13 @@ const Table = (props) => {
         maxWidth: '50px',
         width: '40px'
       },
-      {
-        Header: 'Type',
-        accessor: 'dataType',
-        minWidth: '10px',
-        maxWidth: '50px',
-        width: '20px'
-      },
+      // {
+      //   Header: 'Type',
+      //   accessor: 'dataType',
+      //   minWidth: '10px',
+      //   maxWidth: '50px',
+      //   width: '20px'
+      // },
       {
         Header: 'Value',
         accessor: 'value',
