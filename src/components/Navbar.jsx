@@ -13,7 +13,8 @@ function Navbar({
   setCurrentUser
 }) {
   return (
-    <nav className="bg-bgreylighter tablet:w-screen tablet:pt-1 px-1">
+    <nav className="bg-bgreylighter sticky top-0 z-50 inset-x-0 tablet:w-screen tablet:pt-1 px-1">
+      {/* <nav className="bg-bgreylighter "> */}
       <div className="links+logo">
         <div className="max-w-6xl mx-auto tablet:w-full">
           <div className="flex justify-between">
