@@ -62,7 +62,7 @@ const data = [
   }
 ]
 
-const CharttotalJobs = ({ jobList }) => {
+const ChartTotalJobs = ({ jobList }) => {
   const [jobCount, setJobCount] = useState(data)
 
   const newJobCount = useCallback(() => {
@@ -104,4 +104,4 @@ const CharttotalJobs = ({ jobList }) => {
   )
 }
 
-export default CharttotalJobs
+export default ChartTotalJobs
