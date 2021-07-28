@@ -11,7 +11,13 @@ const JobsIndex = ({ jobList, setJobList }) => {
     axios.get(`/users/${userId}/jobs`).then((response) => response.data)
 
   useEffect(() => {
-    getJobs().then((data) => setJobList(data))
+    getJobs().then((data) => {
+      const sortedData = data.sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      )
+
+      setJobList(sortedData)
+    })
   }, [])
   console.log(jobList)
 
