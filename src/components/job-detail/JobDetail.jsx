@@ -166,12 +166,12 @@ const JobDetail = () => {
               {' '}
               <LineDataChart />
             </div>
-            <div className="flex">
+            <div className="flex justify-center">
               <div className="w-1/2 tablet:w-full tablet:flex tablet:flex-column tablet:flex-wrap">
-                <div className="tablet:w-full tablet:flex tablet:flex-wrap ">
+                <div className="pl-10 tablet:w-full tablet:flex tablet:flex-wrap ">
                   <ChartTime />
                 </div>
-                <div className="w-1/2 tablet:w-full">
+                <div className="w-full tablet:w-full">
                   <RadarDataChart />
                 </div>
               </div>

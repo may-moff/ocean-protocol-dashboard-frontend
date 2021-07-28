@@ -106,12 +106,7 @@ const ChartTime = () => {
 
   return (
     <div className="place-content-center content-center tablet:pt-10 tablet:flex tablet:justify-center">
-      <ResponsiveContainer
-        width="99%"
-        minHeight="220px"
-        aspect={0}
-        minWidth="90vw"
-      >
+      <ResponsiveContainer width="99%" minHeight="300px" aspect={0}>
         <PieChart width={400} height={400}>
           <Pie
             activeIndex={activeIndex}
