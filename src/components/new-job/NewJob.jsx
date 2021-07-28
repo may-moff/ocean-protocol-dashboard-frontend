@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import FileUpload from '../new-job/FileUpload'
 import FormParse from '../FormParse'
 import ButtonPrimary from '../atoms/ButtonPrimary'
+import preview from '../../assets/Preview-icon.png'
 import axios from '../../axiosConfig'
 import { SET_STATE, RESET } from '../../reducers-actions/formReducerActions'
 import UserContext from '../../contexts/UserContext'
@@ -45,12 +46,12 @@ const NewJob = ({
         Create New Job
         {showParseButton && (
           <div className="m-2">
-            <ButtonPrimary function={handleSubmit} name="Parse" />
+            <ButtonPrimary function={handleSubmit} name="Save" />
           </div>
         )}
       </div>
       <div className="flex">
-        <div className="flex justify-center justify-items-center w-3/5 ">
+        <div className="flex justify-center justify-items-center w-4/6 ">
           {currentJob.parseKeys.length === 0 && (
             <FileUpload
               dispatchCurrentJob={dispatchCurrentJob}
@@ -68,12 +69,14 @@ const NewJob = ({
             />
           )}
         </div>
-        <div className="flex justify-center justify-items-center w-2/5 mr-2">
+        <div className="flex justify-center justify-items-center w-4/6">
           {logReady ? (
-            <LogViewer file={displayUrl.file} />
+            <div className="w-4/6">
+              <LogViewer file={displayUrl.file} />
+            </div>
           ) : (
-            <div className="bg-bgreylight w-full">
-              Upload a file to see the preview
+            <div className="flex justify-center place-items-center w-4/6 h-142 border border-4 shadow-xl">
+              <img src={preview} alt="Log-preview" width="50" height="100" />
             </div>
           )}
         </div>

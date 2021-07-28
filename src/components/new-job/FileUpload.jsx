@@ -2,6 +2,7 @@ import React, { useState, useCallback, useContext } from 'react'
 import NewjobForm from './NewjobForm'
 import { useDropzone } from 'react-dropzone'
 import ButtonPrimary from '../atoms/ButtonPrimary'
+import Preview from '../../assets/Preview-icon.png'
 import { SET_STATE } from '../../reducers-actions/formReducerActions'
 import UserContext from '../../contexts/UserContext'
 import axios from '../../axiosConfig'
@@ -103,7 +104,9 @@ function FileUpload({
         <ButtonPrimary
           function={handleSubmit}
           name="Submit"
-          additionalClasses={logReady ? '' : 'bg-opacity-50'}
+          additionalClasses={
+            logReady ? '' : 'bg-opacity-50 pointer-events-none'
+          }
         />
       </div>
     </div>
