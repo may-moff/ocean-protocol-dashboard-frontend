@@ -6,10 +6,17 @@ import axios from '../../axiosConfig'
 import { SET_STATE, RESET } from '../../reducers-actions/formReducerActions'
 import UserContext from '../../contexts/UserContext'
 import { useHistory } from 'react-router-dom'
+import LogViewer from './LogViewer'
 
-const NewJob = ({ currentJob, dispatchCurrentJob }) => {
+const NewJob = ({
+  currentJob,
+  dispatchCurrentJob,
+  displayUrl,
+  setDisplayUrl
+}) => {
   const { userId } = useContext(UserContext)
   const [logReady, setLogReady] = useState(false)
+  const [showParseButton, setShowParseButton] = useState(false)
   let history = useHistory()
 
   const handleSubmit = async () => {
@@ -25,34 +32,50 @@ const NewJob = ({ currentJob, dispatchCurrentJob }) => {
   }
 
   useEffect(() => {
-    return () => dispatchCurrentJob({ type: RESET })
+    return () => {
+      setLogReady(false)
+      setShowParseButton(false)
+      dispatchCurrentJob({ type: RESET })
+    }
   }, [dispatchCurrentJob])
 
   return (
     <div className="text-center p-6">
       <div className="text-xl border-md shadow-xl text-center border rounded-sm font-bold p-6 m-6 ">
         Create New Job
-        {logReady && (
+        {showParseButton && (
           <div className="m-2">
             <ButtonPrimary function={handleSubmit} name="Parse" />
           </div>
         )}
       </div>
-
       <div className="flex">
-        <div className="flex justify-center justify-items-center w-2/5 mr-2">
-          <FileUpload
-            logReady={logReady}
-            setLogReady={setLogReady}
-            dispatchCurrentJob={dispatchCurrentJob}
-          />
-        </div>
         <div className="flex justify-center justify-items-center w-3/5 ">
-          <FormParse
-            logReady={logReady}
-            currentJob={currentJob}
-            dispatchCurrentJob={dispatchCurrentJob}
-          />
+          {currentJob.parseKeys.length === 0 && (
+            <FileUpload
+              dispatchCurrentJob={dispatchCurrentJob}
+              logReady={logReady}
+              setLogReady={setLogReady}
+              setDisplayUrl={setDisplayUrl}
+              setShowParseButton={setShowParseButton}
+            />
+          )}
+          {currentJob.parseKeys.length > 0 && (
+            <FormParse
+              logReady={logReady}
+              currentJob={currentJob}
+              dispatchCurrentJob={dispatchCurrentJob}
+            />
+          )}
+        </div>
+        <div className="flex justify-center justify-items-center w-2/5 mr-2">
+          {logReady ? (
+            <LogViewer file={displayUrl.file} />
+          ) : (
+            <div className="bg-bgreylight w-full">
+              Upload a file to see the preview
+            </div>
+          )}
         </div>
       </div>
     </div>

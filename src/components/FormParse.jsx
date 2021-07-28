@@ -37,40 +37,36 @@ const FormParse = ({ currentJob, dispatchCurrentJob }) => {
 
   return (
     <div className="max-h-155 overflow-y-auto ">
-      {currentJob.parseKeys.length > 0 && (
-        <div className="flex justify-around m-2">
-          <input
-            className="border-2 p-1 w-7/12 ml-1 md:ml-4"
-            name="key"
-            placeholder="Key"
-            value={newUserKey}
-            onChange={(e) => setNewUserKey(e.target.value)}
-          />
+      <div className="flex justify-around m-2">
+        <input
+          className="border-2 p-1 w-7/12 ml-1 md:ml-4"
+          name="key"
+          placeholder="Key"
+          value={newUserKey}
+          onChange={(e) => setNewUserKey(e.target.value)}
+        />
+        <button
+          className="text-xs md:text-base bg-bpink text-white py-2 px-4 md:px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
+          onClick={() => handleParse()}
+        >
+          Add Row
+        </button>
+
+        {currentJob.removedItemsHistory.length > 0 && (
           <button
-            className="text-xs md:text-base bg-bpink text-white py-2 px-4 md:px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
-            onClick={() => handleParse()}
+            className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
+            onClick={() => dispatchCurrentJob({ type: UNDO_REMOVE })}
           >
-            Add Row
+            Undo
           </button>
+        )}
+      </div>
 
-          {currentJob.removedItemsHistory.length > 0 && (
-            <button
-              className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
-              onClick={() => dispatchCurrentJob({ type: UNDO_REMOVE })}
-            >
-              Undo
-            </button>
-          )}
-        </div>
-      )}
-
-      {currentJob.parseKeys.length > 0 && (
-        <div className="flex border rounded m-1 font-bold p-1">
-          <div className="border-1 p-1 w-2/12">Key:</div>
-          <div className="border-1 p-1 w-2/12">Type:</div>
-          <div className="border-1 p-2 w-7/12">Value:</div>
-        </div>
-      )}
+      <div className="flex border rounded m-1 font-bold p-1">
+        <div className="border-1 p-1 w-2/12">Key:</div>
+        <div className="border-1 p-1 w-2/12">Type:</div>
+        <div className="border-1 p-2 w-7/12">Value:</div>
+      </div>
       {currentJob.parseKeys.map(
         (x, i) =>
           x.visualize && (
