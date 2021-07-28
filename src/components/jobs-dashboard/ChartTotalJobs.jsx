@@ -22,19 +22,19 @@ const data = [
   },
   {
     name: 'March',
-    total: 2
+    total: 6
   },
   {
     name: 'April',
-    total: 2
-  },
-  {
-    name: 'May',
     total: 3
   },
   {
+    name: 'May',
+    total: 9
+  },
+  {
     name: 'June',
-    total: 2
+    total: 5
   },
   {
     name: 'July',
