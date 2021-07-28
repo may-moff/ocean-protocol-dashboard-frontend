@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
 import axios from '../../axiosConfig'
-import UserContext from '../../contexts/UserContext'
-
+import ChartTotalJobs from './ChartTotalJobs'
 import JobsIndex from './JobsIndex'
 import SearchBar from './SearchBar'
-import ChartTotalJobs from './ChartTotalJobs'
 import SectionHeader from './SectionHeader'
+import UserContext from '../../contexts/UserContext'
 
 const Dashboard = ({ jobList, setJobList }) => {
   const [search, setSearch] = useState('')
@@ -34,13 +33,7 @@ const Dashboard = ({ jobList, setJobList }) => {
         search={search}
         setSearch={setSearch}
       />
-
-      <JobsIndex
-        jobList={jobList}
-        setJobList={setJobList}
-        keyword={search}
-        setKeyword={setSearch}
-      />
+      <JobsIndex jobList={jobList} search={search} />
     </div>
   )
 }
