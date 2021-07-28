@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import MOCK_DATA from '../table/MOCK_DATA.json'
 import MOCK_DATA2 from '../table/MOCK_DATA2.json'
 import MOCK_DATA3 from '../table/MOCK_DATA3.json'
+
 import {
   BarChart,
   Bar,
@@ -43,6 +44,20 @@ import {
 // }
 
 const ExecutionChart = ({ data, yLabel, title }) => {
+  // For responsive design, changes value in the ResponsiveContainer for minWidth
+
+  let [displayWidth, setDisplayWidth] = useState('')
+
+  useEffect(() => {
+    if (window.screen.width < 1024) {
+      setDisplayWidth('90vw')
+      console.log('window smaller than 1024')
+    } else {
+      setDisplayWidth('50vw')
+      console.log('window bigger than 1024')
+    }
+  }, [])
+
   return (
     <>
       {/* <div className="w-max">title</div>
@@ -50,6 +65,7 @@ const ExecutionChart = ({ data, yLabel, title }) => {
       <h1 className="flex justify-center justify-items-center">{title}</h1>
       <ResponsiveContainer
         width="99%"
+        minWidth={displayWidth}
         minHeight="100px"
         maxHeight="250px"
         aspect={4}
@@ -77,6 +93,7 @@ const ExecutionChart = ({ data, yLabel, title }) => {
             }}
           />
           <Tooltip />
+
           <CartesianGrid strokeDasharray="3 3" />
           <Bar
             dataKey="value"

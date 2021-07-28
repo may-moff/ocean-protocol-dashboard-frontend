@@ -113,13 +113,12 @@ const JobDetail = () => {
           </div> */}
         </div>
       </div>
-      <div className="flex justify-between justify-items-center h-146">
-        <div className="  w-5/12 overflow-y-auto mt-8 ml-4">
+      <div className="flex justify-between justify-items-center h-146 tablet:flex tablet:flex-row tablet:w-full tablet:flex-wrap">
+        <div className="  w-5/12 overflow-y-auto mt-8 ml-4 tablet:w-full">
           <Table />
         </div>
-        <div className="flex flex-col justify-items-center w-7/12 max-w-full">
-          <div className=" overflow-y-auto max-w-full block m-auto mt-10">
-            {/* {MOCK_DATA3.currentJob.parseKeys.map((e, i) => {
+
+        {/* {MOCK_DATA3.currentJob.parseKeys.map((e, i) => {
               if (e.dataType === 'number' || e.dataType === 'number_um') {
                 return (
                   <ExecutionChart
@@ -132,32 +131,41 @@ const JobDetail = () => {
               }
               return null
             })} */}
+
+        <div className="flex flex-col justify-items-center w-7/12 max-w-full tablet:w-full tablet:flex-row tablet:flex-wrap">
+          <div className=" overflow-y-auto max-w-full block m-auto mt-10">
             {dataToPlot.map((e, i) => {
               if (e) {
                 return (
                   <>
-                    <div className="w-screen flex pl-20">{e[0].title}</div>
-                    <ExecutionChart
-                      key={i}
-                      data={e}
-                      title={e[0].key}
-                      yLabel={
-                        e[0].dataType === 'number' ? '-' : e[0].unitOfMeasure
-                      }
-                    />
+                    <div className="tablet:pb-5 tablet:pt-5 tablet:h-1/2">
+                      <div className="w-full flex pl-20">{e[0].title}</div>
+                      <ExecutionChart
+                        key={i}
+                        data={e}
+                        title={e[0].key}
+                        yLabel={
+                          e[0].dataType === 'number' ? '-' : e[0].unitOfMeasure
+                        }
+                      />
+                    </div>
                   </>
                 )
               }
               return null
             })}
-
-            <LineDataChart />
+            <div>
+              {' '}
+              <LineDataChart />
+            </div>
             <div className="flex">
-              <div className="w-1/2">
-                <ChartTime />
-              </div>
-              <div className="w-1/2">
-                <RadarDataChart />
+              <div className="w-1/2 tablet:w-full tablet:flex tablet:flex-column tablet:flex-wrap">
+                <div className="tablet:w-full tablet:flex tablet:flex-wrap ">
+                  <ChartTime />
+                </div>
+                <div className="w-1/2 tablet:w-full">
+                  <RadarDataChart />
+                </div>
               </div>
             </div>
           </div>
