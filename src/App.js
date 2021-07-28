@@ -29,6 +29,7 @@ export const App = () => {
     formReducer,
     currentJobInitializer
   )
+  const [jobList, setJobList] = useState([])
 
   let history = useHistory()
 
@@ -68,7 +69,7 @@ export const App = () => {
         </Route>
         <Route path="/dashboard">
           {authorization ? (
-            <Dashboard />
+            <Dashboard jobList={jobList} setJobList={setJobList} />
           ) : (
             <div className="flex justify-center justify-items-center mt-12 bg-balertred">
               <h1 className="text-white">

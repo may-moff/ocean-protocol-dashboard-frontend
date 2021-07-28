@@ -5,3 +5,16 @@ export const normalizeValue = (value) => {
 
 export const localizeTimeStamp = (timestamp) =>
   new Date(timestamp).toLocaleString()
+
+export const findValueWithMeasureUnit = (str) => {
+  const res = str.match(/^(-?[\d.]+)([a-z%]*)$/i)
+  return {
+    val: parseFloat(res[1]),
+    unit: res[2]
+  }
+}
+
+export const getMonthFromDate = (timestamp) => {
+  const date = new Date(timestamp)
+  return date.toLocaleString('en-EN', { month: 'long' })
+}

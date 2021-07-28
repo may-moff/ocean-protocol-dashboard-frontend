@@ -53,15 +53,15 @@ const FormParse = ({ currentJob, dispatchCurrentJob }) => {
             Add Row
           </button>
 
-            {currentJob.removedItemsHistory.length > 0 && (
-              <button
-                className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
-                onClick={() => dispatchCurrentJob({ type: UNDO_REMOVE })}
-              >
-                Undo
-              </button>
-            )}
-         </div>
+          {currentJob.removedItemsHistory.length > 0 && (
+            <button
+              className="bg-bpink text-white py-2 px-6 font-semibold rounded transform hover:-translate-y-0.5 duration-300"
+              onClick={() => dispatchCurrentJob({ type: UNDO_REMOVE })}
+            >
+              Undo
+            </button>
+          )}
+        </div>
       )}
 
       {currentJob.parseKeys.length > 0 && (

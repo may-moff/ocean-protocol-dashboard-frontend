@@ -10,15 +10,10 @@ import SectionHeader from '../jobs-dashboard/SectionHeader'
 import Table from './table/Table'
 import UserContext from '../../contexts/UserContext'
 import MOCK_DATA3 from './table/MOCK_DATA3.json'
-import { normalizeValue } from '../../helpers/textManipulation'
-
-const findValueWithMeasureUnit = (str) => {
-  const res = str.match(/^(-?[\d.]+)([a-z%]*)$/i)
-  return {
-    val: parseFloat(res[1]),
-    unit: res[2]
-  }
-}
+import {
+  findValueWithMeasureUnit,
+  normalizeValue
+} from '../../helpers/textManipulation'
 
 const testDataGenerator = (entryData, dataKey) => {
   const colors = { primary: '#7b1173', secondary: '#8b98a9' }
@@ -62,23 +57,24 @@ const testDataGenerator = (entryData, dataKey) => {
 
 const JobDetail = () => {
   let { _id } = useParams()
-  const [jobDetail, setJobDetail] = useState([])
+  const [jobDetail, setJobDetail] = useState()
   const { userId } = useContext(UserContext)
 
   const getOneJob = () => {
     axios.get(`/users/${userId}/jobs/${_id}`).then((response) => {
       setJobDetail(response.data)
+      console.log(response.data)
     })
   }
+
   useEffect(() => {
     getOneJob()
   }, [])
-
-  const displayData = jobDetail.find((e) => e._id === _id)
-  const dataToPlot = MOCK_DATA3.currentJob.parseKeys
+  
+  const dataToPlot = jobDetail?.currentJob?.parseKeys
     .map((e, i) => {
       if (e.dataType === 'number' || e.dataType === 'number_um') {
-        return testDataGenerator(MOCK_DATA3, e.key)
+        return testDataGenerator(jobDetail, e.key)
       }
       return null
     })
@@ -87,30 +83,39 @@ const JobDetail = () => {
 
   return (
     <div className=" p-6 ">
-      <SectionHeader headline={displayData ? displayData.jobName : null} />
-      <div className=" flex justify-around border-md shadow-xl text-center border rounded-sm font-bold p-4 m-4 ">
-        <div className="flex flex-col w-1/2 justify-around">
-          <div className="place-content-center font-bold">Parsed Assets:</div>
-          <div className="place-content-center mt-3">
-            <div className="place-content-center">
-              <strong>Algorithm Name: </strong>
-              {displayData ? displayData.algorithmId.algoName : null}
-            </div>
-            <div className="place-content-center">
-              <strong>Data Name:</strong>{' '}
-              {displayData ? displayData.dataName : null}
-            </div>
-          </div>
+      <div className="border-md shadow-xl text-center border rounded-sm p-4 m-4 ">
+        <div className="text-xl font-bold p-2">
+          {jobDetail ? jobDetail.currentJob.jobName : null}
         </div>
-        <div className="flex flex-col justify-around w-1/2">
-          <div className="place-content-center mb-2 font-bold">
-            Available Visualizations:
+        <div className="flex justify-around">
+          <div className="flex flex-col w-1/2 justify-around">
+            <div className="place-content-center">Parsed Assets:</div>
+            <div className="place-content-center mt-3">
+              <div className="place-content-center">
+                Algorithm Name:{' '}
+                <strong>
+                  {' '}
+                  {jobDetail ? jobDetail.currentJob.algorithmId.algoName : null}
+                </strong>
+              </div>
+              <div className="place-content-center">
+                Data Name:{' '}
+                <strong>
+                  {jobDetail ? jobDetail.currentJob.dataName : null}
+                </strong>
+              </div>
+            </div>
           </div>
-          {/* <div className="m-2 flex flex-row justify-around">
+          <div className="flex flex-col justify-around w-1/2">
+            <div className="place-content-center mb-2">
+              Available Visualizations:
+            </div>
+            {/* <div className="m-2 flex flex-row justify-around">
             <ButtonDefault name="Execution time" />
             <ButtonDefault name="Job time details" />
             <ButtonDefault name="Comperation" />
           </div> */}
+          </div>
         </div>
       </div>
       <div className="flex justify-between justify-items-center h-146 tablet:flex tablet:flex-row tablet:w-full tablet:flex-wrap">
