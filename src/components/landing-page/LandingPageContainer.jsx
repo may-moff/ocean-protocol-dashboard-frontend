@@ -17,12 +17,12 @@ const LandingPageContainer = () => {
       </div>
       <div>
         <div className="flex flex-row flex-wrap justify-center tablet:p-0">
-          <img src={logo} className="tablet:h-auto tablet:w-4/5" />
+          <img src={logo} className="w-3/12 tablet:h-auto tablet:w-4/12" />
 
           <div className="flex flex-column-wrap justify-center w-1/2 tablet:w-screen tablet:text-2xl tablet:w-4/5">
             <div className="text-3xl text-justify pb-5 leading-normal w-10/12 pt-4 justify-center tablet:w-10/12 tablet:text-2xl">
-              Parsing and displaying results of algorithm work has never been
-              easier.
+              Parsing and displaying results of compute-to-data log files has
+              never been easier.
               <p style={{ color: '#A3AEB7' }}>
                 This tool allows you to summarize the log in a clear and
                 understandable way. All the results at one glance. Take

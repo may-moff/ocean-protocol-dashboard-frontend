@@ -90,16 +90,35 @@ const ChartTime = () => {
     [setActiveIndex]
   )
 
+  // For responsive design, changes value in the ResponsiveContainer for minWidth
+
+  //  let [displayWidth, setDisplayWidth] = useState('')
+
+  //  useEffect(() => {
+  //    if (window.screen.width < 1024) {
+  //      setDisplayWidth('90vw')
+  //      console.log('window smaller than 1024')
+  //    } else {
+  //      setDisplayWidth('50vw')
+  //      console.log('window bigger than 1024')
+  //    }
+  //  }, [])
+
   return (
-    <div className="place-content-center content-center">
-      <ResponsiveContainer width="99%" aspect={1}>
+    <div className="place-content-center content-center tablet:pt-10 tablet:flex tablet:justify-center">
+      <ResponsiveContainer
+        width="99%"
+        minHeight="220px"
+        aspect={0}
+        minWidth="90vw"
+      >
         <PieChart width={400} height={400}>
           <Pie
             activeIndex={activeIndex}
             activeShape={renderActiveShape}
             data={data}
-            cx={200}
-            cy={200}
+            cx={130}
+            cy={130}
             innerRadius={60}
             outerRadius={80}
             fill="#7b1173"
