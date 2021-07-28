@@ -30,6 +30,7 @@ export const App = () => {
     currentJobInitializer
   )
   const [jobList, setJobList] = useState([])
+  const [displayUrl, setDisplayUrl] = useState(null)
 
   let history = useHistory()
 
@@ -89,6 +90,8 @@ export const App = () => {
             <NewJob
               currentJob={currentJob}
               dispatchCurrentJob={dispatchCurrentJob}
+              displayUrl={displayUrl}
+              setDisplayUrl={setDisplayUrl}
             />
           ) : (
             <div className="flex justify-center justify-items-center mt-12 bg-balertred">
