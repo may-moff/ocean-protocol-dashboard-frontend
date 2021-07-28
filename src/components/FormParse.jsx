@@ -36,7 +36,7 @@ const FormParse = ({ currentJob, dispatchCurrentJob }) => {
   }
 
   return (
-    <div className="max-h-155 overflow-y-auto">
+    <div className="max-h-155 overflow-y-auto bg-bwhite">
       <div className="flex justify-around m-2">
         <input
           className="border-2 p-1 w-7/12 ml-1 md:ml-4"
@@ -62,7 +62,7 @@ const FormParse = ({ currentJob, dispatchCurrentJob }) => {
         )}
       </div>
 
-      <div className="flex border rounded m-1 font-bold p-1">
+      <div className="flex m-1 font-bold p-1">
         <div className="border-1 p-1 w-2/12">Key:</div>
         <div className="border-1 p-1 w-2/12">Type:</div>
         <div className="border-1 p-2 w-7/12">Value:</div>
@@ -70,7 +70,7 @@ const FormParse = ({ currentJob, dispatchCurrentJob }) => {
       {currentJob.parseKeys.map(
         (x, i) =>
           x.visualize && (
-            <div key={i} className="m-1 text-base">
+            <div key={i} className="m-1 text-base border-none">
               <div className="hover:bg-bgreylighter">
                 <div className="flex border rounded m-1">
                   <input
@@ -99,7 +99,7 @@ const FormParse = ({ currentJob, dispatchCurrentJob }) => {
                         : x.value
                     }
                   />
-                  <div className="flex justify-center justify-items-center w-20">
+                  <div className="flex justify-center justify-items-center w-20 border-none place-items-center">
                     <div>
                       {currentJob.parseKeys.length > 1 && (
                         <button

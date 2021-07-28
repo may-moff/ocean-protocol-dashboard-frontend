@@ -73,11 +73,13 @@ const NewJob = ({
               />
             )}
             {currentJob.parseKeys.length > 0 && (
-              <FormParse
-                logReady={logReady}
-                currentJob={currentJob}
-                dispatchCurrentJob={dispatchCurrentJob}
-              />
+              <div className="ml-12">
+                <FormParse
+                  logReady={logReady}
+                  currentJob={currentJob}
+                  dispatchCurrentJob={dispatchCurrentJob}
+                />
+              </div>
             )}
           </div>
           <div className="flex justify-center justify-items-center w-4/6">
