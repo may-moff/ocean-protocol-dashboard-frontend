@@ -2,8 +2,6 @@ import React, { useState, useCallback, useContext } from 'react'
 import NewjobForm from './NewjobForm'
 import { useDropzone } from 'react-dropzone'
 import ButtonPrimary from '../atoms/ButtonPrimary'
-import ButtonGhost from '../atoms/ButtonGhost'
-import LogViewer from './LogViewer'
 import { SET_STATE } from '../../reducers-actions/formReducerActions'
 import UserContext from '../../contexts/UserContext'
 import axios from '../../axiosConfig'
@@ -12,8 +10,8 @@ function FileUpload({
   dispatchCurrentJob,
   logReady,
   setLogReady,
-  displayUrl,
-  setDisplayUrl
+  setDisplayUrl,
+  setShowParseButton
 }) {
   const { userId } = useContext(UserContext)
   const [selectedFile, setSelectedFile] = useState(null)
@@ -52,7 +50,7 @@ function FileUpload({
             type: SET_STATE,
             payload: response.data
           })
-          setLogReady(true)
+          setShowParseButton(true)
         })
         .catch((error) => console.error(error))
     } else {
@@ -65,10 +63,10 @@ function FileUpload({
   const onDrop = useCallback((acceptedFiles) => {
     setSelectedFile(acceptedFiles[0])
 
-    setLogReady(true)
     setDisplayUrl({
       file: URL.createObjectURL(acceptedFiles[0])
     })
+    setLogReady(true)
   }, [])
 
   const { getRootProps, getInputProps, open /* acceptedFiles */ } = useDropzone(
@@ -87,7 +85,7 @@ function FileUpload({
   // ))
 
   return (
-    <div className="w-10/12 min-w-min h-155">
+    <div className="w-8/12 min-w-min h-155">
       <div className="text-base border-md shadow-xl text-center border rounded-sm p-2 m-2 min-w-min">
         <NewjobForm
           getRootProps={getRootProps}
@@ -102,7 +100,11 @@ function FileUpload({
         />
       </div>
       <div className="m-2">
-        <ButtonPrimary function={handleSubmit} name="Submit" />
+        <ButtonPrimary
+          function={handleSubmit}
+          name="Submit"
+          additionalClasses={logReady ? '' : 'bg-opacity-50'}
+        />
       </div>
     </div>
   )
