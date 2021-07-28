@@ -1,7 +1,8 @@
 import {
   REMOVE_ROW,
   UNDO_REMOVE,
-  SET_STATE
+  SET_STATE,
+  RESET
 } from '../reducers-actions/formReducerActions'
 
 const formReducer = (state, action) => {
@@ -30,6 +31,12 @@ const formReducer = (state, action) => {
       }
     case SET_STATE:
       return action.payload
+    case RESET:
+      return {
+        parseKeys: [],
+        result: {},
+        removedItemsHistory: []
+      }
     default:
       return state
   }

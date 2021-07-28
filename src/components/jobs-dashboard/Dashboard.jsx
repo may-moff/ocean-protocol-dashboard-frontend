@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import axios from '../../axiosConfig'
+import waves from './../../assets/waves.svg'
 import ChartTotalJobs from './ChartTotalJobs'
 import JobsIndex from './JobsIndex'
 import SearchBar from './SearchBar'
@@ -26,6 +27,7 @@ const Dashboard = ({ jobList, setJobList }) => {
     <div className="text-center p-6 w-screen ">
       <SectionHeader headline="Total Jobs" />
       <ChartTotalJobs jobList={jobList} />
+
       <SectionHeader headline="Jobs Overview" />
       <SearchBar
         jobList={jobList}
@@ -33,7 +35,19 @@ const Dashboard = ({ jobList, setJobList }) => {
         search={search}
         setSearch={setSearch}
       />
-      <JobsIndex jobList={jobList} search={search} />
+      <div
+        className="bg-fixed"
+        style={{
+          backgroundImage: `url(${waves})`,
+          zIndex: '-10',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '110%',
+          backgroundPosition: 'center'
+        }}
+      >
+        {' '}
+        <JobsIndex jobList={jobList} search={search} />
+      </div>
     </div>
   )
 }

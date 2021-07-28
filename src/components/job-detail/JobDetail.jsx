@@ -138,7 +138,7 @@ const JobDetail = () => {
             })} */}
 
         <div className="flex flex-col justify-items-center w-7/12 max-w-full tablet:w-full tablet:flex-row tablet:flex-wrap">
-          <div className=" overflow-y-auto max-w-full block m-auto mt-10">
+          <div className=" overflow-y-auto max-w-full block mt-10">
             {dataToPlot &&
               dataToPlot.map((e, i) => {
                 if (e) {
@@ -162,16 +162,16 @@ const JobDetail = () => {
                 }
                 return null
               })}
-            <div>
+            <div className="pb-20 pt-10">
               {' '}
               <LineDataChart />
             </div>
-            <div className="flex">
+            <div className="flex justify-center">
               <div className="w-1/2 tablet:w-full tablet:flex tablet:flex-column tablet:flex-wrap">
-                <div className="tablet:w-full tablet:flex tablet:flex-wrap ">
+                <div className="pl-10 tablet:w-full tablet:flex tablet:flex-wrap ">
                   <ChartTime />
                 </div>
-                <div className="w-1/2 tablet:w-full">
+                <div className="w-full tablet:w-full">
                   <RadarDataChart />
                 </div>
               </div>

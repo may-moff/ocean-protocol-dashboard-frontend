@@ -5,7 +5,7 @@ const LogViewer = ({ file }) => {
     <iframe
       src={file}
       title="file preview"
-      className="w-full h-screen max-h-155"
+      className="w-full h-screen max-h-155 bg-white"
     />
   )
 }
