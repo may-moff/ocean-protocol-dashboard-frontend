@@ -36,7 +36,7 @@ const FormParse = ({ currentJob, dispatchCurrentJob }) => {
   }
 
   return (
-    <div className="max-h-155 overflow-y-auto ">
+    <div className="max-h-155 overflow-y-auto">
       <div className="flex justify-around m-2">
         <input
           className="border-2 p-1 w-7/12 ml-1 md:ml-4"

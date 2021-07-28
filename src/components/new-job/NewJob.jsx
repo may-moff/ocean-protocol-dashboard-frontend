@@ -82,11 +82,11 @@ const NewJob = ({
           </div>
           <div className="flex justify-center justify-items-center w-4/6">
             {logReady ? (
-              <div className="w-4/6">
+              <div className="w-4/6 border border-4 shadow-xl">
                 <LogViewer file={displayUrl.file} />
               </div>
             ) : (
-              <div className="flex justify-center place-items-center w-4/6 h-142 border border-4 shadow-xl">
+              <div className="flex justify-center place-items-center w-4/6 h-142 border border-4 shadow-xl bg-white">
                 <img src={preview} alt="Log-preview" width="50" height="100" />
               </div>
             )}
