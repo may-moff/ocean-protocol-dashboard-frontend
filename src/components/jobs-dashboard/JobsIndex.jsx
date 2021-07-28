@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react'
+import { useEffect } from 'react'
 import axios from '../../axiosConfig'
 import Job from './Job'
 import UserContext from '../../contexts/UserContext'
@@ -6,36 +6,26 @@ import JobsSeed from './JobsSeed'
 import { useState } from 'react'
 
 const JobsIndex = ({ jobList, setJobList, search, setSearch }) => {
-  const { userId } = useContext(UserContext)
   const [test, setTest] = useState('')
-  const getJobs = () =>
-    axios.get(`/users/${userId}/jobs`).then((response) => response.data)
 
   useEffect(() => {
-    getJobs().then((data) => {
-      const sortedData = data.sort(
-        (a, b) => new Date(b.date) - new Date(a.date)
-      )
+    const filteredJobs = search
+      ? jobList.filter((job) =>
+          job.algorithmId.algoName.toLocaleLowerCase().includes(search)
+        )
+      : jobList
+    //     //   (job.algorithmId.algoName &&
+    //     //     job.algorithmId.algoName.toLocaleLowerCase().includes(search)) ||
+    //     job?.jobName?.toLocaleLowerCase().includes(search)
+    //   )
 
-      setJobList(sortedData)
-    })
-  }, [])
-  console.log(jobList)
-
-  useEffect(() => {
-    const filteredJobs = jobList.filter(
-      (job) => job
-      //   (job.algorithmId.algoName &&
-      //     job.algorithmId.algoName.toLocaleLowerCase().includes(search)) ||
-      //   (job.jobName && job.jobName.toLocaleLowerCase().includes(search))
-    )
-    // setTest([
-    //   {
-    //     jobName: 'bla',
-    //     algorithmId: { algoName: 'ja' },
-    //     date: '2021-07-28T16:50:47.801Z'
-    //   }
-    // ])
+    //   // setTest([
+    //   //   {
+    //   //     jobName: 'bla',
+    //   //     algorithmId: { algoName: 'ja' },
+    //   //     date: '2021-07-28T16:50:47.801Z'
+    //   //   }
+    //   // ])
     setTest(filteredJobs)
   }, [jobList, search])
 

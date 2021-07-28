@@ -1,14 +1,28 @@
-import React, { useState } from 'react'
-import Card from './Job'
+import React, { useState, useEffect, useContext } from 'react'
+import axios from '../../axiosConfig'
+import UserContext from '../../contexts/UserContext'
+
 import JobsIndex from './JobsIndex'
 import SearchBar from './SearchBar'
 import ChartTotalJobs from './ChartTotalJobs'
 import SectionHeader from './SectionHeader'
-import { NavLink } from 'react-router-dom'
-import ButtonDefault from '../atoms/ButtonDefault'
 
 const Dashboard = ({ jobList, setJobList }) => {
   const [search, setSearch] = useState('')
+  const { userId } = useContext(UserContext)
+  const getJobs = () =>
+    axios.get(`/users/${userId}/jobs`).then((response) => response.data)
+
+  useEffect(() => {
+    getJobs().then((data) => {
+      const sortedData = data.sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      )
+
+      setJobList(sortedData)
+    })
+  }, [])
+  console.log(jobList)
   return (
     <div className="text-center p-6 w-screen ">
       <SectionHeader headline="Total Jobs" />
@@ -17,8 +31,8 @@ const Dashboard = ({ jobList, setJobList }) => {
       <SearchBar
         jobList={jobList}
         setJobList={setJobList}
-        keyword={search}
-        setKeyword={setSearch}
+        search={search}
+        setSearch={setSearch}
       />
 
       <JobsIndex
