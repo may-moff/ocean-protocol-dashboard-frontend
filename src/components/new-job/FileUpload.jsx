@@ -2,15 +2,21 @@ import React, { useState, useCallback, useContext } from 'react'
 import NewjobForm from './NewjobForm'
 import { useDropzone } from 'react-dropzone'
 import ButtonPrimary from '../atoms/ButtonPrimary'
+import ButtonGhost from '../atoms/ButtonGhost'
 import LogViewer from './LogViewer'
 import { SET_STATE } from '../../reducers-actions/formReducerActions'
 import UserContext from '../../contexts/UserContext'
 import axios from '../../axiosConfig'
 
-function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
+function FileUpload({
+  dispatchCurrentJob,
+  logReady,
+  setLogReady,
+  displayUrl,
+  setDisplayUrl
+}) {
   const { userId } = useContext(UserContext)
   const [selectedFile, setSelectedFile] = useState(null)
-  const [displayUrl, setDisplayUrl] = useState(null)
   const [jobName, setJobName] = useState('')
   const [algoName, setAlgoName] = useState('')
   const [dataName, setDataName] = useState('')
@@ -59,6 +65,7 @@ function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
   const onDrop = useCallback((acceptedFiles) => {
     setSelectedFile(acceptedFiles[0])
 
+    setLogReady(true)
     setDisplayUrl({
       file: URL.createObjectURL(acceptedFiles[0])
     })
@@ -81,28 +88,22 @@ function FileUpload({ dispatchCurrentJob, logReady, setLogReady }) {
 
   return (
     <div className="w-10/12 min-w-min h-155">
-      {!logReady && (
-        <div className="text-base border-md shadow-xl text-center border rounded-sm p-2 m-2 min-w-min">
-          <NewjobForm
-            getRootProps={getRootProps}
-            getInputProps={getInputProps}
-            open={open}
-            jobName={jobName}
-            setJobName={setJobName}
-            algoName={algoName}
-            setAlgoName={setAlgoName}
-            dataName={dataName}
-            setDataName={setDataName}
-          />
-        </div>
-      )}
-
-      {displayUrl && !logReady && (
-        <div className="m-2">
-          <ButtonPrimary function={handleSubmit} name="Submit" />
-        </div>
-      )}
-      {displayUrl && <LogViewer file={displayUrl.file} />}
+      <div className="text-base border-md shadow-xl text-center border rounded-sm p-2 m-2 min-w-min">
+        <NewjobForm
+          getRootProps={getRootProps}
+          getInputProps={getInputProps}
+          open={open}
+          jobName={jobName}
+          setJobName={setJobName}
+          algoName={algoName}
+          setAlgoName={setAlgoName}
+          dataName={dataName}
+          setDataName={setDataName}
+        />
+      </div>
+      <div className="m-2">
+        <ButtonPrimary function={handleSubmit} name="Submit" />
+      </div>
     </div>
   )
 }

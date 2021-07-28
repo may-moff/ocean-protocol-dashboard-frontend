@@ -6,8 +6,14 @@ import axios from '../../axiosConfig'
 import { SET_STATE, RESET } from '../../reducers-actions/formReducerActions'
 import UserContext from '../../contexts/UserContext'
 import { useHistory } from 'react-router-dom'
+import LogViewer from './LogViewer'
 
-const NewJob = ({ currentJob, dispatchCurrentJob }) => {
+const NewJob = ({
+  currentJob,
+  dispatchCurrentJob,
+  displayUrl,
+  setDisplayUrl
+}) => {
   const { userId } = useContext(UserContext)
   const [logReady, setLogReady] = useState(false)
   let history = useHistory()
@@ -25,7 +31,10 @@ const NewJob = ({ currentJob, dispatchCurrentJob }) => {
   }
 
   useEffect(() => {
-    return () => dispatchCurrentJob({ type: RESET })
+    return () => {
+      setLogReady(false)
+      dispatchCurrentJob({ type: RESET })
+    }
   }, [dispatchCurrentJob])
 
   return (
@@ -41,18 +50,25 @@ const NewJob = ({ currentJob, dispatchCurrentJob }) => {
 
       <div className="flex">
         <div className="flex justify-center justify-items-center w-2/5 mr-2">
-          <FileUpload
-            logReady={logReady}
-            setLogReady={setLogReady}
-            dispatchCurrentJob={dispatchCurrentJob}
-          />
+          {currentJob.parseKeys.length === 0 && (
+            <FileUpload
+              logReady={logReady}
+              setLogReady={setLogReady}
+              dispatchCurrentJob={dispatchCurrentJob}
+              displayUrl={displayUrl}
+              setDisplayUrl={setDisplayUrl}
+            />
+          )}
+          {currentJob.parseKeys.length > 0 && (
+            <FormParse
+              logReady={logReady}
+              currentJob={currentJob}
+              dispatchCurrentJob={dispatchCurrentJob}
+            />
+          )}
         </div>
         <div className="flex justify-center justify-items-center w-3/5 ">
-          <FormParse
-            logReady={logReady}
-            currentJob={currentJob}
-            dispatchCurrentJob={dispatchCurrentJob}
-          />
+          {logReady && <LogViewer file={displayUrl.file} />}
         </div>
       </div>
     </div>
