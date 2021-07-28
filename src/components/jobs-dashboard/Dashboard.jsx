@@ -10,9 +10,20 @@ import ButtonDefault from '../atoms/ButtonDefault'
 const Dashboard = ({ jobList, setJobList }) => {
   const [search, setSearch] = useState('')
 
+  // const filteredJobs = jobList.filter(
+  //   (job) =>
+  //     (job.jobName && job.jobName.toLocaleLowerCase().includes(search)) ||
+  //     job.algorithmId.includes(search)
+  // )
+  // const filteredJobs = jobList.filter(
+  //   (job) => job.jobName && job.jobName.toLocaleLowerCase().includes(search)
+  // )
   const filteredJobs = jobList.filter(
-    (job) => job.jobName && job.jobName.toLocaleLowerCase().includes(search)
+    (job) =>
+      (job._id && job._id.toLocaleLowerCase().includes(search)) ||
+      (job.jobName && job.jobName.toLocaleLowerCase().includes(search))
   )
+
   return (
     <div className="text-center p-6 w-screen ">
       <SectionHeader headline="Total Jobs" />
@@ -31,9 +42,10 @@ const Dashboard = ({ jobList, setJobList }) => {
               <div key={i} className="cards-container">
                 <h2>Job Name:</h2>
                 <h2 className="font-bold pl-1">{job.jobName}</h2>
+                <h2>{job.algorithmId.algoName}</h2>
 
                 <h2>Algorithm Name:</h2>
-                <h2 className="font-bold pl-1">{job.algorithmId.algoName}</h2>
+                <h2 className="font-bold pl-1">{job._id}</h2>
 
                 <h2>Date:</h2>
                 <h2 className="font-bold pl-1">{job.date.slice(0, 10)}</h2>
