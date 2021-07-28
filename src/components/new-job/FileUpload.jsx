@@ -87,7 +87,7 @@ function FileUpload({
 
   return (
     <div className="w-8/12 min-w-min h-155">
-      <div className="text-base border-md shadow-xl text-center border rounded-sm p-2 m-2 min-w-min">
+      <div className="text-base border-md shadow-xl text-center border rounded-sm p-2 m-2 min-w-min bg-white">
         <NewjobForm
           getRootProps={getRootProps}
           getInputProps={getInputProps}
