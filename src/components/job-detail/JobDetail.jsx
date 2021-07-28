@@ -139,26 +139,29 @@ const JobDetail = () => {
 
         <div className="flex flex-col justify-items-center w-7/12 max-w-full tablet:w-full tablet:flex-row tablet:flex-wrap">
           <div className=" overflow-y-auto max-w-full block m-auto mt-10">
-            {dataToPlot.map((e, i) => {
-              if (e) {
-                return (
-                  <>
-                    <div className="tablet:pb-5 tablet:pt-5 tablet:h-1/2">
-                      <div className="w-full flex pl-20">{e[0].title}</div>
-                      <ExecutionChart
-                        key={i}
-                        data={e}
-                        title={e[0].key}
-                        yLabel={
-                          e[0].dataType === 'number' ? '-' : e[0].unitOfMeasure
-                        }
-                      />
-                    </div>
-                  </>
-                )
-              }
-              return null
-            })}
+            {dataToPlot &&
+              dataToPlot.map((e, i) => {
+                if (e) {
+                  return (
+                    <>
+                      <div className="tablet:pb-5 tablet:pt-5 tablet:h-1/2">
+                        <div className="w-full flex pl-20">{e[0].title}</div>
+                        <ExecutionChart
+                          key={i}
+                          data={e}
+                          title={e[0].key}
+                          yLabel={
+                            e[0].dataType === 'number'
+                              ? '-'
+                              : e[0].unitOfMeasure
+                          }
+                        />
+                      </div>
+                    </>
+                  )
+                }
+                return null
+              })}
             <div>
               {' '}
               <LineDataChart />
