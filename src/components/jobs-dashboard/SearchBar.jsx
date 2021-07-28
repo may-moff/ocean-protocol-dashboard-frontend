@@ -3,7 +3,7 @@ import React from 'react'
 const SearchBar = ({ keyword, setKeyword }) => {
   return (
     <>
-      <div className="flex justify-center max-w-md mb-4">
+      <div className="flex justify-center w-2/4 mb-4">
         <input
           className="border-2 p-1 w-7/12 ml-1 md:ml-4"
           key="random1"
