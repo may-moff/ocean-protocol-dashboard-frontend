@@ -70,7 +70,7 @@ const JobDetail = () => {
   useEffect(() => {
     getOneJob()
   }, [])
-  
+
   const dataToPlot = jobDetail?.currentJob?.parseKeys
     .map((e, i) => {
       if (e.dataType === 'number' || e.dataType === 'number_um') {
