@@ -3,10 +3,11 @@ import axios from '../../axiosConfig'
 import Job from './Job'
 import UserContext from '../../contexts/UserContext'
 import JobsSeed from './JobsSeed'
+import { useState } from 'react'
 
-const JobsIndex = ({ jobList, setJobList }) => {
+const JobsIndex = ({ jobList, setJobList, search, setSearch }) => {
   const { userId } = useContext(UserContext)
-
+  const [test, setTest] = useState('')
   const getJobs = () =>
     axios.get(`/users/${userId}/jobs`).then((response) => response.data)
 
@@ -21,12 +22,29 @@ const JobsIndex = ({ jobList, setJobList }) => {
   }, [])
   console.log(jobList)
 
+  useEffect(() => {
+    const filteredJobs = jobList.filter(
+      (job) => job
+      //   (job.algorithmId.algoName &&
+      //     job.algorithmId.algoName.toLocaleLowerCase().includes(search)) ||
+      //   (job.jobName && job.jobName.toLocaleLowerCase().includes(search))
+    )
+    // setTest([
+    //   {
+    //     jobName: 'bla',
+    //     algorithmId: { algoName: 'ja' },
+    //     date: '2021-07-28T16:50:47.801Z'
+    //   }
+    // ])
+    setTest(filteredJobs)
+  }, [jobList, search])
+
   return (
-    jobList && (
+    test && (
       <>
         <div className="container mx-auto flex justify-around">
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {jobList.map((item, i) => (
+            {test.map((item, i) => (
               <Job key={i} item={item} />
             ))}
             <JobsSeed
