@@ -18,11 +18,18 @@ const JobsIndex = ({ jobList, setJobList }) => {
   return (
     jobList && (
       <>
-        <div className="container mx-auto flex justify-around">
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          className="container mx-auto flex justify-around "
+          styles={{ zIndex: '100' }}
+        >
+          <div
+            styles={{ zIndex: '100' }}
+            className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 "
+          >
             {jobList.map((item, i) => (
               <Job key={i} item={item} />
             ))}
+
             <JobsSeed
               name="Automotive Line 1"
               algo="Algo23-4tf"
@@ -49,6 +56,7 @@ const JobsIndex = ({ jobList, setJobList }) => {
               algo="056-AG02"
               date="2021-05-17"
             />
+
             <JobsSeed
               name="Testing Phase 2"
               algo="Algo23-4tf"
@@ -60,6 +68,22 @@ const JobsIndex = ({ jobList, setJobList }) => {
               date="2021-04-11"
             />
             <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-28" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
+            <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
             <JobsSeed name="Testing Phase 1" algo="H1T3-45" date="2021-03-27" />
           </div>
         </div>

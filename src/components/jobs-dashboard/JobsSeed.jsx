@@ -5,7 +5,7 @@ import Card from '../atoms/Card'
 
 const JobsSeed = (props) => {
   return (
-    <Card additionalClasses="flex-1 my-1 ">
+    <Card additionalClasses="flex-1 my-1 bg-white z-100">
       <div className="flex justify-center m-2 mx-auto p-4 flex-col">
         <div className="flex justify-center mx-auto">
           <h2>Job Name:</h2>
