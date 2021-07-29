@@ -4,8 +4,11 @@ const JobsIndex = ({ jobList, search }) => {
   const filteredJobs = jobList.filter(
     (job) =>
       (job.algorithmId.algoName &&
-        job.algorithmId.algoName.toLocaleLowerCase().includes(search)) ||
-      (job.jobName && job.jobName.toLocaleLowerCase().includes(search))
+        job.algorithmId.algoName
+          .toLocaleLowerCase()
+          .includes(search.toLocaleLowerCase())) ||
+      (job.jobName &&
+        job.jobName.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
   )
 
   return (
