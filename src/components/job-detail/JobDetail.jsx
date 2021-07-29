@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from '../../axiosConfig'
-import ButtonDefault from '../atoms/ButtonDefault'
 import ChartTime from './charts/ChartTime'
 import ExecutionChart from './charts/ExecutionChart'
 import LineDataChart from './charts/LineChart'
 import RadarDataChart from './charts/RadarDataChart'
-import SectionHeader from '../jobs-dashboard/SectionHeader'
 import Table from './table/Table'
 import UserContext from '../../contexts/UserContext'
 import MOCK_DATA3 from './table/MOCK_DATA3.json'
@@ -87,27 +85,27 @@ const JobDetail = () => {
         <div className="text-xl font-bold p-2">
           {jobDetail ? jobDetail.currentJob.jobName : null}
         </div>
-        <div className="flex justify-around">
-          <div className="flex flex-col w-1/2 justify-around">
+        <div className="flex justify-around mr-20">
+          <div className="flex flex-col w-1/2 justify-around mr-">
             <div className="place-content-center">Parsed Assets:</div>
             <div className="place-content-center mt-3">
-              <div className="place-content-center">
+              <div className="flex place-content-center place-items-center">
                 Algorithm Name:{' '}
-                <strong>
+                <div className="font-bold mx-4 text-xl">
                   {' '}
                   {jobDetail ? jobDetail.currentJob.algorithmId.algoName : null}
-                </strong>
+                </div>
               </div>
-              <div className="place-content-center">
+              <div className="flex place-content-center place-items-center">
                 Data Name:{' '}
-                <strong>
+                <div className="font-bold mx-4 text-xl">
                   {jobDetail ? jobDetail.currentJob.dataName : null}
-                </strong>
+                </div>
               </div>
             </div>
           </div>
           <div className="flex flex-col justify-around w-1/2">
-            <div className="place-content-center mb-2">
+            <div className="place-content-center mt-2">
               Available Visualizations:
             </div>
             {/* <div className="m-2 flex flex-row justify-around">
@@ -119,7 +117,7 @@ const JobDetail = () => {
         </div>
       </div>
       <div className="flex justify-between justify-items-center h-146 tablet:flex tablet:flex-row tablet:w-full tablet:flex-wrap">
-        <div className="  w-5/12 overflow-y-auto mt-8 ml-4 tablet:w-full">
+        <div className="  w-5/12 overflow-y-auto mt-8 ml-6 tablet:w-full">
           <Table />
         </div>
 
