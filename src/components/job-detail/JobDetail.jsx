@@ -109,7 +109,7 @@ const JobDetail = () => {
       </div>
       <div className="flex justify-between justify-items-center h-146 tablet:flex tablet:flex-row tablet:w-full tablet:flex-wrap">
         <div className="  w-5/12 overflow-y-auto mt-8 ml-6 tablet:w-full">
-          <Table />
+          {jobDetail && <Table jobDetail={jobDetail} />}
         </div>
 
         {/* {MOCK_DATA3.currentJob.parseKeys.map((e, i) => {
