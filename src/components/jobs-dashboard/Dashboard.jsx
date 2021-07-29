@@ -24,7 +24,7 @@ const Dashboard = ({ jobList, setJobList }) => {
   }, [])
 
   return (
-    <div className="text-center p-6 w-screen ">
+    <div className="text-center w-screen ">
       <SectionHeader headline="Total Jobs" />
       <ChartTotalJobs jobList={jobList} />
       <SectionHeader headline="Jobs Overview" />
