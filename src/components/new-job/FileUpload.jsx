@@ -60,14 +60,17 @@ function FileUpload({
     }
   }
 
-  const onDrop = useCallback((acceptedFiles) => {
-    setSelectedFile(acceptedFiles[0])
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      setSelectedFile(acceptedFiles[0])
 
-    setDisplayUrl({
-      file: URL.createObjectURL(acceptedFiles[0])
-    })
-    setLogReady(true)
-  }, [])
+      setDisplayUrl({
+        file: URL.createObjectURL(acceptedFiles[0])
+      })
+      setLogReady(true)
+    },
+    [setDisplayUrl, setLogReady]
+  )
 
   const { getRootProps, getInputProps, open /* acceptedFiles */ } = useDropzone(
     {

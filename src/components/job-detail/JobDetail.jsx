@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from '../../axiosConfig'
 import ChartTime from './charts/ChartTime'
@@ -7,7 +7,6 @@ import LineDataChart from './charts/LineChart'
 import RadarDataChart from './charts/RadarDataChart'
 import Table from './table/Table'
 import UserContext from '../../contexts/UserContext'
-import MOCK_DATA3 from './table/MOCK_DATA3.json'
 import {
   findValueWithMeasureUnit,
   normalizeValue
@@ -58,25 +57,23 @@ const JobDetail = () => {
   const [jobDetail, setJobDetail] = useState()
   const { userId } = useContext(UserContext)
 
-  const getOneJob = () => {
-    axios.get(`/users/${userId}/jobs/${_id}`).then((response) => {
-      setJobDetail(response.data)
-    })
-  }
+  const getOneJob = useCallback(async () => {
+    const response = await axios.get(`/users/${userId}/jobs/${_id}`)
+    setJobDetail(response.data)
+  }, [_id, userId])
 
   useEffect(() => {
     getOneJob()
-  }, [])
+  }, [getOneJob])
 
   const dataToPlot = jobDetail?.currentJob?.parseKeys
-    .map((e, i) => {
+    .map((e) => {
       if (e.dataType === 'number' || e.dataType === 'number_um') {
         return testDataGenerator(jobDetail, e.key)
       }
       return null
     })
     .filter((e) => e !== null)
-  const data = testDataGenerator(MOCK_DATA3, 'EXECUTION_TIME')
 
   return (
     <div className=" p-6 ">
@@ -136,10 +133,12 @@ const JobDetail = () => {
                 if (e) {
                   return (
                     <>
-                      <div className="tablet:pb-5 tablet:pt-5 tablet:h-1/2">
+                      <div
+                        key={i}
+                        className="tablet:pb-5 tablet:pt-5 tablet:h-1/2"
+                      >
                         <div className="w-full flex pl-20">{e[0].title}</div>
                         <ExecutionChart
-                          key={i}
                           data={e}
                           title={e[0].key}
                           yLabel={
