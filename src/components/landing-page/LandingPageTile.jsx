@@ -23,7 +23,7 @@ const LandingPageTile = (props) => {
         //   height: '150px'
         // }}
       >
-        <img className="h-4/5" src={background} />
+        <img className="h-4/5" alt="logo" src={background} />
         <div>{text}</div>
       </button>
     </div>
