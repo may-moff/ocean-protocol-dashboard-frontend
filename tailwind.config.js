@@ -3,7 +3,19 @@ module.exports = {
 
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      sm: { min: '640px' },
+      md: { min: '768px' },
+      lg: { min: '1024px' },
+      tablet: { max: '1024px' },
+      mobile: { max: '500px' }
+    },
+
     extend: {
+      backgroundImage: (theme) => ({
+        waves: "url('./assets/waves.svg')"
+      }),
+
       boxShadow: {
         default: '4px 4px 20px rgb(0 0 0 / 10%)'
       },
@@ -38,9 +50,10 @@ module.exports = {
       spacing: {
         108: '27rem',
         118: '29.5rem',
-        128: '32rem',
-        138: '34.5rem',
-        148: '48rem',
+        128: '28rem',
+        138: '38rem',
+        142: '42rem',
+        146: '46rem',
         150: '50rem',
         155: '55rem'
       },
@@ -70,7 +83,8 @@ module.exports = {
         balertorange: '#b35f36',
         balertyellow: '#eac146',
         colorprimary: '#ff4092',
-        colorsecondary: '#8b98a9'
+        colorsecondary: '#8b98a9',
+        oceanpurple: '#7b1173'
       }
     }
   },

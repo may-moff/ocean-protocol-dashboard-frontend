@@ -61,17 +61,21 @@ export const Login = ({ onLoggedIn }) => {
         // with the injected provider given by MetaMask
         web3 = new Web3(window.ethereum)
       } catch (error) {
-        return window.alert(
-          '🦊 Please sign into your MetaMask account. If you are already signed into your wallet but not connected to this site, please go to your MetaMask account settings and manually connect to this website (connected sites --> Manually connect to current site)'
+        window.alert(
+          "🦊 If you are already signed into your wallet but not connected to this site, go to your MetaMask account, open the account options menu and click on 'connected sites' --> 'manually connect to current site' 🦊"
         )
+        return
       }
     }
+    console.log('BOOOYA')
 
     const coinbase = await web3.eth.getCoinbase()
+    console.log(coinbase)
     if (!coinbase) {
-      return window.alert(
-        '🦊 Please sign into your MetaMask account. If you are already signed into your wallet but not connected to this site, please go to your MetaMask account settings and manually connect to this website (connected sites --> Manually connect to current site) 🦊'
+      window.alert(
+        "🦊 If you are already signed into your wallet but not connected to this site, go to your MetaMask account, open the account options menu and click on 'connected sites' --> 'manually connect to current site' 🦊"
       )
+      return
     }
 
     const publicAddress = coinbase.toLowerCase()
@@ -97,10 +101,10 @@ export const Login = ({ onLoggedIn }) => {
   }
 
   return (
-    <div className="py-1 px-3 text-bwhite bg-bpink rounded shadow hover:bg-bpurple duration-500">
+    <div className="py-1 px-3 pl-2 text-bwhite bg-bpink rounded shadow hover:bg-bpurple duration-500 tablet:py-0">
       <button onClick={handleClickMeta}>
         {loading ? 'Loading...' : 'Login with MetaMask'}
-      </button>{' '}
+      </button>
     </div>
   )
 }

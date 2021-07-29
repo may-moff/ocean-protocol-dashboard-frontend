@@ -19,15 +19,17 @@ export const Profile = ({ auth, setAuthorization, setCurrentUser }) => {
   }, [publicAddress, id, setAuthorization, setCurrentUser])
 
   return (
-    <div className="flex justify-center justify-items-center items-center">
-      <div className="mx-3">
-        <Blockies className="rounded-full" seed={publicAddress} />
-      </div>
+    <>
+      <div className="flex justify-center justify-items-center items-center ">
+        <div className="mx-3">
+          <Blockies className="rounded-full " seed={publicAddress} />
+        </div>
 
-      <div className="place-content-center text-base ">
-        {publicAddress.replace(/([a-z\d]{6})(.*)([a-z\d]{4})/i, '$1...$3')}
+        <div className="place-content-center text-base tablet:hidden">
+          {publicAddress.replace(/([a-z\d]{6})(.*)([a-z\d]{4})/i, '$1...$3')}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 export default Profile
