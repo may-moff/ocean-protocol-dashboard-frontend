@@ -27,7 +27,6 @@ const Dashboard = ({ jobList, setJobList }) => {
     <div className="text-center p-6 w-screen ">
       <SectionHeader headline="Total Jobs" />
       <ChartTotalJobs jobList={jobList} />
-
       <SectionHeader headline="Jobs Overview" />
       <SearchBar
         jobList={jobList}
@@ -42,10 +41,10 @@ const Dashboard = ({ jobList, setJobList }) => {
           zIndex: '-10',
           backgroundRepeat: 'no-repeat',
           backgroundSize: '110%',
-          backgroundPosition: 'center'
+          backgroundPosition: 'center',
+          minHeight: '100vh'
         }}
       >
-        {' '}
         <JobsIndex jobList={jobList} search={search} />
       </div>
     </div>
