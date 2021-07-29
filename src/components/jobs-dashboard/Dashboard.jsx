@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useCallback } from 'react'
 import axios from '../../axiosConfig'
 import waves from './../../assets/waves.svg'
 import ChartTotalJobs from './ChartTotalJobs'
@@ -10,8 +10,11 @@ import UserContext from '../../contexts/UserContext'
 const Dashboard = ({ jobList, setJobList }) => {
   const [search, setSearch] = useState('')
   const { userId } = useContext(UserContext)
-  const getJobs = () =>
-    axios.get(`/users/${userId}/jobs`).then((response) => response.data)
+
+  const getJobs = useCallback(async () => {
+    const response = await axios.get(`/users/${userId}/jobs`)
+    return response.data
+  }, [userId])
 
   useEffect(() => {
     getJobs().then((data) => {
@@ -21,7 +24,7 @@ const Dashboard = ({ jobList, setJobList }) => {
 
       setJobList(sortedData)
     })
-  }, [])
+  }, [getJobs, setJobList])
 
   return (
     <div className="text-center w-screen ">

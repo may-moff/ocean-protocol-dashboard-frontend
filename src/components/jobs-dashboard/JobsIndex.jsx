@@ -12,23 +12,19 @@ const JobsIndex = ({ jobList, search }) => {
   )
 
   return (
-    filteredJobs && (
-      <>
-        <div
-          className="container mx-auto flex justify-around "
-          styles={{ zIndex: '100' }}
-        >
-          <div
-            styles={{ zIndex: '100' }}
-            className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 "
-          >
-            {filteredJobs.map((item, i) => (
-              <Job key={i} item={item} />
-            ))}
-          </div>
-        </div>
-      </>
-    )
+    <div
+      className="container mx-auto flex justify-around "
+      styles={{ zIndex: '100' }}
+    >
+      <div
+        styles={{ zIndex: '100' }}
+        className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 "
+      >
+        {filteredJobs?.map?.((item, i) => (
+          <Job key={i} item={item} />
+        ))}
+      </div>
+    </div>
   )
 }
 
