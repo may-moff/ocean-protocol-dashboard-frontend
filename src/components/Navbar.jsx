@@ -14,7 +14,6 @@ function Navbar({
 }) {
   return (
     <nav className="bg-bgreylighter sticky top-0 z-50 inset-x-0 tablet:w-screen tablet:pt-1 px-1">
-      {/* <nav className="bg-bgreylighter "> */}
       <div className="links+logo">
         <div className="max-w-6xl mx-auto tablet:w-full">
           <div className="flex justify-between">
@@ -53,18 +52,6 @@ function Navbar({
                   <Login onLoggedIn={onLoggedIn} />
                 )}
               </div>
-              {/*  <a
-              href="#"
-              className="py-1 px-3 text-bwhite bg-bpink rounded shadow hover:bg-bpurple duration-500"
-            >
-              Connect Your Wallet
-            </a> */}
-              {/* <a
-              href="#"
-              className="py-5 px-3 text-bgrey transform hover:-translate-y-0.5 duration-300"
-            >
-              Settings
-            </a> */}
             </div>
           </div>
         </div>

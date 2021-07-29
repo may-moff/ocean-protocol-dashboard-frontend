@@ -22,7 +22,7 @@ const Dashboard = ({ jobList, setJobList }) => {
       setJobList(sortedData)
     })
   }, [])
-  console.log(jobList)
+
   return (
     <div className="text-center p-6 w-screen ">
       <SectionHeader headline="Total Jobs" />

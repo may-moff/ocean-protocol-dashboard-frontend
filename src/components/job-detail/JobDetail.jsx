@@ -63,7 +63,6 @@ const JobDetail = () => {
   const getOneJob = () => {
     axios.get(`/users/${userId}/jobs/${_id}`).then((response) => {
       setJobDetail(response.data)
-      console.log(response.data)
     })
   }
 
@@ -110,11 +109,6 @@ const JobDetail = () => {
             <div className="place-content-center mb-2">
               Available Visualizations:
             </div>
-            {/* <div className="m-2 flex flex-row justify-around">
-            <ButtonDefault name="Execution time" />
-            <ButtonDefault name="Job time details" />
-            <ButtonDefault name="Comperation" />
-          </div> */}
           </div>
         </div>
       </div>
